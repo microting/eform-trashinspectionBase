@@ -21,6 +21,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories
         public DbSet<TrashInspectionVersion> TrashInspectionVersions { get; set; }
         public DbSet<TrashInspectionPnSetting> TrashInspectionPnSettings { get; set; }
         public DbSet<TrashInspectionPnSettingVersion> TrashInspectionPnSettingVersions { get; set; }
+        public DbSet<TrashInspectionCase> TrashInspectionCases { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
