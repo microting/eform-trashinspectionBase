@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -7,6 +8,11 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 
     public class TrashInspection : BaseEntity
     {
+
+        public TrashInspection()
+        {
+            TrashInspectionCases = new HashSet<TrashInspectionCase>();
+        }
 
         public int Version { get; set; }
 
@@ -30,5 +36,9 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         public int InstallationId { get; set; }
 
         public bool MustBeInspected { get; set; }
+        
+        public int Status { get; set; }
+        
+        public virtual ICollection<TrashInspectionCase> TrashInspectionCases { get; set; }
     }
 }
