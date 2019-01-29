@@ -1,0 +1,15 @@
+dist: xenial
+branches:
+  only:
+    - master
+language: csharp
+solution: eform-trashinspectionBase/Microting.eFormTrashInspectionBase.sln
+mono: none
+dotnet: 2.2
+services:
+- mysql
+script:
+  - cd eform-trashinspectionBase
+  - dotnet restore
+  - dotnet build Microting.eFormTrashInspectionBase.sln
+  - dotnet test -v n eform-trashinspectionBase.Integration.Tests/eform-trashinspectionBase.Integration.Tests.csproj
