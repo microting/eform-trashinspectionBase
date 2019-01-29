@@ -11,4 +11,4 @@ services:
 script:
   - dotnet restore
   - dotnet build Microting.eFormTrashInspectionBase.sln
-  - dotnet test -v n eform-trashinspectionBase.Integration.Tests/eform-trashinspectionBase.Integration.Tests.csproj
+  - dotnet test -v n Microting.eFormTrashInspectionBase.Integration.Tests\Microting.eFormTrashInspectionBase.Integration.Tests.csproj
