@@ -25,6 +25,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         public string Producer { get; set; }
 
         public string Transporter { get; set; }
+        
         [ForeignKey("Installation")]
         public int InstallationId { get; set; }
 
