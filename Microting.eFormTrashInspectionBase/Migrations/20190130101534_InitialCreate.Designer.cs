@@ -10,7 +10,7 @@ using Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories;
 namespace Microting.eFormTrashInspectionBase.Migrations
 {
     [DbContext(typeof(TrashInspectionPnDbContext))]
-    [Migration("20190129090817_InitialCreate")]
+    [Migration("20190130101534_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,6 +27,68 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 .HasAnnotation("ProductVersion", "2.2.1-servicing-10028")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+
+            modelBuilder.Entity("Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities.Fraction", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int>("CreatedByUserId");
+
+                    b.Property<string>("Description");
+
+                    b.Property<string>("Name");
+
+                    b.Property<DateTime?>("UpdatedAt");
+
+                    b.Property<int>("UpdatedByUserId");
+
+                    b.Property<int>("Version");
+
+                    b.Property<string>("WorkflowState")
+                        .HasMaxLength(255);
+
+                    b.Property<int>("eFormId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Fractions");
+                });
+
+            modelBuilder.Entity("Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities.FractionVersion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int>("CreatedByUserId");
+
+                    b.Property<string>("Description");
+
+                    b.Property<int>("FractionId");
+
+                    b.Property<string>("Name");
+
+                    b.Property<DateTime?>("UpdatedAt");
+
+                    b.Property<int>("UpdatedByUserId");
+
+                    b.Property<int>("Version");
+
+                    b.Property<string>("WorkflowState")
+                        .HasMaxLength(255);
+
+                    b.Property<int>("eFormId");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("FractionVersions");
+                });
 
             modelBuilder.Entity("Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities.Installation", b =>
                 {
@@ -154,7 +216,9 @@ namespace Microting.eFormTrashInspectionBase.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<int>("Eak_Code");
+                    b.Property<string>("Eak_Code");
+
+                    b.Property<int>("Fraction");
 
                     b.Property<int>("InstallationId");
 
@@ -170,7 +234,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
 
                     b.Property<string>("Transporter");
 
-                    b.Property<int>("TrashFraction");
+                    b.Property<string>("TrashFraction");
 
                     b.Property<DateTime?>("UpdatedAt");
 
@@ -178,7 +242,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
 
                     b.Property<int>("Version");
 
-                    b.Property<int>("WeighingNumber");
+                    b.Property<string>("WeighingNumber");
 
                     b.Property<string>("WorkflowState")
                         .HasMaxLength(255);
@@ -208,6 +272,8 @@ namespace Microting.eFormTrashInspectionBase.Migrations
 
                     b.Property<int>("UpdatedByUserId");
 
+                    b.Property<int>("Version");
+
                     b.Property<string>("WorkflowState")
                         .HasMaxLength(255);
 
@@ -216,6 +282,36 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                     b.HasIndex("TrashInspectionId");
 
                     b.ToTable("TrashInspectionCases");
+                });
+
+            modelBuilder.Entity("Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities.TrashInspectionCaseVersion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int>("CreatedByUserId");
+
+                    b.Property<string>("SdkCaseId");
+
+                    b.Property<int>("Status");
+
+                    b.Property<int>("TrashInspectionCaseId");
+
+                    b.Property<int>("TrashInspectionId");
+
+                    b.Property<DateTime?>("UpdatedAt");
+
+                    b.Property<int>("UpdatedByUserId");
+
+                    b.Property<string>("WorkflowState")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("TrashInspectionCaseVersions");
                 });
 
             modelBuilder.Entity("Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities.TrashInspectionPnSetting", b =>

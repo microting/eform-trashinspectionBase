@@ -9,7 +9,6 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
     {
         public int Version { get; set; }
      
-       [ForeignKey("Installation")]
         public int InstallationId { get; set; }
 
         public int SDKSiteId { get; set; }

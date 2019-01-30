@@ -16,7 +16,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 
         public int Version { get; set; }
 
-        public int WeighingNumber { get; set; }
+        public string WeighingNumber { get; set; }
 
         public DateTime Date { get; set; }
 
@@ -24,9 +24,12 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 
         public string RegistrationNumber { get; set; }
 
-        public int TrashFraction { get; set; }
+        public string TrashFraction { get; set; }
+        
+        [ForeignKey("Fraction")]
+        public int Fraction { get; set; }
 
-        public int Eak_Code { get; set; }
+        public string Eak_Code { get; set; }
 
         public string Producer { get; set; }
 

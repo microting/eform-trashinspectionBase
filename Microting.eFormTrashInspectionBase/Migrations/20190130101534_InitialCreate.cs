@@ -9,17 +9,60 @@ namespace Microting.eFormTrashInspectionBase.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             //Setup for SQL Server Provider
-
-            var autoIDGenStrategy = "SqlServer:ValueGenerationStrategy";
-            object autoIDGenStrategyValue = SqlServerValueGenerationStrategy.IdentityColumn;
+           
+            string autoIDGenStrategy = "SqlServer:ValueGenerationStrategy";
+            object autoIDGenStrategyValue= SqlServerValueGenerationStrategy.IdentityColumn;
 
             // Setup for MySQL Provider
-            if (migrationBuilder.ActiveProvider == "Pomelo.EntityFrameworkCore.MySql")
+            if (migrationBuilder.ActiveProvider=="Pomelo.EntityFrameworkCore.MySql")
             {
                 DbConfig.IsMySQL = true;
                 autoIDGenStrategy = "MySql:ValueGenerationStrategy";
                 autoIDGenStrategyValue = MySqlValueGenerationStrategy.IdentityColumn;
             }
+            migrationBuilder.CreateTable(
+                name: "Fractions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation(autoIDGenStrategy, autoIDGenStrategyValue),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    WorkflowState = table.Column<string>(maxLength: 255, nullable: true),
+                    CreatedByUserId = table.Column<int>(nullable: false),
+                    UpdatedByUserId = table.Column<int>(nullable: false),
+                    Version = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    eFormId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Fractions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "FractionVersions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation(autoIDGenStrategy, autoIDGenStrategyValue),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    WorkflowState = table.Column<string>(maxLength: 255, nullable: true),
+                    CreatedByUserId = table.Column<int>(nullable: false),
+                    UpdatedByUserId = table.Column<int>(nullable: false),
+                    FractionId = table.Column<int>(nullable: false),
+                    Version = table.Column<int>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
+                    Description = table.Column<string>(nullable: true),
+                    eFormId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_FractionVersions", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Installations",
                 columns: table => new
@@ -81,6 +124,27 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "TrashInspectionCaseVersions",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation(autoIDGenStrategy, autoIDGenStrategyValue),
+                    CreatedAt = table.Column<DateTime>(nullable: false),
+                    UpdatedAt = table.Column<DateTime>(nullable: true),
+                    WorkflowState = table.Column<string>(maxLength: 255, nullable: true),
+                    CreatedByUserId = table.Column<int>(nullable: false),
+                    UpdatedByUserId = table.Column<int>(nullable: false),
+                    Status = table.Column<int>(nullable: false),
+                    TrashInspectionId = table.Column<int>(nullable: false),
+                    SdkCaseId = table.Column<string>(nullable: true),
+                    TrashInspectionCaseId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TrashInspectionCaseVersions", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "TrashInspectionPnSettings",
                 columns: table => new
                 {
@@ -132,12 +196,13 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                     CreatedByUserId = table.Column<int>(nullable: false),
                     UpdatedByUserId = table.Column<int>(nullable: false),
                     Version = table.Column<int>(nullable: false),
-                    WeighingNumber = table.Column<int>(nullable: false),
+                    WeighingNumber = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
                     Time = table.Column<DateTime>(nullable: false),
                     RegistrationNumber = table.Column<string>(nullable: true),
-                    TrashFraction = table.Column<int>(nullable: false),
-                    Eak_Code = table.Column<int>(nullable: false),
+                    TrashFraction = table.Column<string>(nullable: true),
+                    Fraction = table.Column<int>(nullable: false),
+                    Eak_Code = table.Column<string>(nullable: true),
                     Producer = table.Column<string>(nullable: true),
                     Transporter = table.Column<string>(nullable: true),
                     InstallationId = table.Column<int>(nullable: false),
@@ -217,7 +282,8 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                     UpdatedByUserId = table.Column<int>(nullable: false),
                     Status = table.Column<int>(nullable: false),
                     TrashInspectionId = table.Column<int>(nullable: false),
-                    SdkCaseId = table.Column<string>(nullable: true)
+                    SdkCaseId = table.Column<string>(nullable: true),
+                    Version = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -244,6 +310,12 @@ namespace Microting.eFormTrashInspectionBase.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "Fractions");
+
+            migrationBuilder.DropTable(
+                name: "FractionVersions");
+
+            migrationBuilder.DropTable(
                 name: "InstallationSites");
 
             migrationBuilder.DropTable(
@@ -254,6 +326,9 @@ namespace Microting.eFormTrashInspectionBase.Migrations
 
             migrationBuilder.DropTable(
                 name: "TrashInspectionCases");
+
+            migrationBuilder.DropTable(
+                name: "TrashInspectionCaseVersions");
 
             migrationBuilder.DropTable(
                 name: "TrashInspectionPnSettings");
