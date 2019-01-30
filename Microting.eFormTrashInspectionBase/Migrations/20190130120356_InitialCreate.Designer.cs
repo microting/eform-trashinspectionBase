@@ -10,7 +10,7 @@ using Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories;
 namespace Microting.eFormTrashInspectionBase.Migrations
 {
     [DbContext(typeof(TrashInspectionPnDbContext))]
-    [Migration("20190130101534_InitialCreate")]
+    [Migration("20190130120356_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -382,7 +382,9 @@ namespace Microting.eFormTrashInspectionBase.Migrations
 
                     b.Property<DateTime>("Date");
 
-                    b.Property<int>("EakCode");
+                    b.Property<string>("EakCode");
+
+                    b.Property<int>("Fraction");
 
                     b.Property<int>("InstallationId");
 
@@ -392,11 +394,13 @@ namespace Microting.eFormTrashInspectionBase.Migrations
 
                     b.Property<string>("RegistrationNumber");
 
+                    b.Property<int>("Status");
+
                     b.Property<DateTime>("Time");
 
                     b.Property<string>("Transporter");
 
-                    b.Property<int>("TrashFraction");
+                    b.Property<string>("TrashFraction");
 
                     b.Property<int>("TrashInspctionId");
 
@@ -406,7 +410,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
 
                     b.Property<int>("Version");
 
-                    b.Property<int>("WeighingNumber");
+                    b.Property<string>("WeighingNumber");
 
                     b.Property<string>("WorkflowState")
                         .HasMaxLength(255);

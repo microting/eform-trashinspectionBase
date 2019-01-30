@@ -20,6 +20,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 autoIDGenStrategy = "MySql:ValueGenerationStrategy";
                 autoIDGenStrategyValue = MySqlValueGenerationStrategy.IdentityColumn;
             }
+            
             migrationBuilder.CreateTable(
                 name: "Fractions",
                 columns: table => new
@@ -226,16 +227,18 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                     CreatedByUserId = table.Column<int>(nullable: false),
                     UpdatedByUserId = table.Column<int>(nullable: false),
                     Version = table.Column<int>(nullable: false),
-                    WeighingNumber = table.Column<int>(nullable: false),
+                    WeighingNumber = table.Column<string>(nullable: true),
                     Date = table.Column<DateTime>(nullable: false),
                     Time = table.Column<DateTime>(nullable: false),
                     RegistrationNumber = table.Column<string>(nullable: true),
-                    TrashFraction = table.Column<int>(nullable: false),
-                    EakCode = table.Column<int>(nullable: false),
+                    TrashFraction = table.Column<string>(nullable: true),
+                    Fraction = table.Column<int>(nullable: false),
+                    EakCode = table.Column<string>(nullable: true),
                     Producer = table.Column<string>(nullable: true),
                     Transporter = table.Column<string>(nullable: true),
                     InstallationId = table.Column<int>(nullable: false),
                     MustBeInspected = table.Column<bool>(nullable: false),
+                    Status = table.Column<int>(nullable: false),
                     TrashInspctionId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
