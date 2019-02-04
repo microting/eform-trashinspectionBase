@@ -12,5 +12,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         public int TrashInspectionPnSettingId { get; set; }
         
         public string ResponseCallBackUrl { get; set; }
+        
+        public string SdkConnectionString { get; set; }
     }
 }
