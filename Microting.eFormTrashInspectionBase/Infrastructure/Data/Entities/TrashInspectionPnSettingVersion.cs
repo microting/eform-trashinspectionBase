@@ -9,6 +9,8 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         public string SelectedeFormName { get; set; }
 
         [ForeignKey("TrashInspectionPnSetting")]
-        public int TrashInspectionId { get; set; }
+        public int TrashInspectionPnSettingId { get; set; }
+        
+        public string ResponseCallBackUrl { get; set; }
     }
 }

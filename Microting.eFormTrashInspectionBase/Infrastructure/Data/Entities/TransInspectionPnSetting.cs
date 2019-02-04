@@ -7,5 +7,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         public string SelectedeFormName { get; set; }
         
         public string Token { get; set; }
+        
+        public string ResponseCallBackUrl { get; set; }
     }
 }
