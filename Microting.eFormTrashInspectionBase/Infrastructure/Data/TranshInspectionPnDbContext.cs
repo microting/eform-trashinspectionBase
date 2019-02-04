@@ -8,7 +8,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories
 
         public TrashInspectionPnDbContext() { }
 
-        public TrashInspectionPnDbContext(DbContextOptions<TrashInspectionPnDbContext> options) : base(options)
+        public TrashInspectionPnDbContext(DbContextOptions options) : base(options)
         {
 
         }
@@ -25,6 +25,12 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories
         public DbSet<TrashInspectionCaseVersion> TrashInspectionCaseVersions { get; set; }
         public DbSet<Fraction> Fractions { get; set; }
         public DbSet<FractionVersion> FractionVersions { get; set; }
+        
+        
+        public virtual Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade ContextDatabase
+        {
+            get => base.Database;
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
