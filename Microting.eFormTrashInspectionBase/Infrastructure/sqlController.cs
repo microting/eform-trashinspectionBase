@@ -73,6 +73,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure
             SettingCreate(Settings.LogLimit);
             SettingCreate(Settings.MaxParallelism);
             SettingCreate(Settings.NumberOfWorkers);
+            SettingCreate(Settings.Token);
 
             return true;
         }
@@ -91,6 +92,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure
                     case Settings.LogLimit: defaultValue = "25000"; break;
                     case Settings.MaxParallelism: defaultValue = "1"; break;
                     case Settings.NumberOfWorkers: defaultValue = "1"; break;
+                    case Settings.Token: defaultValue = "..."; break;
                     
                     default:
                         throw new IndexOutOfRangeException(name.ToString() + " is not a known/mapped Settings type");
@@ -230,7 +232,8 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure
             LogLimit,
             SdkConnectionString,
             MaxParallelism,
-            NumberOfWorkers
+            NumberOfWorkers,
+            Token
         }
     }
 }
