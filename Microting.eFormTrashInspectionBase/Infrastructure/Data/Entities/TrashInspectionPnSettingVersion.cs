@@ -8,11 +8,13 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 
         [Required]
         [StringLength(50)]
-        public string name { get; set; }
+        public string Name { get; set; }
 
-        public string value { get; set; }
+        public string Value { get; set; }
 
         [ForeignKey("TrashInspectionPnSetting")]
         public int TrashInspectionPnSettingId { get; set; }
+        
+        public int Version { get; set; }
     }
 }
