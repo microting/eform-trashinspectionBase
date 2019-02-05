@@ -12,5 +12,9 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         
         [ForeignKey("TrashInspectionCase")]
         public int TrashInspectionCaseId { get; set; }
+        
+        public int Version { get; set; }  
+        
+        public int SegmentId { get; set; }
     }
 }

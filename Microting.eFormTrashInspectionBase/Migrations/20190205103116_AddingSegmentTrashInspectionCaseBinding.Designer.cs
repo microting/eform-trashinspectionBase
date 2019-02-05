@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories;
 
 namespace Microting.eFormTrashInspectionBase.Migrations
 {
     [DbContext(typeof(TrashInspectionPnDbContext))]
-    partial class TrashInspectionPnDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190205103116_AddingSegmentTrashInspectionCaseBinding")]
+    partial class AddingSegmentTrashInspectionCaseBinding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             string autoIDGenStrategy = "SqlServer:ValueGenerationStrategy";
@@ -200,68 +202,6 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("InstallationVersions");
-                });
-
-            modelBuilder.Entity("Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities.Segment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<int>("CreatedByUserId");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("Name");
-
-                    b.Property<int>("SdkFolderId");
-
-                    b.Property<DateTime?>("UpdatedAt");
-
-                    b.Property<int>("UpdatedByUserId");
-
-                    b.Property<int>("Version");
-
-                    b.Property<string>("WorkflowState")
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Segments");
-                });
-
-            modelBuilder.Entity("Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities.SegmentVersion", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<int>("CreatedByUserId");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("Name");
-
-                    b.Property<int>("SdkFolderId");
-
-                    b.Property<int>("SegmentId");
-
-                    b.Property<DateTime?>("UpdatedAt");
-
-                    b.Property<int>("UpdatedByUserId");
-
-                    b.Property<int>("Version");
-
-                    b.Property<string>("WorkflowState")
-                        .HasMaxLength(255);
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SegmentVersions");
                 });
 
             modelBuilder.Entity("Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities.TrashInspection", b =>
