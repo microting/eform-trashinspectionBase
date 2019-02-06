@@ -27,7 +27,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         public string TrashFraction { get; set; }
         
         [ForeignKey("Fraction")]
-        public int Fraction { get; set; }
+        public int FractionId { get; set; }
 
         public string Eak_Code { get; set; }
 
@@ -41,6 +41,9 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         public bool MustBeInspected { get; set; }
         
         public int Status { get; set; }
+        
+        [ForeignKey("Segment")]
+        public int SegmentId { get; set; }
         
         public virtual ICollection<TrashInspectionCase> TrashInspectionCases { get; set; }
     }
