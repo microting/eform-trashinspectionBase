@@ -37,5 +37,9 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         public int TrashInspctionId { get; set; }
         
         public int? SegmentId { get; set; }
+        
+        public bool ExtendedInspection { get; set; }
+        
+        public bool InspectionDone { get; set; }
     }
 }

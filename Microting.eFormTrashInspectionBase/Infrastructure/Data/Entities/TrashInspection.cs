@@ -45,6 +45,10 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         [ForeignKey("Segment")]
         public int? SegmentId { get; set; }
         
+        public bool ExtendedInspection { get; set; }
+        
+        public bool InspectionDone { get; set; }
+        
         public virtual ICollection<TrashInspectionCase> TrashInspectionCases { get; set; }
     }
 }
