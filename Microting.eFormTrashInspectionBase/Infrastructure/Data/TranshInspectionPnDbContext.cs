@@ -1,9 +1,11 @@
 using Microsoft.EntityFrameworkCore;
+using Microting.eFormApi.BasePn.Abstractions;
+using Microting.eFormApi.BasePn.Infrastructure.Database.Entities;
 using Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities;
 
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories
 {
-    public class TrashInspectionPnDbContext : DbContext
+    public class TrashInspectionPnDbContext : DbContext, IPluginDbContext
     {
 
         public TrashInspectionPnDbContext() { }
@@ -39,5 +41,8 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories
             base.OnModelCreating(modelBuilder);
 
         }
+
+        public DbSet<PluginConfigurationValue> PluginConfigurationValues { get; set; }
+        public DbSet<PluginConfigurationValueVersion> PluginConfigurationValueVersions { get; set; }
     }
 }
