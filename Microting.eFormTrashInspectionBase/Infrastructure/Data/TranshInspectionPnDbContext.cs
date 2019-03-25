@@ -36,7 +36,6 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data
 
         public TrashInspectionPnDbContext(DbContextOptions options) : base(options)
         {
-
         }
 
         public DbSet<Installation> Installations { get; set; }
@@ -56,12 +55,9 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data
         
         // add plugin config
         public DbSet<PluginConfigurationValue> PluginConfigurationValues { get; set; }
-        public DbSet<PluginConfigurationVersion> PluginConfigurationVersions { get; set; }
+        public DbSet<PluginConfigurationValueVersion> PluginConfigurationValueVersions { get; set; }
         
-        public virtual Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade ContextDatabase
-        {
-            get => base.Database;
-        }
+        public virtual Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade ContextDatabase => Database;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

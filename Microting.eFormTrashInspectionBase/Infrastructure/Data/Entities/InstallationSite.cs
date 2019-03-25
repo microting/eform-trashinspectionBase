@@ -24,13 +24,12 @@ SOFTWARE.
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
     public class InstallationSite : BaseEntity
     {
-        public int Version { get; set; }
-        
         [ForeignKey("Installation")]
         public int InstallationId { get; set; }
 
