@@ -23,7 +23,7 @@ SOFTWARE.
 */
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
@@ -33,8 +33,6 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         {
             this.InstallationSites = new HashSet<InstallationSite>();
         }
-        
-        public int Version { get; set; }
 
         public string Name { get; set; }
         
