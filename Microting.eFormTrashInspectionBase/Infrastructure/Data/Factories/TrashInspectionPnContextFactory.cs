@@ -15,6 +15,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories
                 if (args.FirstOrDefault().ToLower().Contains("convert zero datetime"))
                 {
                     optionsBuilder.UseMySql(args.FirstOrDefault());
+                    
                 }
                 else
                 {
