@@ -14,12 +14,14 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories
             {
                 if (args.FirstOrDefault().ToLower().Contains("convert zero datetime"))
                 {
-                    optionsBuilder.UseMySql(args.FirstOrDefault());
+                    optionsBuilder.UseMySql(args.FirstOrDefault(),
+                        b => b.MigrationsAssembly(typeof(TrashInspectionPnContextFactory).Assembly.FullName));
                     
                 }
                 else
                 {
-                    optionsBuilder.UseSqlServer(args.FirstOrDefault());
+                    optionsBuilder.UseSqlServer(args.FirstOrDefault(),
+                        b => b.MigrationsAssembly(typeof(TrashInspectionPnContextFactory).Assembly.FullName));
                 }
             }
             else
