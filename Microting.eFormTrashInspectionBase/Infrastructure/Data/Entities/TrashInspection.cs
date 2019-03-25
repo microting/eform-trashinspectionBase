@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
@@ -13,8 +13,6 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         {
             TrashInspectionCases = new HashSet<TrashInspectionCase>();
         }
-
-        public int Version { get; set; }
 
         public string WeighingNumber { get; set; }
 

@@ -3,12 +3,13 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories.Factories
+namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories
 {
     public class TrashInspectionPnContextFactory : IDesignTimeDbContextFactory<TrashInspectionPnDbContext>
     {
         public TrashInspectionPnDbContext CreateDbContext(string[] args)
         {
+            args = new[] {"Data Source=.\\SQLEXPRESS;Database=111_ti;Integrated Security=True"};
             var optionsBuilder = new DbContextOptionsBuilder<TrashInspectionPnDbContext>();
             if (args.Any())
             {

@@ -10,8 +10,8 @@ using Microting.eFormTrashInspectionBase.Infrastructure.Data;
 namespace Microting.eFormTrashInspectionBase.Migrations
 {
     [DbContext(typeof(TrashInspectionPnDbContext))]
-    [Migration("20190314103607_AddingPluginConfiguraton")]
-    partial class AddingPluginConfiguraton
+    [Migration("20190325111316_UpdateSettings")]
+    partial class UpdateSettings
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -23,6 +23,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 autoIDGenStrategy = "MySql:ValueGenerationStrategy";
                 autoIDGenStrategyValue = MySqlValueGenerationStrategy.IdentityColumn;
             }
+
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.2-servicing-10034")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
@@ -53,6 +54,10 @@ namespace Microting.eFormTrashInspectionBase.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Name")
+                        .IsUnique()
+                        .HasFilter("[Name] IS NOT NULL");
+
                     b.ToTable("PluginConfigurationValues");
                 });
 
@@ -80,6 +85,9 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                         .HasMaxLength(255);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Id", "Version")
+                        .IsUnique();
 
                     b.ToTable("PluginConfigurationValueVersions");
                 });

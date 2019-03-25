@@ -1,9 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microting.eFormApi.BasePn.Abstractions;
 using Microting.eFormApi.BasePn.Infrastructure.Database.Entities;
+using Microting.eFormApi.BasePn.Infrastructure.Database.Extensions;
 using Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities;
 
-namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories
+namespace Microting.eFormTrashInspectionBase.Infrastructure.Data
 {
     public class TrashInspectionPnDbContext : DbContext, IPluginDbContext
     {
@@ -30,19 +31,17 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories
         public DbSet<Segment> Segments { get; set; }
         public DbSet<SegmentVersion> SegmentVersions { get; set; }
         
+        // add plugin config
+        public DbSet<PluginConfigurationValue> PluginConfigurationValues { get; set; }
+        public DbSet<PluginConfigurationValueVersion> PluginConfigurationValueVersions { get; set; }
         
-        public virtual Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade ContextDatabase
-        {
-            get => base.Database;
-        }
+        public virtual Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade ContextDatabase => Database;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.AddPluginSettingsRules();
         }
-
-        public DbSet<PluginConfigurationValue> PluginConfigurationValues { get; set; }
-        public DbSet<PluginConfigurationValueVersion> PluginConfigurationValueVersions { get; set; }
     }
 }

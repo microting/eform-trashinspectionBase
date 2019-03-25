@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
@@ -11,9 +12,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         
         public string SdkCaseId { get; set; }
         
-        public int SdkSiteId { get; set; }
-        
-        public int Version { get; set; }        
+        public int SdkSiteId { get; set; }    
         
         [ForeignKey("Segment")]
         public int SegmentId { get; set; }

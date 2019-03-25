@@ -1,3 +1,5 @@
+using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
+
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
     public class Log : BaseEntity
