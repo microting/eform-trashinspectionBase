@@ -13,7 +13,6 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data
 
         public TrashInspectionPnDbContext(DbContextOptions options) : base(options)
         {
-
         }
 
         public DbSet<Installation> Installations { get; set; }

@@ -9,7 +9,6 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories
     {
         public TrashInspectionPnDbContext CreateDbContext(string[] args)
         {
-            args = new[] {"Data Source=.\\SQLEXPRESS;Database=111_ti;Integrated Security=True"};
             var optionsBuilder = new DbContextOptionsBuilder<TrashInspectionPnDbContext>();
             if (args.Any())
             {
@@ -26,6 +25,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories
             {
                 throw new ArgumentNullException("Connection string not present");
             }
+
 //            optionsBuilder.UseSqlServer(@"data source=(LocalDb)\SharedInstance;Initial catalog=trash-inspection-pn-tests;Integrated Security=True");
 //            dotnet ef migrations add InitialCreate --project Microting.eFormTrashInspectionBase --startup-project DBMigrator
             optionsBuilder.UseLazyLoadingProxies(true);
