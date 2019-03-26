@@ -31,15 +31,16 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data
 {
     public class TrashInspectionPnDbContext : DbContext, IPluginDbContext
     {
-
-        public TrashInspectionPnDbContext() { }
+        public TrashInspectionPnDbContext()
+        {
+        }
 
         public TrashInspectionPnDbContext(DbContextOptions options) : base(options)
         {
         }
 
         public DbSet<Installation> Installations { get; set; }
-        public DbSet<InstallationVersion> InstallationVersions { get; set;}
+        public DbSet<InstallationVersion> InstallationVersions { get; set; }
         public DbSet<InstallationSite> InstallationSites { get; set; }
         public DbSet<InstallationSiteVersion> InstallationSiteVersions { get; set; }
         public DbSet<TrashInspection> TrashInspections { get; set; }
@@ -52,12 +53,13 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data
         public DbSet<FractionVersion> FractionVersions { get; set; }
         public DbSet<Segment> Segments { get; set; }
         public DbSet<SegmentVersion> SegmentVersions { get; set; }
-        
+
         // add plugin config
         public DbSet<PluginConfigurationValue> PluginConfigurationValues { get; set; }
         public DbSet<PluginConfigurationValueVersion> PluginConfigurationValueVersions { get; set; }
-        
+
         public virtual Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade ContextDatabase => Database;
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
