@@ -3,7 +3,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories.Factories
+namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories
 {
     public class TrashInspectionPnContextFactory : IDesignTimeDbContextFactory<TrashInspectionPnDbContext>
     {
