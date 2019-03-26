@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
         <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -7,9 +7,12 @@
     <ItemGroup>
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.2" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.2.2" />
-      <PackageReference Include="Microting.eForm" Version="3.0.173" />
-      <PackageReference Include="Microting.eFormApi.BasePn" Version="1.1.125" />
-      <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.2.0" />
+      <PackageReference Include="Microting.eForm" Version="3.0.206" />
+      <PackageReference Include="Microting.eFormApi.BasePn" Version="1.1.127" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Migrations" />
     </ItemGroup>
 
 </Project>
