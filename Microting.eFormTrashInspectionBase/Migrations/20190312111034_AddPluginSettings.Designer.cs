@@ -33,12 +33,11 @@ using Microting.eFormTrashInspectionBase.Infrastructure.Data;
 namespace Microting.eFormTrashInspectionBase.Migrations
 {
     [DbContext(typeof(TrashInspectionPnDbContext))]
-    [Migration("20190226070948_AddingNewAttributes")]
-    partial class AddingNewAttributes
+    [Migration("20190312111034_AddPluginSettings")]
+    partial class AddPluginSettings
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
-#pragma warning disable 612, 618
             string autoIDGenStrategy = "SqlServer:ValueGenerationStrategy";
             object autoIDGenStrategyValue = SqlServerValueGenerationStrategy.IdentityColumn;
             if (DbConfig.IsMySQL)
@@ -46,10 +45,45 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 autoIDGenStrategy = "MySql:ValueGenerationStrategy";
                 autoIDGenStrategyValue = MySqlValueGenerationStrategy.IdentityColumn;
             }
+#pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.2-servicing-10034")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+
+            modelBuilder.Entity("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginConfigurationValue", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Value");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Id")
+                        .IsUnique();
+
+                    b.ToTable("PluginConfigurationValues");
+                });
+
+            modelBuilder.Entity("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginConfigurationVersion", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Value");
+
+                    b.Property<int>("Version");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Id");
+
+                    b.HasIndex("Id", "Version")
+                        .IsUnique();
+
+                    b.ToTable("PluginConfigurationVersions");
+                });
 
             modelBuilder.Entity("Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities.Fraction", b =>
                 {
@@ -62,6 +96,10 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                     b.Property<int>("CreatedByUserId");
 
                     b.Property<string>("Description");
+
+                    b.Property<string>("ItemNumber");
+
+                    b.Property<string>("LocationCode");
 
                     b.Property<string>("Name");
 
@@ -94,6 +132,10 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                     b.Property<string>("Description");
 
                     b.Property<int>("FractionId");
+
+                    b.Property<string>("ItemNumber");
+
+                    b.Property<string>("LocationCode");
 
                     b.Property<string>("Name");
 
