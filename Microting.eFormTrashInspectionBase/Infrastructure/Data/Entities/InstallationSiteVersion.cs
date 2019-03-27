@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
 
-    public class InstallationSiteVersion : BaseEntity
+    public class InstallationSiteVersion : BaseTrashInspectionEntity
     {
         public int Version { get; set; }
      

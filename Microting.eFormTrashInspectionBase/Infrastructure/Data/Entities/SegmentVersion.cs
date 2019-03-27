@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
-    public class SegmentVersion : BaseEntity
+    public class SegmentVersion : BaseTrashInspectionEntity
     {        
         public int Version { get; set; }
 

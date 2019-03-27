@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
-    public class TrashInspectionPnSetting : BaseEntity
+    public class TrashInspectionPnSetting : BaseTrashInspectionEntity
     {
 
         [Required]

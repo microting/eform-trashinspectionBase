@@ -1,6 +1,6 @@
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
-    public class Log : BaseEntity
+    public class Log : BaseTrashInspectionEntity
     {
         public int Level { get; set; }
 

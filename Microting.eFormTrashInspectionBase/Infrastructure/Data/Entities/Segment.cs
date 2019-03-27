@@ -1,6 +1,6 @@
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
-    public class Segment : BaseEntity
+    public class Segment : BaseTrashInspectionEntity
     {        
         public int Version { get; set; }
 

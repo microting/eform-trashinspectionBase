@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
 
-    public class TrashInspection : BaseEntity
+    public class TrashInspection : BaseTrashInspectionEntity
     {
 
         public TrashInspection()
