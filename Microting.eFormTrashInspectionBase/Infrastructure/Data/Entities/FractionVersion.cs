@@ -19,5 +19,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         
         public string LocationCode { get; set; }
         
+        public int eFormIdExtendedInspection { get; set; }
+        
     }
 }

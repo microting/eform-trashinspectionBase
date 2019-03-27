@@ -41,5 +41,11 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         public bool ExtendedInspection { get; set; }
         
         public bool InspectionDone { get; set; }
+        
+        public bool IsApproved { get; set; }
+        
+        public string ApprovedValue { get; set; }
+        
+        public string Comment { get; set; }
     }
 }
