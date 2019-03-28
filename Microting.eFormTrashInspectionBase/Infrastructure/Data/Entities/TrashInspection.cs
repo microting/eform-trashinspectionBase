@@ -56,5 +56,11 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         public string ApprovedValue { get; set; }
         
         public string Comment { get; set; }
+        
+        [ForeignKey("Producer")]
+        public int ProducerId { get; set; }
+        
+        [ForeignKey("Transporter")]
+        public int TransporterId { get; set; }
     }
 }
