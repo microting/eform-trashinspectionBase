@@ -48,8 +48,8 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         
         public string Comment { get; set; }
         
-        public int ProducerId { get; set; }
+        public int? ProducerId { get; set; }
         
-        public int TransporterId { get; set; }
+        public int? TransporterId { get; set; }
     }
 }
