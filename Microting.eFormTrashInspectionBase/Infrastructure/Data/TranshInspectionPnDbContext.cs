@@ -10,7 +10,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories
 
         public TrashInspectionPnDbContext() { }
 
-        public TrashInspectionPnDbContext(DbContextOptions options) : base(options)
+        public TrashInspectionPnDbContext(DbContextOptions<TrashInspectionPnDbContext> options) : base(options)
         {
 
         }
