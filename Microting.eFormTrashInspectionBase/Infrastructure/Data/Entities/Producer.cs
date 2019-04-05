@@ -1,6 +1,6 @@
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
-    public class Producer : BaseEntity
+    public class Producer : BaseTrashInspectionEntity
     {        
         public int Version { get; set; }
 

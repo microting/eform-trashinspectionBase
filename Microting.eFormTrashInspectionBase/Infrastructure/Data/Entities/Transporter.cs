@@ -1,6 +1,6 @@
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
-    public class Transporter : BaseEntity
+    public class Transporter : BaseTrashInspectionEntity
     {        
         public int Version { get; set; }
 

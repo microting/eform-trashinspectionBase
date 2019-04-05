@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
-    public class ProducerVersion : BaseEntity
+    public class ProducerVersion : BaseTrashInspectionEntity
     {        
         public int Version { get; set; }
 
