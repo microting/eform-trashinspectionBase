@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories;
 
 namespace Microting.eFormTrashInspectionBase.Migrations
 {
     [DbContext(typeof(TrashInspectionPnDbContext))]
-    partial class TrashInspectionPnDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190328065007_AddingAddressToTransporterAndProducer")]
+    partial class AddingAddressToTransporterAndProducer
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             string autoIDGenStrategy = "SqlServer:ValueGenerationStrategy";
@@ -528,7 +530,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
 
                     b.Property<string>("Producer");
 
-                    b.Property<int?>("ProducerId");
+                    b.Property<int>("ProducerId");
 
                     b.Property<string>("RegistrationNumber");
 
@@ -540,7 +542,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
 
                     b.Property<string>("Transporter");
 
-                    b.Property<int?>("TransporterId");
+                    b.Property<int>("TransporterId");
 
                     b.Property<string>("TrashFraction");
 
@@ -726,7 +728,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
 
                     b.Property<string>("Producer");
 
-                    b.Property<int?>("ProducerId");
+                    b.Property<int>("ProducerId");
 
                     b.Property<string>("RegistrationNumber");
 
@@ -738,7 +740,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
 
                     b.Property<string>("Transporter");
 
-                    b.Property<int?>("TransporterId");
+                    b.Property<int>("TransporterId");
 
                     b.Property<string>("TrashFraction");
 

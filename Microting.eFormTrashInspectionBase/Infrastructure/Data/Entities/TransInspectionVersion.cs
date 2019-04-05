@@ -34,12 +34,22 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         public int Status { get; set; }
 
         [ForeignKey("TrashInspection")]
-        public int TrashInspctionId { get; set; }
+        public int TrashInspectionId { get; set; }
         
         public int? SegmentId { get; set; }
         
         public bool ExtendedInspection { get; set; }
         
         public bool InspectionDone { get; set; }
+        
+        public bool IsApproved { get; set; }
+        
+        public string ApprovedValue { get; set; }
+        
+        public string Comment { get; set; }
+        
+        public int? ProducerId { get; set; }
+        
+        public int? TransporterId { get; set; }
     }
 }

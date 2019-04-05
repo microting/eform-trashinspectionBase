@@ -50,5 +50,17 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         public bool InspectionDone { get; set; }
         
         public virtual ICollection<TrashInspectionCase> TrashInspectionCases { get; set; }
+        
+        public bool IsApproved { get; set; }
+        
+        public string ApprovedValue { get; set; }
+        
+        public string Comment { get; set; }
+        
+        [ForeignKey("Producer")]
+        public int? ProducerId { get; set; }
+        
+        [ForeignKey("Transporter")]
+        public int? TransporterId { get; set; }
     }
 }

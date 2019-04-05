@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories;
 
 namespace Microting.eFormTrashInspectionBase.Migrations
 {
     [DbContext(typeof(TrashInspectionPnDbContext))]
-    partial class TrashInspectionPnDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190328064154_AddingProducerTransporter")]
+    partial class AddingProducerTransporter
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             string autoIDGenStrategy = "SqlServer:ValueGenerationStrategy";
@@ -270,88 +272,6 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                     b.ToTable("InstallationVersions");
                 });
 
-            modelBuilder.Entity("Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities.Producer", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
-
-                    b.Property<string>("Address");
-
-                    b.Property<string>("City");
-
-                    b.Property<string>("ContactPerson");
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<int>("CreatedByUserId");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("ForeignId");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("Phone");
-
-                    b.Property<DateTime?>("UpdatedAt");
-
-                    b.Property<int>("UpdatedByUserId");
-
-                    b.Property<int>("Version");
-
-                    b.Property<string>("WorkflowState")
-                        .HasMaxLength(255);
-
-                    b.Property<string>("ZipCode");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Producers");
-                });
-
-            modelBuilder.Entity("Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities.ProducerVersion", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
-
-                    b.Property<string>("Address");
-
-                    b.Property<string>("City");
-
-                    b.Property<string>("ContactPerson");
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<int>("CreatedByUserId");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("ForeignId");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("Phone");
-
-                    b.Property<int>("ProducerId");
-
-                    b.Property<DateTime?>("UpdatedAt");
-
-                    b.Property<int>("UpdatedByUserId");
-
-                    b.Property<int>("Version");
-
-                    b.Property<string>("WorkflowState")
-                        .HasMaxLength(255);
-
-                    b.Property<string>("ZipCode");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("ProducerVersions");
-                });
-
             modelBuilder.Entity("Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities.Segment", b =>
                 {
                     b.Property<int>("Id")
@@ -414,88 +334,6 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                     b.ToTable("SegmentVersions");
                 });
 
-            modelBuilder.Entity("Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities.Transporter", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
-
-                    b.Property<string>("Address");
-
-                    b.Property<string>("City");
-
-                    b.Property<string>("ContactPerson");
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<int>("CreatedByUserId");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("ForeignId");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("Phone");
-
-                    b.Property<DateTime?>("UpdatedAt");
-
-                    b.Property<int>("UpdatedByUserId");
-
-                    b.Property<int>("Version");
-
-                    b.Property<string>("WorkflowState")
-                        .HasMaxLength(255);
-
-                    b.Property<string>("ZipCode");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Transporters");
-                });
-
-            modelBuilder.Entity("Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities.TransporterVersion", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
-
-                    b.Property<string>("Address");
-
-                    b.Property<string>("City");
-
-                    b.Property<string>("ContactPerson");
-
-                    b.Property<DateTime>("CreatedAt");
-
-                    b.Property<int>("CreatedByUserId");
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("ForeignId");
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("Phone");
-
-                    b.Property<int>("TransporterId");
-
-                    b.Property<DateTime?>("UpdatedAt");
-
-                    b.Property<int>("UpdatedByUserId");
-
-                    b.Property<int>("Version");
-
-                    b.Property<string>("WorkflowState")
-                        .HasMaxLength(255);
-
-                    b.Property<string>("ZipCode");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TransporterVersions");
-                });
-
             modelBuilder.Entity("Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities.TrashInspection", b =>
                 {
                     b.Property<int>("Id")
@@ -528,7 +366,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
 
                     b.Property<string>("Producer");
 
-                    b.Property<int?>("ProducerId");
+                    b.Property<int>("ProducerId");
 
                     b.Property<string>("RegistrationNumber");
 
@@ -540,7 +378,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
 
                     b.Property<string>("Transporter");
 
-                    b.Property<int?>("TransporterId");
+                    b.Property<int>("TransporterId");
 
                     b.Property<string>("TrashFraction");
 
@@ -726,7 +564,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
 
                     b.Property<string>("Producer");
 
-                    b.Property<int?>("ProducerId");
+                    b.Property<int>("ProducerId");
 
                     b.Property<string>("RegistrationNumber");
 
@@ -738,7 +576,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
 
                     b.Property<string>("Transporter");
 
-                    b.Property<int?>("TransporterId");
+                    b.Property<int>("TransporterId");
 
                     b.Property<string>("TrashFraction");
 

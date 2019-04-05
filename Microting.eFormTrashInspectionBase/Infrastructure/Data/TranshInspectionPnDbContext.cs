@@ -29,6 +29,10 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories
         public DbSet<FractionVersion> FractionVersions { get; set; }
         public DbSet<Segment> Segments { get; set; }
         public DbSet<SegmentVersion> SegmentVersions { get; set; }
+        public DbSet<Transporter> Transporters { get; set; }
+        public DbSet<TransporterVersion> TransporterVersions { get; set; }
+        public DbSet<Producer> Producers { get; set; }
+        public DbSet<ProducerVersion> ProducerVersions { get; set; }
         
         
         public virtual Microsoft.EntityFrameworkCore.Infrastructure.DatabaseFacade ContextDatabase
