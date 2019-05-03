@@ -3,7 +3,7 @@ using Microting.eFormApi.BasePn.Abstractions;
 using Microting.eFormApi.BasePn.Infrastructure.Database.Entities;
 using Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities;
 
-namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories
+namespace Microting.eFormTrashInspectionBase.Infrastructure.Data
 {
     public class TrashInspectionPnDbContext : DbContext, IPluginDbContext
     {
