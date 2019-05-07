@@ -64,6 +64,10 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         
         [ForeignKey("Transporter")]
         public int? TransporterId { get; set; }
+        
+        public int? FirstWeight { get; set; }
+        
+        public int? SecondWeight { get; set; }
 
         public void Create(TrashInspectionPnDbContext dbContext)
         {
@@ -98,6 +102,8 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
             trashInspection.IsApproved = IsApproved;
             trashInspection.ApprovedValue = ApprovedValue;
             trashInspection.InspectionDone = InspectionDone;
+            trashInspection.FirstWeight = FirstWeight;
+            trashInspection.SecondWeight = SecondWeight;
 
             if (dbContext.ChangeTracker.HasChanges())
             {
@@ -156,7 +162,9 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 InspectionDone = trashInspection.InspectionDone,
                 IsApproved = trashInspection.IsApproved,
                 ProducerId = trashInspection.ProducerId,
-                TransporterId = trashInspection.TransporterId
+                TransporterId = trashInspection.TransporterId,
+                FirstWeight = trashInspection.FirstWeight,
+                SecondWeight = trashInspection.SecondWeight,
             };
 
             return trashInspectionVersion;

@@ -51,5 +51,9 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         public int? ProducerId { get; set; }
         
         public int? TransporterId { get; set; }
+        
+        public int? FirstWeight { get; set; }
+        
+        public int? SecondWeight { get; set; }
     }
 }
