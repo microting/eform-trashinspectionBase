@@ -28,6 +28,11 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 
         public void Create(TrashInspectionPnDbContext dbContext)
         {
+            CreatedAt = DateTime.UtcNow;
+            UpdatedAt = DateTime.UtcNow;
+            Version = 1;
+            WorkflowState = Constants.WorkflowStates.Created;
+            
             dbContext.Producers.Add(this);
             dbContext.SaveChanges();
 
@@ -57,7 +62,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 
             if (dbContext.ChangeTracker.HasChanges())
             {
-                producer.UpdatedAt = DateTime.Now;
+                producer.UpdatedAt = DateTime.UtcNow;
                 producer.Version += 1;
                 dbContext.SaveChanges();
 
@@ -79,7 +84,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 
             if (dbContext.ChangeTracker.HasChanges())
             {
-                                producer.UpdatedAt = DateTime.Now;
+                                producer.UpdatedAt = DateTime.UtcNow;
                                 producer.Version += 1;
                                 dbContext.SaveChanges();
                 
