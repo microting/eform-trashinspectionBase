@@ -12,3 +12,4 @@ script:
   - dotnet restore
   - dotnet build Microting.eFormTrashInspectionBase.sln
   - dotnet test -v n Microting.eFormTrashInspectionBase.Integration.Tests/Microting.eFormTrashInspectionBase.Integration.Tests.csproj
+  - dotnet test -v n Microting.eFormTrashInspectionBase.Unit.Tests/Microting.eFormTrashInspectionBase.Unit.Tests.csproj
