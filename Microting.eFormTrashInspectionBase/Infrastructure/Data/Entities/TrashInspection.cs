@@ -148,6 +148,8 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 Comment = trashInspection.Comment,
                 CreatedAt = trashInspection.CreatedAt,
                 CreatedByUserId = trashInspection.CreatedByUserId,
+                UpdatedAt = trashInspection.UpdatedAt,
+                UpdatedByUserId = trashInspection.UpdatedByUserId,
                 EakCode = trashInspection.Eak_Code,
                 ExtendedInspection = trashInspection.ExtendedInspection,
                 RegistrationNumber = trashInspection.RegistrationNumber,
@@ -165,6 +167,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 TransporterId = trashInspection.TransporterId,
                 FirstWeight = trashInspection.FirstWeight,
                 SecondWeight = trashInspection.SecondWeight,
+                TrashInspectionId = trashInspection.Id
             };
 
             return trashInspectionVersion;

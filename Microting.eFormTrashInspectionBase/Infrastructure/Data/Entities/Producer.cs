@@ -94,24 +94,24 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         }
         public ProducerVersion MapVersions(TrashInspectionPnDbContext _dbContext, Producer producer)
         {
-            ProducerVersion producerVersion = new ProducerVersion();
-
-            producerVersion.Name = producer.Name;
-            producerVersion.Description = producer.Description;
-            producerVersion.ForeignId = producer.ForeignId;
-            producerVersion.Address = producer.Address;
-            producerVersion.City = producer.City;
-            producerVersion.ZipCode = producer.ZipCode;
-            producerVersion.Phone = producer.Phone;
-            producerVersion.ContactPerson = producer.ContactPerson;
-            producerVersion.Version = producer.Version;
-            producerVersion.CreatedAt = producer.CreatedAt;
-            producerVersion.UpdatedAt = producer.UpdatedAt;
-            producerVersion.CreatedByUserId = producer.CreatedByUserId;
-            producerVersion.UpdatedByUserId = producer.UpdatedByUserId;
-            producerVersion.WorkflowState = producer.WorkflowState;
-
-            producerVersion.ProducerId = producer.Id;
+            ProducerVersion producerVersion = new ProducerVersion
+            {
+                Name = producer.Name,
+                Description = producer.Description,
+                ForeignId = producer.ForeignId,
+                Address = producer.Address,
+                City = producer.City,
+                ZipCode = producer.ZipCode,
+                Phone = producer.Phone,
+                ContactPerson = producer.ContactPerson,
+                Version = producer.Version,
+                CreatedAt = producer.CreatedAt,
+                UpdatedAt = producer.UpdatedAt,
+                CreatedByUserId = producer.CreatedByUserId,
+                UpdatedByUserId = producer.UpdatedByUserId,
+                WorkflowState = producer.WorkflowState,
+                ProducerId = producer.Id
+            };
 
             return producerVersion;
         }

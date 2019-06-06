@@ -95,24 +95,26 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         
         public TransporterVersion MapVersions(TrashInspectionPnDbContext _dbContext, Transporter transporter)
         {
-            TransporterVersion transporterVersion = new TransporterVersion();
+            TransporterVersion transporterVersion = new TransporterVersion
+            {
+                Name = transporter.Name,
+                Description = transporter.Description,
+                ForeignId = transporter.ForeignId,
+                Address = transporter.Address,
+                City = transporter.City,
+                ZipCode = transporter.ZipCode,
+                Phone = transporter.Phone,
+                ContactPerson = transporter.ContactPerson,
+                Version = transporter.Version,
+                CreatedAt = transporter.CreatedAt,
+                UpdatedAt = transporter.UpdatedAt,
+                CreatedByUserId = transporter.CreatedByUserId,
+                UpdatedByUserId = transporter.UpdatedByUserId,
+                WorkflowState = transporter.WorkflowState,
+                TransporterId = transporter.Id
+            };
 
-            transporterVersion.Name = transporter.Name;
-            transporterVersion.Description = transporter.Description;
-            transporterVersion.ForeignId = transporter.ForeignId;
-            transporterVersion.Address = transporter.Address;
-            transporterVersion.City = transporter.City;
-            transporterVersion.ZipCode = transporter.ZipCode;
-            transporterVersion.Phone = transporter.Phone;
-            transporterVersion.ContactPerson = transporter.ContactPerson;
-            transporterVersion.Version = transporter.Version;
-            transporterVersion.CreatedAt = transporter.CreatedAt;
-            transporterVersion.UpdatedAt = transporter.UpdatedAt;
-            transporterVersion.CreatedByUserId = transporter.CreatedByUserId;
-            transporterVersion.UpdatedByUserId = transporter.UpdatedByUserId;
-            transporterVersion.WorkflowState = transporter.WorkflowState;
 
-            transporterVersion.TransporterId = transporter.Id;
 
             return transporterVersion;
         }

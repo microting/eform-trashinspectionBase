@@ -90,7 +90,8 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 UpdatedAt = segment.UpdatedAt,
                 CreatedByUserId = segment.CreatedByUserId,
                 UpdatedByUserId = segment.UpdatedByUserId,
-                WorkflowState = segment.WorkflowState
+                WorkflowState = segment.WorkflowState,
+                SegmentId = segment.Id
             };
 
             return segmentVersion;

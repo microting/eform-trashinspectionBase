@@ -102,7 +102,8 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 UpdatedAt = fraction.UpdatedAt,
                 CreatedByUserId = fraction.CreatedByUserId,
                 UpdatedByUserId = fraction.UpdatedByUserId,
-                WorkflowState = fraction.WorkflowState
+                WorkflowState = fraction.WorkflowState,
+                FractionId = fraction.Id
             };
 
             return fractionVersion;

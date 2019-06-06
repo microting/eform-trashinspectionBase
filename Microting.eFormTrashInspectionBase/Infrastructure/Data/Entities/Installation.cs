@@ -88,7 +88,8 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 UpdatedAt = installation.UpdatedAt,
                 CreatedByUserId = installation.CreatedByUserId,
                 UpdatedByUserId = installation.UpdatedByUserId,
-                WorkflowState = installation.WorkflowState
+                WorkflowState = installation.WorkflowState,
+                InstallationId = installation.Id
             };
 
             return installationVersion;
