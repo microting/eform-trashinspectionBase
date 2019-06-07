@@ -21,8 +21,6 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data
         public DbSet<InstallationSiteVersion> InstallationSiteVersions { get; set; }
         public DbSet<TrashInspection> TrashInspections { get; set; }
         public DbSet<TrashInspectionVersion> TrashInspectionVersions { get; set; }
-        public DbSet<TrashInspectionPnSetting> TrashInspectionPnSettings { get; set; }
-        public DbSet<TrashInspectionPnSettingVersion> TrashInspectionPnSettingVersions { get; set; }
         public DbSet<TrashInspectionCase> TrashInspectionCases { get; set; }
         public DbSet<TrashInspectionCaseVersion> TrashInspectionCaseVersions { get; set; }
         public DbSet<Fraction> Fractions { get; set; }

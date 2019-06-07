@@ -82,17 +82,17 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
             }  
         }
 
-        private TrashInspectionCaseVersion MapVersions(TrashInspectionCase trashInspection)
+        private TrashInspectionCaseVersion MapVersions(TrashInspectionCase trashInspectionCase)
         {
             TrashInspectionCaseVersion trashInspectionVersion = new TrashInspectionCaseVersion
             {
-                Status = trashInspection.Status,
-                TrashInspectionId = trashInspection.TrashInspectionId,
-                SdkCaseId = trashInspection.SdkCaseId,
-                SdkSiteId = trashInspection.SdkSiteId,
-                Version = trashInspection.Version,
-                SegmentId = trashInspection.SegmentId,
-                TrashInspectionCaseId = trashInspection.Id
+                Status = trashInspectionCase.Status,
+                TrashInspectionId = trashInspectionCase.TrashInspectionId,
+                SdkCaseId = trashInspectionCase.SdkCaseId,
+                SdkSiteId = trashInspectionCase.SdkSiteId,
+                Version = trashInspectionCase.Version,
+                SegmentId = trashInspectionCase.SegmentId,
+                TrashInspectionCaseId = trashInspectionCase.Id
             };
 
             return trashInspectionVersion;
