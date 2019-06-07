@@ -92,6 +92,10 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 SdkSiteId = trashInspectionCase.SdkSiteId,
                 Version = trashInspectionCase.Version,
                 SegmentId = trashInspectionCase.SegmentId,
+                UpdatedAt = trashInspectionCase.UpdatedAt,
+                UpdatedByUserId = trashInspectionCase.UpdatedByUserId,
+                CreatedAt = trashInspectionCase.CreatedAt,
+                CreatedByUserId = trashInspectionCase.CreatedByUserId,
                 TrashInspectionCaseId = trashInspectionCase.Id
             };
 
