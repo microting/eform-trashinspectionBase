@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
-using eFormShared;
+using Microting.eForm.Infrastructure.Constants;
 
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {

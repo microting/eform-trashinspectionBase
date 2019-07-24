@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microting.eForm.Infrastructure.Constants;
 using Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities;
 using NUnit.Framework;
 
@@ -119,7 +120,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             Assert.AreEqual(installationSite.CreatedAt.ToString(), dbInstallationSite.CreatedAt.ToString());
             Assert.AreEqual(installationSite.SDKSiteId, dbInstallationSite.SDKSiteId);
             Assert.AreEqual(installationSite.InstallationId, dbInstallationSite.InstallationId);
-            Assert.AreEqual(installationSite.WorkflowState, eFormShared.Constants.WorkflowStates.Removed);
+            Assert.AreEqual(installationSite.WorkflowState, Constants.WorkflowStates.Removed);
 
         }
 

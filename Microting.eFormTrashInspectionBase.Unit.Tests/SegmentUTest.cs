@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microting.eForm.Infrastructure.Constants;
 using Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities;
 using NUnit.Framework;
 
@@ -102,7 +103,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             Assert.AreEqual(segment.Name, dbSegment.Name);
             Assert.AreEqual(segment.Description, dbSegment.Description);
             Assert.AreEqual(segment.SdkFolderId, dbSegment.SdkFolderId);
-            Assert.AreEqual(dbSegment.WorkflowState, eFormShared.Constants.WorkflowStates.Removed);
+            Assert.AreEqual(dbSegment.WorkflowState, Constants.WorkflowStates.Removed);
         }
     }
 }

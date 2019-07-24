@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using Microting.eForm.Infrastructure.Constants;
 using NUnit.Framework;
 
 namespace Microting.eFormTrashInspectionBase.Unit.Tests
@@ -235,7 +236,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             Assert.AreEqual(trashInspection.Transporter, dbTrashInspection.Transporter);
             Assert.AreEqual(trashInspection.TrashFraction, dbTrashInspection.TrashFraction);
             Assert.AreEqual(trashInspection.WeighingNumber, dbTrashInspection.WeighingNumber);
-            Assert.AreEqual(trashInspection.WorkflowState, eFormShared.Constants.WorkflowStates.Removed);
+            Assert.AreEqual(trashInspection.WorkflowState, Constants.WorkflowStates.Removed);
         }
         [Test]
         public void TrashInspectionModel_DeleteWFalse_DoesDelete()
@@ -280,7 +281,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             Assert.AreEqual(trashInspection.Transporter, dbTrashInspection.Transporter);
             Assert.AreEqual(trashInspection.TrashFraction, dbTrashInspection.TrashFraction);
             Assert.AreEqual(trashInspection.WeighingNumber, dbTrashInspection.WeighingNumber);
-            Assert.AreEqual(trashInspection.WorkflowState, eFormShared.Constants.WorkflowStates.Removed);
+            Assert.AreEqual(trashInspection.WorkflowState, Constants.WorkflowStates.Removed);
 
         }
     }
