@@ -57,6 +57,8 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         
         public string ApprovedValue { get; set; }
         
+        public bool ConditionalApproved { get; set; }
+        
         public string Comment { get; set; }
         
         [ForeignKey("Producer")]
@@ -92,16 +94,27 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 throw new NullReferenceException($"Could not find trashInspection with id: {Id}");
             }
 
+            trashInspection.WeighingNumber = WeighingNumber;
+            trashInspection.Date = Date;
+            trashInspection.Time = Time;
+            trashInspection.ApprovedValue = ApprovedValue;
+            trashInspection.ConditionalApproved = ConditionalApproved;
+            trashInspection.Comment = Comment;
+            trashInspection.Eak_Code = Eak_Code;
+            trashInspection.ExtendedInspection = ExtendedInspection;
+            trashInspection.RegistrationNumber = RegistrationNumber;
+            trashInspection.TrashFraction = TrashFraction;
+            trashInspection.FractionId = FractionId;
+            trashInspection.Producer = Producer;
+            trashInspection.Transporter = Transporter;
+            trashInspection.InstallationId = InstallationId;
+            trashInspection.MustBeInspected = MustBeInspected;
             trashInspection.Status = Status;
+            trashInspection.SegmentId = SegmentId;
+            trashInspection.InspectionDone = InspectionDone;
+            trashInspection.IsApproved = IsApproved;
             trashInspection.ProducerId = ProducerId;
             trashInspection.TransporterId = TransporterId;
-            trashInspection.FractionId = FractionId;
-            trashInspection.SegmentId = SegmentId;
-            trashInspection.InstallationId = InstallationId;
-            trashInspection.Comment = Comment;
-            trashInspection.IsApproved = IsApproved;
-            trashInspection.ApprovedValue = ApprovedValue;
-            trashInspection.InspectionDone = InspectionDone;
             trashInspection.FirstWeight = FirstWeight;
             trashInspection.SecondWeight = SecondWeight;
 
@@ -145,6 +158,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 Date = trashInspection.Date,
                 Time = trashInspection.Time,
                 ApprovedValue = trashInspection.ApprovedValue,
+                ConditionalApproved = trashInspection.ConditionalApproved,
                 Comment = trashInspection.Comment,
                 CreatedAt = trashInspection.CreatedAt,
                 CreatedByUserId = trashInspection.CreatedByUserId,

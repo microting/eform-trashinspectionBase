@@ -46,6 +46,8 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         
         public string ApprovedValue { get; set; }
         
+        public bool ConditionalApproved { get; set; }
+        
         public string Comment { get; set; }
         
         public int? ProducerId { get; set; }
