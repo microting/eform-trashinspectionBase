@@ -38,8 +38,6 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 
             dbContext.ProducerVersions.Add(MapVersions(dbContext, this));
             dbContext.SaveChanges();
-
-            Id = Id;
         }
 
         public void Update(TrashInspectionPnDbContext dbContext)

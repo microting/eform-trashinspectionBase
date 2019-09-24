@@ -96,6 +96,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 UpdatedByUserId = trashInspectionCase.UpdatedByUserId,
                 CreatedAt = trashInspectionCase.CreatedAt,
                 CreatedByUserId = trashInspectionCase.CreatedByUserId,
+                WorkflowState = trashInspectionCase.WorkflowState,
                 TrashInspectionCaseId = trashInspectionCase.Id
             };
 

@@ -181,7 +181,8 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 TransporterId = trashInspection.TransporterId,
                 FirstWeight = trashInspection.FirstWeight,
                 SecondWeight = trashInspection.SecondWeight,
-                TrashInspectionId = trashInspection.Id
+                TrashInspectionId = trashInspection.Id,
+                WorkflowState = trashInspection.WorkflowState
             };
 
             return trashInspectionVersion;
