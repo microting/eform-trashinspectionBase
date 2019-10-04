@@ -13,3 +13,9 @@ script:
   - dotnet build Microting.eFormTrashInspectionBase.sln
   - dotnet test -v n Microting.eFormTrashInspectionBase.Integration.Tests/Microting.eFormTrashInspectionBase.Integration.Tests.csproj
   - dotnet test -v n Microting.eFormTrashInspectionBase.Unit.Tests/Microting.eFormTrashInspectionBase.Unit.Tests.csproj
+  - export GITVERSION=`git describe --abbrev=0 --tags | cut -d "v" -f 2`
+  - echo $GITVERSION
+  - dotnet pack Microting.eFormTrashInspectionBase.sln -c Release -o ./artifacts -p:PackageVersion=$GITVERSION
+  - export FILENAME="/home/travis/build/microting/Microting.eFormTrashInspectionBase/Microting.eFormTrashInspectionBase/artifacts/Microting.eFormTrashInspectionBase.${GITVERSION}.nupkg"
+  - echo $FILENAME
+  - dotnet nuget push $FILENAME -k $NUGET_SECRET_KEY -s https://api.nuget.org/v3/index.json || true
