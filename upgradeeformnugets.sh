@@ -5,9 +5,11 @@ if (( "$GIT_STATUS" > 0 )); then
 	git pull
 
 	dotnet add Microting.eFormTrashInspectionBase/Microting.eFormTrashInspectionBase.csproj package Microting.eForm
+	dotnet add Microting.eFormTrashInspectionBase/Microting.eFormTrashInspectionBase.csproj package Microting.eFormApi.BasePn
 
 	EFORM_VERSION=`dotnet list package | grep 'Microting.eForm ' | cut -c54-60`
-	COMMIT_MESSAGE="Updating"$'\n'"- Microting.eForm to ${EFORM_VERSION}"
+	EFORM_BASEPN_VERSION=`dotnet list package | grep 'Microting.eFormApi.BasePn' | cut -c54-60`
+	COMMIT_MESSAGE="Updating"$'\n'"- Microting.eForm to ${EFORM_VERSION}"$'\n'"-Microting.eFormApi.BasePn to ${EFORM_BASEPN_VERSION}"
 
 	GIT_STATUS=`git status | grep "nothing to commit, working tree clean" | wc -l`
 
