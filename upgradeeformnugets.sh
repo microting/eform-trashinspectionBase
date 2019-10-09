@@ -24,6 +24,6 @@ else
 	git push --tags
 	git push
 	
-	echo "not clean"
+	echo "Updated Microting eForm to ${EFORM_VERSION} and pushed new version ${NEW_GIT_VERSION}"
 fi
 
