@@ -9,7 +9,7 @@ if (( "$GIT_STATUS" > 0 )); then
 
 	EFORM_VERSION=`dotnet list package | grep 'Microting.eForm ' | cut -c54-60`
 	EFORM_BASEPN_VERSION=`dotnet list package | grep 'Microting.eFormApi.BasePn' | cut -c54-60`
-	COMMIT_MESSAGE="Updating"$'\n'"- Microting.eForm to ${EFORM_VERSION}"$'\n'"-Microting.eFormApi.BasePn to ${EFORM_BASEPN_VERSION}"
+	COMMIT_MESSAGE="Updating"$'\n'"- Microting.eForm to ${EFORM_VERSION}"$'\n'"- Microting.eFormApi.BasePn to ${EFORM_BASEPN_VERSION}"
 
 	GIT_STATUS=`git status | grep "nothing to commit, working tree clean" | wc -l`
 
