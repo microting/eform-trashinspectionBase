@@ -15,9 +15,9 @@ else
 	git add .
 	git commit -m "$COMMIT_MESSAGE"
 	CURRENT_GITVERSION=`git describe --abbrev=0 --tags | cut -d "v" -f 2`
-	MAJOR_VERSION=`echo $GITVERSION | cut -d "." -f 1`
-	MINOR_VERSION=`echo $GITVERSION | cut -d "." -f 2`
-	BUILD_VERSION=`echo $GITVERSION | cut -d "." -f 3`
+	MAJOR_VERSION=`echo $CURRENT_GITVERSION | cut -d "." -f 1`
+	MINOR_VERSION=`echo $CURRENT_GITVERSION | cut -d "." -f 2`
+	BUILD_VERSION=`echo $CURRENT_GITVERSION | cut -d "." -f 3`
 	BUILD_VERSION=$(($BUILD_VERSION + 1))
 	NEW_GIT_VERSION="v$MAJOR_VERSION.$MINOR_VERSION.$BUILD_VERSION"
 	git tag "$NEW_GIT_VERSION"
