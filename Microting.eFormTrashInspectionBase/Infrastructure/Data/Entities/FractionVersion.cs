@@ -1,14 +1,13 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
-    public class FractionVersion : BaseTrashInspectionEntity
+    public class FractionVersion : BaseEntity
     {
         [ForeignKey("Fraction")]
         public int FractionId { get; set; }
         
-        public int Version { get; set; }
-
         public string Name { get; set; }
 
         public string Description { get; set; }

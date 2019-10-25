@@ -1,15 +1,16 @@
 using System;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Microting.eForm.Infrastructure.Constants;
 using Microting.eFormApi.BasePn.Abstractions;
+using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 using Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories;
 
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
-    public class Transporter : BaseTrashInspectionEntity, IDataAccessObject<TrashInspectionPnDbContext>
-    {        
-        public int Version { get; set; }
-
+    public class Transporter : BaseEntity
+    {
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -26,25 +27,25 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         
         public string ContactPerson { get; set; }
         
-         public void Create(TrashInspectionPnDbContext dbContext)
+         public async Task Create(TrashInspectionPnDbContext dbContext)
         {
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
             Version = 1;
             WorkflowState = Constants.WorkflowStates.Created;
             
-            dbContext.Transporters.Add(this);
-            dbContext.SaveChanges();
+            await dbContext.Transporters.AddAsync(this);
+            await dbContext.SaveChangesAsync();
 
-            dbContext.TransporterVersions.Add(MapVersions(dbContext, this));
-            dbContext.SaveChanges();
+            await dbContext.TransporterVersions.AddAsync(MapVersions(dbContext, this));
+            await dbContext.SaveChangesAsync();
 
             Id = Id;
         }
 
-        public void Update(TrashInspectionPnDbContext dbContext)
+        public async Task Update(TrashInspectionPnDbContext dbContext)
         {
-            Transporter transporter = dbContext.Transporters.FirstOrDefault(x => x.Id == Id);
+            Transporter transporter = await dbContext.Transporters.FirstOrDefaultAsync(x => x.Id == Id);
 
             if (transporter == null)
             {
@@ -64,16 +65,16 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
             {
                 transporter.UpdatedAt = DateTime.UtcNow;
                 transporter.Version += 1;
-                dbContext.SaveChanges();
+                await dbContext.SaveChangesAsync();
 
-                dbContext.TransporterVersions.Add(MapVersions(dbContext, transporter));
-                dbContext.SaveChanges();
+                await dbContext.TransporterVersions.AddAsync(MapVersions(dbContext, transporter));
+                await dbContext.SaveChangesAsync();
             }
         }
 
-        public void Delete(TrashInspectionPnDbContext dbContext)
+        public async Task Delete(TrashInspectionPnDbContext dbContext)
         {
-            Transporter transporter = dbContext.Transporters.FirstOrDefault(x => x.Id == Id);
+            Transporter transporter = await dbContext.Transporters.FirstOrDefaultAsync(x => x.Id == Id);
 
             if (transporter == null)
             {
@@ -86,10 +87,10 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
             {
                 transporter.UpdatedAt = DateTime.UtcNow;
                 transporter.Version += 1;
-                dbContext.SaveChanges();
+                await dbContext.SaveChangesAsync();
                 
-                dbContext.TransporterVersions.Add(MapVersions(dbContext, transporter));
-                dbContext.SaveChanges();
+                await dbContext.TransporterVersions.AddAsync(MapVersions(dbContext, transporter));
+                await dbContext.SaveChangesAsync();
             }
         }
         

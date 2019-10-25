@@ -1,34 +1,34 @@
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using Microting.eForm.Infrastructure.Constants;
+using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
-    public class Segment : BaseTrashInspectionEntity
-    {        
-        public int Version { get; set; }
-
+    public class Segment : BaseEntity
+    {
         public string Name { get; set; }
 
         public string Description { get; set; }
         
         public int SdkFolderId { get; set; }
 
-        public void Create(TrashInspectionPnDbContext dbContext)
+        public async Task Create(TrashInspectionPnDbContext dbContext)
         {
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
             Version = 1;
             WorkflowState = Constants.WorkflowStates.Created;
             
-            dbContext.Segments.Add(this);
-            dbContext.SaveChanges();
+            await dbContext.Segments.AddAsync(this);
+            await dbContext.SaveChangesAsync();
 
-            dbContext.SegmentVersions.Add(MapVersions(this));
-            dbContext.SaveChanges();
+            await dbContext.SegmentVersions.AddAsync(MapVersions(this));
+            await dbContext.SaveChangesAsync();
         }
 
-        public void Update(TrashInspectionPnDbContext dbContext)
+        public async Task Update(TrashInspectionPnDbContext dbContext)
         {
             Segment segment = dbContext.Segments.FirstOrDefault(x => x.Id == Id);
 
@@ -52,12 +52,12 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 segment.UpdatedAt = DateTime.UtcNow;
                 segment.Version += 1;
 
-                dbContext.SegmentVersions.Add(MapVersions(this));
-                dbContext.SaveChanges();
+                await dbContext.SegmentVersions.AddAsync(MapVersions(this));
+                await dbContext.SaveChangesAsync();
             } 
         }
 
-        public void Delete(TrashInspectionPnDbContext dbContext)
+        public async Task Delete(TrashInspectionPnDbContext dbContext)
         {
             Segment segment = dbContext.Segments.FirstOrDefault(x => x.Id == Id);
 
@@ -73,8 +73,8 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 segment.UpdatedAt = DateTime.UtcNow;
                 segment.Version += 1;
 
-                dbContext.SegmentVersions.Add(MapVersions(this));
-                dbContext.SaveChanges();
+                await dbContext.SegmentVersions.AddAsync(MapVersions(this));
+                await dbContext.SaveChangesAsync();
             }  
         }
 

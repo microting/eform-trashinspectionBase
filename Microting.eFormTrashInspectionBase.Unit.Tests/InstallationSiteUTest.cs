@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microting.eForm.Infrastructure.Constants;
 using Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities;
@@ -12,14 +13,14 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
     public class InstallationSiteUTest : DbTestFixture
     {
         [Test]
-        public void InstallationSiteModel_Save_DoesSave()
+        public async Task InstallationSiteModel_Save_DoesSave()
         {
             // Arrange
             Installation installation = new Installation();
             installation.CreatedAt = DateTime.Now;
             installation.Name = Guid.NewGuid().ToString();
 
-            installation.Create(DbContext);
+            await installation.Create(DbContext);
 
             Random rnd = new Random();
 
@@ -28,7 +29,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             installationSite.SDKSiteId = rnd.Next(1, 255);
 
             // Act
-            installationSite.Create(DbContext);
+            await installationSite.Create(DbContext);
 
             InstallationSite dbInstallationSite = DbContext.InstallationSites.AsNoTracking().First();
             List<InstallationSite> installationSiteList = DbContext.InstallationSites.AsNoTracking().ToList();
@@ -46,14 +47,14 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
         }
 
         [Test]
-        public void InstalationSiteModel_Update_DoesUpdate()
+        public async Task InstalationSiteModel_Update_DoesUpdate()
         {
             // Arrange
             Installation installation = new Installation();
             installation.CreatedAt = DateTime.Now;
             installation.Name = Guid.NewGuid().ToString();
 
-            installation.Create(DbContext);
+            await installation.Create(DbContext);
 
             Random rnd = new Random();
             InstallationSite installationSite = new InstallationSite();
@@ -61,14 +62,14 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             installationSite.InstallationId = installation.Id;
             installationSite.SDKSiteId = rnd.Next(1, 255);
 
-            installationSite.Create(DbContext);
+            await installationSite.Create(DbContext);
             // Act
             
             installationSite.SDKSiteId = rnd.Next(1, 355);
             installationSite.InstallationId = installation.Id;
             installationSite.Id = installationSite.Id;
 
-           installationSite.Update(DbContext);
+            await installationSite.Update(DbContext);
 
             InstallationSite dbInstallationSite = DbContext.InstallationSites.AsNoTracking().First();
             List<InstallationSite> installationSiteList = DbContext.InstallationSites.AsNoTracking().ToList();
@@ -87,14 +88,14 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
         }
 
         [Test]
-        public void InstallationSiteModel_Delete_DoesDelete()
+        public async Task InstallationSiteModel_Delete_DoesDelete()
         {
             // Arrange
             Installation installation = new Installation();
             installation.CreatedAt = DateTime.Now;
             installation.Name = Guid.NewGuid().ToString();
 
-            installation.Create(DbContext);
+            await installation.Create(DbContext);
 
             Random rnd = new Random();
             InstallationSite installationSite = new InstallationSite();
@@ -102,10 +103,10 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             installationSite.InstallationId = installation.Id;
             installationSite.SDKSiteId = rnd.Next(1, 255);
 
-            installationSite.Create(DbContext);
+            await installationSite.Create(DbContext);
             // Act            
 
-            installationSite.Delete(DbContext);
+            await installationSite.Delete(DbContext);
 
             InstallationSite dbInstallationSite = DbContext.InstallationSites.AsNoTracking().First();
             List<InstallationSite> installationSiteList = DbContext.InstallationSites.AsNoTracking().ToList();

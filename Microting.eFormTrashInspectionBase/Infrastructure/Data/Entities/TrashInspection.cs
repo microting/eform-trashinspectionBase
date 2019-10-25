@@ -3,21 +3,22 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Microting.eForm.Infrastructure.Constants;
+using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
 
-    public class TrashInspection : BaseTrashInspectionEntity
+    public class TrashInspection : BaseEntity
     {
 
         public TrashInspection()
         {
             TrashInspectionCases = new HashSet<TrashInspectionCase>();
         }
-
-        public int Version { get; set; }
-
+        
         public string WeighingNumber { get; set; }
 
         public DateTime Date { get; set; }
@@ -71,23 +72,23 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         
         public int? SecondWeight { get; set; }
 
-        public void Create(TrashInspectionPnDbContext dbContext)
+        public async Task Create(TrashInspectionPnDbContext dbContext)
         {
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
             Version = 1;
             WorkflowState = Constants.WorkflowStates.Created;
             
-            dbContext.TrashInspections.Add(this);
-            dbContext.SaveChanges();
+            await dbContext.TrashInspections.AddAsync(this);
+            await dbContext.SaveChangesAsync();
 
-            dbContext.TrashInspectionVersions.Add(MapVersions(this));
-            dbContext.SaveChanges();
+            await dbContext.TrashInspectionVersions.AddAsync(MapVersions(this));
+            await dbContext.SaveChangesAsync();
         }
 
-        public void Update(TrashInspectionPnDbContext dbContext)
+        public async Task Update(TrashInspectionPnDbContext dbContext)
         {
-            TrashInspection trashInspection = dbContext.TrashInspections.FirstOrDefault(x => x.Id == Id);
+            TrashInspection trashInspection = await dbContext.TrashInspections.FirstOrDefaultAsync(x => x.Id == Id);
 
             if (trashInspection == null)
             {
@@ -123,14 +124,14 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 trashInspection.UpdatedAt = DateTime.UtcNow;
                 trashInspection.Version += 1;
 
-                dbContext.TrashInspectionVersions.Add(MapVersions(trashInspection));
-                dbContext.SaveChanges();
+                await dbContext.TrashInspectionVersions.AddAsync(MapVersions(trashInspection));
+                await dbContext.SaveChangesAsync();
             }                       
         }
 
-        public void Delete(TrashInspectionPnDbContext dbContext)
+        public async Task Delete(TrashInspectionPnDbContext dbContext)
         {
-            TrashInspection trashInspection = dbContext.TrashInspections.FirstOrDefault(x => x.Id == Id);
+            TrashInspection trashInspection = await dbContext.TrashInspections.FirstOrDefaultAsync(x => x.Id == Id);
 
             if (trashInspection == null)
             {
@@ -144,8 +145,8 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 trashInspection.UpdatedAt = DateTime.UtcNow;
                 trashInspection.Version += 1;
 
-                dbContext.TrashInspectionVersions.Add(MapVersions(trashInspection));
-                dbContext.SaveChanges();
+                await dbContext.TrashInspectionVersions.AddAsync(MapVersions(trashInspection));
+                await dbContext.SaveChangesAsync();
             }  
         }
 

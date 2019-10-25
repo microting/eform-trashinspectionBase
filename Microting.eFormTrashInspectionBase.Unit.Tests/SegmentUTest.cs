@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microting.eForm.Infrastructure.Constants;
 using Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities;
@@ -12,7 +13,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
     public class SegmentUTest : DbTestFixture
     {
         [Test]
-        public void SegmentModel_Save_DoesSave()
+        public async Task SegmentModel_Save_DoesSave()
         {
             //Arrange 
             Random rnd = new Random();
@@ -23,7 +24,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             segmentModel.SdkFolderId = rnd.Next(1, 255);
             
             //Act
-            segmentModel.Create(DbContext);
+            await segmentModel.Create(DbContext);
 
             Segment dbSegment = DbContext.Segments.AsNoTracking().First();
             List<Segment> segmentList = DbContext.Segments.AsNoTracking().ToList();
@@ -39,7 +40,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
         }
 
         [Test]
-        public void SegmentModel_Update_DoesUpdate()
+        public async Task SegmentModel_Update_DoesUpdate()
         {
             //Arrange
             Random rnd = new Random();
@@ -50,13 +51,13 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             segment.Name = Guid.NewGuid().ToString();
             segment.SdkFolderId = rnd.Next(1, 255);
 
-            segment.Create(DbContext);
+            await segment.Create(DbContext);
 
             //Act
 
             segment.Name = "New segment name";
             
-            segment.Update(DbContext);
+            await segment.Update(DbContext);
             
             Segment dbSegment = DbContext.Segments.AsNoTracking().First();
             List<Segment> segmentList = DbContext.Segments.AsNoTracking().ToList();
@@ -73,7 +74,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             Assert.AreEqual(segment.SdkFolderId, dbSegment.SdkFolderId);
         }
         [Test]
-        public void SegmentModel_Delete_DoesDelete()
+        public async Task SegmentModel_Delete_DoesDelete()
         {
             //Arrange
             Random rnd = new Random();
@@ -84,11 +85,11 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             segment.Name = Guid.NewGuid().ToString();
             segment.SdkFolderId = rnd.Next(1, 255);
 
-            segment.Create(DbContext);
+            await segment.Create(DbContext);
 
             //Act
             
-            segment.Delete(DbContext);
+            await segment.Delete(DbContext);
             
             Segment dbSegment = DbContext.Segments.AsNoTracking().First();
             List<Segment> segmentList = DbContext.Segments.AsNoTracking().ToList();

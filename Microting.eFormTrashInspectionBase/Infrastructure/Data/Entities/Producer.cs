@@ -1,15 +1,16 @@
 using System;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Microting.eForm.Infrastructure.Constants;
 using Microting.eFormApi.BasePn.Abstractions;
+using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 using Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories;
 
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
-    public class Producer : BaseTrashInspectionEntity, IDataAccessObject<TrashInspectionPnDbContext>
-    {        
-        public int Version { get; set; }
-
+    public class Producer : BaseEntity
+    {
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -26,23 +27,23 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         
         public string ContactPerson { get; set; }
 
-        public void Create(TrashInspectionPnDbContext dbContext)
+        public async Task Create(TrashInspectionPnDbContext dbContext)
         {
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
             Version = 1;
             WorkflowState = Constants.WorkflowStates.Created;
             
-            dbContext.Producers.Add(this);
-            dbContext.SaveChanges();
+            await dbContext.Producers.AddAsync(this);
+            await dbContext.SaveChangesAsync();
 
-            dbContext.ProducerVersions.Add(MapVersions(dbContext, this));
-            dbContext.SaveChanges();
+            await dbContext.ProducerVersions.AddAsync(MapVersions(dbContext, this));
+            await dbContext.SaveChangesAsync();
         }
 
-        public void Update(TrashInspectionPnDbContext dbContext)
+        public async Task Update(TrashInspectionPnDbContext dbContext)
         {
-            Producer producer = dbContext.Producers.FirstOrDefault(x => x.Id == Id);
+            Producer producer = await dbContext.Producers.FirstOrDefaultAsync(x => x.Id == Id);
 
             if (producer == null)
             {
@@ -62,16 +63,16 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
             {
                 producer.UpdatedAt = DateTime.UtcNow;
                 producer.Version += 1;
-                dbContext.SaveChanges();
+                await dbContext.SaveChangesAsync();
 
-                dbContext.ProducerVersions.Add(MapVersions(dbContext, producer));
-                dbContext.SaveChanges();
+                await dbContext.ProducerVersions.AddAsync(MapVersions(dbContext, producer));
+                await dbContext.SaveChangesAsync();
             }
         }
 
-        public void Delete(TrashInspectionPnDbContext dbContext)
+        public async Task Delete(TrashInspectionPnDbContext dbContext)
         {
-            Producer producer = dbContext.Producers.FirstOrDefault(x => x.Id == Id);
+            Producer producer = await dbContext.Producers.FirstOrDefaultAsync(x => x.Id == Id);
 
             if (producer == null)
             {
@@ -82,12 +83,12 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 
             if (dbContext.ChangeTracker.HasChanges())
             {
-                                producer.UpdatedAt = DateTime.UtcNow;
-                                producer.Version += 1;
-                                dbContext.SaveChanges();
+                producer.UpdatedAt = DateTime.UtcNow;
+                producer.Version += 1;
+                await dbContext.SaveChangesAsync();
                 
-                                dbContext.ProducerVersions.Add(MapVersions(dbContext, producer));
-                                dbContext.SaveChanges();
+                await dbContext.ProducerVersions.AddAsync(MapVersions(dbContext, producer));
+                await dbContext.SaveChangesAsync();
             }
         }
         public ProducerVersion MapVersions(TrashInspectionPnDbContext _dbContext, Producer producer)

@@ -1,6 +1,8 @@
+using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
+
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
-    public class LogException : BaseTrashInspectionEntity
+    public class LogException : BaseEntity
     {
         public int Level { get; set; }
 

@@ -1,13 +1,14 @@
 using System;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Microting.eForm.Infrastructure.Constants;
+using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
-    public class Fraction : BaseTrashInspectionEntity
-    {        
-        public int Version { get; set; }
-
+    public class Fraction : BaseEntity
+    {
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -20,23 +21,23 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         
         public int eFormIdExtendedInspection { get; set; }
 
-        public void Create(TrashInspectionPnDbContext dbContext)
+        public async Task Create(TrashInspectionPnDbContext dbContext)
         {
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
             Version = 1;
             WorkflowState = Constants.WorkflowStates.Created;
             
-            dbContext.Fractions.Add(this);
-            dbContext.SaveChanges();
+            await dbContext.Fractions.AddAsync(this);
+            await dbContext.SaveChangesAsync();
 
-            dbContext.FractionVersions.Add(MapVersions(this));
-            dbContext.SaveChanges();
+            await dbContext.FractionVersions.AddAsync(MapVersions(this));
+            await dbContext.SaveChangesAsync();
         }
 
-        public void Update(TrashInspectionPnDbContext dbContext)
+        public async Task Update(TrashInspectionPnDbContext dbContext)
         {
-            Fraction fraction = dbContext.Fractions.FirstOrDefault(x => x.Id == Id);
+            Fraction fraction = await dbContext.Fractions.FirstOrDefaultAsync(x => x.Id == Id);
 
             if (fraction == null)
             {
@@ -61,14 +62,14 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 fraction.UpdatedAt = DateTime.UtcNow;
                 fraction.Version += 1;
 
-                dbContext.FractionVersions.Add(MapVersions(fraction));
-                dbContext.SaveChanges();
+                await dbContext.FractionVersions.AddAsync(MapVersions(fraction));
+                await dbContext.SaveChangesAsync();
             }   
         }
 
-        public void Delete(TrashInspectionPnDbContext dbContext)
+        public async Task Delete(TrashInspectionPnDbContext dbContext)
         {
-            Fraction fraction = dbContext.Fractions.FirstOrDefault(x => x.Id == Id);
+            Fraction fraction = await dbContext.Fractions.FirstOrDefaultAsync(x => x.Id == Id);
 
             if (fraction == null)
             {
@@ -82,8 +83,8 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 fraction.UpdatedAt = DateTime.UtcNow;
                 fraction.Version += 1;
 
-                dbContext.FractionVersions.Add(MapVersions(fraction));
-                dbContext.SaveChanges();
+                await dbContext.FractionVersions.AddAsync(MapVersions(fraction));
+                await dbContext.SaveChangesAsync();
             }  
         }
 

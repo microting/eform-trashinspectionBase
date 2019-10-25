@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microting.eForm.Infrastructure.Constants;
 using Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities;
@@ -12,7 +13,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
     public class FractionUTest : DbTestFixture
     {
         [Test]
-        public void FractionModel_Save_DoesSave()
+        public async Task FractionModel_Save_DoesSave()
         {
             //Arrange
             Random rnd = new Random();
@@ -24,7 +25,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             fraction.eFormId = rnd.Next(1, 255);
             
             //Act
-            fraction.Create(DbContext);
+            await fraction.Create(DbContext);
 
             Fraction dbFraction = DbContext.Fractions.AsNoTracking().First();
             List<Fraction> fractionList = DbContext.Fractions.AsNoTracking().ToList();
@@ -40,7 +41,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
         }
  
         [Test]
-        public void FractionModel_Update_DoesUpdate()
+        public async Task FractionModel_Update_DoesUpdate()
         {
             //Arrange
             Random rnd = new Random();
@@ -56,7 +57,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             //Act
             fraction.Name = Guid.NewGuid().ToString();
             
-            fraction.Update(DbContext);
+            await fraction.Update(DbContext);
             
             Fraction dbFraction = DbContext.Fractions.AsNoTracking().First();
             List<Fraction> fractionList = DbContext.Fractions.AsNoTracking().ToList();
@@ -74,7 +75,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             Assert.AreEqual(fraction.CreatedAt, dbFraction.CreatedAt);
         }
         [Test]
-        public void FractionModel_Delete_DoesSetWorkflowStateToRemoved()
+        public async Task FractionModel_Delete_DoesSetWorkflowStateToRemoved()
         {
             //Arrange
             Random rnd = new Random();
@@ -88,7 +89,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             DbContext.SaveChanges();
             
             //Act
-            fraction.Delete(DbContext);
+            await fraction.Delete(DbContext);
             
             Fraction dbFraction = DbContext.Fractions.AsNoTracking().First();
             List<Fraction> fractionList = DbContext.Fractions.AsNoTracking().ToList();

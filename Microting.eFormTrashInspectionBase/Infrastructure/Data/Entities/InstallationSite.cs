@@ -2,36 +2,37 @@ using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Microting.eForm.Infrastructure.Constants;
+using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
-    public class InstallationSite : BaseTrashInspectionEntity
+    public class InstallationSite : BaseEntity
     {
-        public int Version { get; set; }
-        
         [ForeignKey("Installation")]
         public int InstallationId { get; set; }
 
         public int SDKSiteId { get; set; }
 
-        public void Create(TrashInspectionPnDbContext dbContext)
+        public async Task Create(TrashInspectionPnDbContext dbContext)
         {
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
             Version = 1;
             WorkflowState = Constants.WorkflowStates.Created;
             
-            dbContext.InstallationSites.Add(this);
-            dbContext.SaveChanges();
+            await dbContext.InstallationSites.AddAsync(this);
+            await dbContext.SaveChangesAsync();
 
-            dbContext.InstallationSiteVersions.Add(MapVersions(this));
-            dbContext.SaveChanges();
+            await dbContext.InstallationSiteVersions.AddAsync(MapVersions(this));
+            await dbContext.SaveChangesAsync();
         }
 
-        public void Update(TrashInspectionPnDbContext dbContext)
+        public async Task Update(TrashInspectionPnDbContext dbContext)
         {
-            InstallationSite installationSite = dbContext.InstallationSites.FirstOrDefault(x => x.Id == Id);
+            InstallationSite installationSite = await dbContext.InstallationSites.FirstOrDefaultAsync(x => x.Id == Id);
 
             if (installationSite == null)
             {
@@ -47,15 +48,15 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 installationSite.UpdatedAt = DateTime.UtcNow;
                 installationSite.Version += 1;
 
-                dbContext.InstallationSiteVersions.Add(MapVersions(this));
-                dbContext.SaveChanges();
+                await dbContext.InstallationSiteVersions.AddAsync(MapVersions(this));
+                await dbContext.SaveChangesAsync();
             }  
             
         }
 
-        public void Delete(TrashInspectionPnDbContext dbContext)
+        public async Task Delete(TrashInspectionPnDbContext dbContext)
         {
-            InstallationSite installationSite = dbContext.InstallationSites.FirstOrDefault(x => x.Id == Id);
+            InstallationSite installationSite = await dbContext.InstallationSites.FirstOrDefaultAsync(x => x.Id == Id);
 
             if (installationSite == null)
             {
@@ -67,10 +68,9 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
             if (dbContext.ChangeTracker.HasChanges())
             {
                 installationSite.UpdatedAt = DateTime.UtcNow;
-                installationSite.Version += 1;
-
-                dbContext.InstallationSiteVersions.Add(MapVersions(this));
-                dbContext.SaveChanges();
+                installationSite.Version += 1; 
+                await dbContext.InstallationSiteVersions.AddAsync(MapVersions(this));
+                await dbContext.SaveChangesAsync();
             }  
         }
 

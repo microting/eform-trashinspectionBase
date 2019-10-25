@@ -1,8 +1,9 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
-    public class TrashInspectionCaseVersion : BaseTrashInspectionEntity
+    public class TrashInspectionCaseVersion : BaseEntity
     {                
         public int Status { get; set; }
                
@@ -14,8 +15,6 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         
         [ForeignKey("TrashInspectionCase")]
         public int TrashInspectionCaseId { get; set; }
-        
-        public int Version { get; set; }  
         
         public int SegmentId { get; set; }
     }

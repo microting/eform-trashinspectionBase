@@ -79,6 +79,10 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             modelNames.Add("Fractions");
             modelNames.Add("SegmentVersions");
             modelNames.Add("Segments");
+            modelNames.Add("ProducerVersions");
+            modelNames.Add("Producers");
+            modelNames.Add("TransporterVersions");
+            modelNames.Add("Transporters");
             modelNames.Add("PluginConfigurationValues");
             modelNames.Add("PluginConfigurationValueVersions");
 

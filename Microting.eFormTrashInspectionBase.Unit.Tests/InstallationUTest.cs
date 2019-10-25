@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using Microting.eForm.Infrastructure.Constants;
 using Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities;
@@ -12,7 +13,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
     public class InstallationUTest : DbTestFixture
     {
         [Test]
-        public void  InstallationModel_Save_DoesSave()
+        public async Task  InstallationModel_Save_DoesSave()
         {
             // Arrange
             Random rnd = new Random();
@@ -21,7 +22,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             installation.Name = Guid.NewGuid().ToString();
             
             // Act
-            installation.Create(DbContext);
+            await installation.Create(DbContext);
 
             Installation dbInstallation = DbContext.Installations.AsNoTracking().First();
             List<Installation> installationList = DbContext.Installations.AsNoTracking().ToList();
@@ -37,7 +38,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
         }
         
         [Test]
-        public void  InstalationModel_Update_DoesUpdate()
+        public async Task  InstalationModel_Update_DoesUpdate()
         {
             // Arrange
             Random rnd = new Random();
@@ -45,12 +46,12 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             installation.CreatedAt = DateTime.Now;
             installation.Name = Guid.NewGuid().ToString();
             
-            installation.Create(DbContext);
+            await installation.Create(DbContext);
 
             // Act
             installation.Name = "new name";
 
-            installation.Update(DbContext);
+            await installation.Update(DbContext);
 
             Installation dbInstallation = DbContext.Installations.AsNoTracking().First();
             List<Installation> installationList = DbContext.Installations.AsNoTracking().ToList();
@@ -68,7 +69,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
         }
         
         [Test]
-        public void  InstallationModel_Delete_DoesDelete()
+        public async Task  InstallationModel_Delete_DoesDelete()
         {
             // Arrange
             Random rnd = new Random();
@@ -76,11 +77,11 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             installation.CreatedAt = DateTime.Now;
             installation.Name = Guid.NewGuid().ToString();
             
-            installation.Create(DbContext);
+            await installation.Create(DbContext);
 
             // Act
 
-            installation.Delete(DbContext);
+            await installation.Delete(DbContext);
 
             Installation dbInstallation = DbContext.Installations.AsNoTracking().First();
             List<Installation> installationList = DbContext.Installations.AsNoTracking().ToList();

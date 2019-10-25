@@ -2,40 +2,41 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Microting.eForm.Infrastructure.Constants;
+using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
-    public class Installation : BaseTrashInspectionEntity
+    public class Installation : BaseEntity
     {
         public Installation()
         {
             this.InstallationSites = new HashSet<InstallationSite>();
         }
         
-        public int Version { get; set; }
-
         public string Name { get; set; }
         
         public virtual ICollection<InstallationSite> InstallationSites { get; set; }
 
-        public void Create(TrashInspectionPnDbContext dbContext)
+        public async Task Create(TrashInspectionPnDbContext dbContext)
         {
             CreatedAt = DateTime.UtcNow;
             UpdatedAt = DateTime.UtcNow;
             Version = 1;
             WorkflowState = Constants.WorkflowStates.Created;
             
-            dbContext.Installations.Add(this);
-            dbContext.SaveChanges();
+            await dbContext.Installations.AddAsync(this);
+            await dbContext.SaveChangesAsync();
 
-            dbContext.InstallationVersions.Add(MapVersions(this));
-            dbContext.SaveChanges();
+            await dbContext.InstallationVersions.AddAsync(MapVersions(this));
+            await dbContext.SaveChangesAsync();
         }
 
-        public void Update(TrashInspectionPnDbContext dbContext)
+        public async Task Update(TrashInspectionPnDbContext dbContext)
         {
-            Installation installation = dbContext.Installations.FirstOrDefault(x => x.Id == Id);
+            Installation installation = await dbContext.Installations.FirstOrDefaultAsync(x => x.Id == Id);
 
             if (installation == null)
             {
@@ -52,14 +53,14 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 installation.UpdatedAt = DateTime.UtcNow;
                 installation.Version += 1;
 
-                dbContext.InstallationVersions.Add(MapVersions(this));
-                dbContext.SaveChanges();
+                await dbContext.InstallationVersions.AddAsync(MapVersions(this));
+                await dbContext.SaveChangesAsync();
             }  
         }
 
-        public void Delete(TrashInspectionPnDbContext dbContext)
+        public async Task Delete(TrashInspectionPnDbContext dbContext)
         {
-            Installation installation = dbContext.Installations.FirstOrDefault(x => x.Id == Id);
+            Installation installation = await dbContext.Installations.FirstOrDefaultAsync(x => x.Id == Id);
 
             if (installation == null)
             {
@@ -73,8 +74,8 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 installation.UpdatedAt = DateTime.UtcNow;
                 installation.Version += 1;
 
-                dbContext.InstallationVersions.Add(MapVersions(this));
-                dbContext.SaveChanges();
+                await dbContext.InstallationVersions.AddAsync(MapVersions(this));
+                await dbContext.SaveChangesAsync();
             }  
         }
 

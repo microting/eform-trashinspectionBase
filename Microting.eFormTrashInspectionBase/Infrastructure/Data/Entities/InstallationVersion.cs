@@ -1,14 +1,13 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
 
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
 
-    public class InstallationVersion : BaseTrashInspectionEntity
+    public class InstallationVersion : BaseEntity
     {
-        public int Version { get; set; }
-        
         public string Name { get; set; }
 
         [ForeignKey("Installation")]
