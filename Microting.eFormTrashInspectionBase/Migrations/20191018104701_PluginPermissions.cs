@@ -8,14 +8,18 @@ namespace Microting.eFormTrashInspectionBase.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            string autoIDGenStrategy = "SqlServer:ValueGenerationStrategy";
+            //Setup for SQL Server Provider
+
+            var autoIDGenStrategy = "SqlServer:ValueGenerationStrategy";
             object autoIDGenStrategyValue = SqlServerValueGenerationStrategy.IdentityColumn;
-            if (DbConfig.IsMySQL)
+
+            // Setup for MySQL Provider
+            if (migrationBuilder.ActiveProvider == "Pomelo.EntityFrameworkCore.MySql")
             {
+                DbConfig.IsMySQL = true;
                 autoIDGenStrategy = "MySql:ValueGenerationStrategy";
                 autoIDGenStrategyValue = MySqlValueGenerationStrategy.IdentityColumn;
             }
-
             migrationBuilder.CreateTable(
                 name: "PluginPermissions",
                 columns: table => new
