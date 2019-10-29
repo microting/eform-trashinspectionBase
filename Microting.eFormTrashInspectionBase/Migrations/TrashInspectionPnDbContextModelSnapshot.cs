@@ -14,24 +14,24 @@ namespace Microting.eFormTrashInspectionBase.Migrations
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            string autoIDGenStrategy = "SqlServer:ValueGenerationStrategy";
-            object autoIDGenStrategyValue = SqlServerValueGenerationStrategy.IdentityColumn;
+            string autoIdGenStrategy = "SqlServer:ValueGenerationStrategy";
+            object autoIdGenStrategyValue = SqlServerValueGenerationStrategy.IdentityColumn;
             if (DbConfig.IsMySQL)
             {
-                autoIDGenStrategy = "MySql:ValueGenerationStrategy";
-                autoIDGenStrategyValue = MySqlValueGenerationStrategy.IdentityColumn;
+                autoIdGenStrategy = "MySql:ValueGenerationStrategy";
+                autoIdGenStrategyValue = MySqlValueGenerationStrategy.IdentityColumn;
             }
 
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
             modelBuilder.Entity("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginConfigurationValue", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
                     b.Property<DateTime>("CreatedAt");
 
@@ -59,7 +59,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
                     b.Property<DateTime>("CreatedAt");
 
@@ -87,13 +87,15 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
                     b.Property<DateTime>("CreatedAt");
 
                     b.Property<int>("CreatedByUserId");
 
                     b.Property<int>("GroupId");
+
+                    b.Property<bool>("IsEnabled");
 
                     b.Property<int>("PermissionId");
 
@@ -113,11 +115,51 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                     b.ToTable("PluginGroupPermissions");
                 });
 
+            modelBuilder.Entity("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginGroupPermissionVersion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int>("CreatedByUserId");
+
+                    b.Property<int>("GroupId");
+
+                    b.Property<bool>("IsEnabled");
+
+                    b.Property<int>("PermissionId");
+
+                    b.Property<int>("PluginGroupPermissionId");
+
+                    b.Property<int?>("PluginGroupPermissionId1");
+
+                    b.Property<DateTime?>("UpdatedAt");
+
+                    b.Property<int>("UpdatedByUserId");
+
+                    b.Property<int>("Version");
+
+                    b.Property<string>("WorkflowState")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PermissionId");
+
+                    b.HasIndex("PluginGroupPermissionId");
+
+                    b.HasIndex("PluginGroupPermissionId1");
+
+                    b.ToTable("PluginGroupPermissionVersions");
+                });
+
             modelBuilder.Entity("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginPermission", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
                     b.Property<string>("ClaimName");
 
@@ -145,7 +187,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
                     b.Property<DateTime>("CreatedAt");
 
@@ -181,7 +223,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
                     b.Property<DateTime>("CreatedAt");
 
@@ -219,7 +261,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
                     b.Property<DateTime>("CreatedAt");
 
@@ -245,7 +287,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
                     b.Property<DateTime>("CreatedAt");
 
@@ -275,7 +317,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
                     b.Property<DateTime>("CreatedAt");
 
@@ -305,7 +347,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
                     b.Property<DateTime>("CreatedAt");
 
@@ -333,7 +375,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
                     b.Property<string>("Address");
 
@@ -373,7 +415,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
                     b.Property<string>("Address");
 
@@ -415,7 +457,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
                     b.Property<DateTime>("CreatedAt");
 
@@ -445,7 +487,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
                     b.Property<DateTime>("CreatedAt");
 
@@ -477,7 +519,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
                     b.Property<string>("Address");
 
@@ -517,7 +559,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
                     b.Property<string>("Address");
 
@@ -559,7 +601,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
                     b.Property<string>("ApprovedValue");
 
@@ -629,7 +671,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
                     b.Property<DateTime>("CreatedAt");
 
@@ -665,7 +707,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
                     b.Property<DateTime>("CreatedAt");
 
@@ -701,7 +743,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasAnnotation(autoIDGenStrategy, autoIDGenStrategyValue);
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
 
                     b.Property<string>("ApprovedValue");
 
@@ -775,6 +817,23 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                         .WithMany()
                         .HasForeignKey("PermissionId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginGroupPermissionVersion", b =>
+                {
+                    b.HasOne("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginPermission", "Permission")
+                        .WithMany()
+                        .HasForeignKey("PermissionId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginGroupPermission")
+                        .WithMany()
+                        .HasForeignKey("PluginGroupPermissionId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginGroupPermission", "PluginGroupPermission")
+                        .WithMany()
+                        .HasForeignKey("PluginGroupPermissionId1");
                 });
 
             modelBuilder.Entity("Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities.InstallationSite", b =>

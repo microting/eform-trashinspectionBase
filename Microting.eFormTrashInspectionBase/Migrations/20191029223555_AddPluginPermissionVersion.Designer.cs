@@ -10,8 +10,8 @@ using Microting.eFormTrashInspectionBase.Infrastructure.Data;
 namespace Microting.eFormTrashInspectionBase.Migrations
 {
     [DbContext(typeof(TrashInspectionPnDbContext))]
-    [Migration("20191018104701_PluginPermissions")]
-    partial class PluginPermissions
+    [Migration("20191029223555_AddPluginPermissionVersion")]
+    partial class AddPluginPermissionVersion
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -97,6 +97,8 @@ namespace Microting.eFormTrashInspectionBase.Migrations
 
                     b.Property<int>("GroupId");
 
+                    b.Property<bool>("IsEnabled");
+
                     b.Property<int>("PermissionId");
 
                     b.Property<DateTime?>("UpdatedAt");
@@ -113,6 +115,46 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                     b.HasIndex("PermissionId");
 
                     b.ToTable("PluginGroupPermissions");
+                });
+
+            modelBuilder.Entity("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginGroupPermissionVersion", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation(autoIdGenStrategy, autoIdGenStrategyValue);
+
+                    b.Property<DateTime>("CreatedAt");
+
+                    b.Property<int>("CreatedByUserId");
+
+                    b.Property<int>("GroupId");
+
+                    b.Property<bool>("IsEnabled");
+
+                    b.Property<int>("PermissionId");
+
+                    b.Property<int>("PluginGroupPermissionId");
+
+                    b.Property<int?>("PluginGroupPermissionId1");
+
+                    b.Property<DateTime?>("UpdatedAt");
+
+                    b.Property<int>("UpdatedByUserId");
+
+                    b.Property<int>("Version");
+
+                    b.Property<string>("WorkflowState")
+                        .HasMaxLength(255);
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PermissionId");
+
+                    b.HasIndex("PluginGroupPermissionId");
+
+                    b.HasIndex("PluginGroupPermissionId1");
+
+                    b.ToTable("PluginGroupPermissionVersions");
                 });
 
             modelBuilder.Entity("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginPermission", b =>
@@ -777,6 +819,23 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                         .WithMany()
                         .HasForeignKey("PermissionId")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginGroupPermissionVersion", b =>
+                {
+                    b.HasOne("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginPermission", "Permission")
+                        .WithMany()
+                        .HasForeignKey("PermissionId")
+                        .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginGroupPermission")
+                        .WithMany()
+                        .HasForeignKey("PluginGroupPermissionId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Microting.eFormApi.BasePn.Infrastructure.Database.Entities.PluginGroupPermission", "PluginGroupPermission")
+                        .WithMany()
+                        .HasForeignKey("PluginGroupPermissionId1");
                 });
 
             modelBuilder.Entity("Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities.InstallationSite", b =>
