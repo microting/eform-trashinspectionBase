@@ -10,7 +10,9 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories
         public TrashInspectionPnDbContext CreateDbContext(string[] args)
         {
             //args = new[]
-            //    {"data source=.\\sqlexpress;database=appointments-plugin2;integrated security=true"};
+            //    {"host=localhost;Database=trash-pl;Uid=root;Pwd=111111;port=3306;Convert Zero Datetime = true;SslMode=none;PersistSecurityInfo=true;"};
+            //args = new[]
+            //    {"Data Source=.\\SQLEXPRESS;Database=trash-pl;Integrated Security=True"};
             var optionsBuilder = new DbContextOptionsBuilder<TrashInspectionPnDbContext>();
             if (args.Any())
             {
