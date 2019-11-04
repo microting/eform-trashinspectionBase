@@ -56,5 +56,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         public int? FirstWeight { get; set; }
         
         public int? SecondWeight { get; set; }
+        
+        public string ErrorFromCallBack { get; set; }
     }
 }
