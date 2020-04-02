@@ -73,6 +73,10 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         public int? SecondWeight { get; set; }
         
         public string ErrorFromCallBack { get; set; }
+        
+        public bool ResponseSendToCallBackUrl { get; set; }
+        
+        public string SuccessMessageFromCallBack { get; set; }
 
         public async Task Create(TrashInspectionPnDbContext dbContext)
         {
@@ -120,6 +124,8 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
             trashInspection.TransporterId = TransporterId;
             trashInspection.FirstWeight = FirstWeight;
             trashInspection.SecondWeight = SecondWeight;
+            trashInspection.ResponseSendToCallBackUrl = ResponseSendToCallBackUrl;
+            trashInspection.SuccessMessageFromCallBack = SuccessMessageFromCallBack;
 
             if (dbContext.ChangeTracker.HasChanges())
             {
@@ -185,7 +191,9 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 FirstWeight = trashInspection.FirstWeight,
                 SecondWeight = trashInspection.SecondWeight,
                 TrashInspectionId = trashInspection.Id,
-                WorkflowState = trashInspection.WorkflowState
+                WorkflowState = trashInspection.WorkflowState,
+                ResponseSendToCallBackUrl = ResponseSendToCallBackUrl,
+                SuccessMessageFromCallBack = trashInspection.SuccessMessageFromCallBack
             };
 
             return trashInspectionVersion;
