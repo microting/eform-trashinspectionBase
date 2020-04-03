@@ -193,7 +193,8 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                 TrashInspectionId = trashInspection.Id,
                 WorkflowState = trashInspection.WorkflowState,
                 ResponseSendToCallBackUrl = ResponseSendToCallBackUrl,
-                SuccessMessageFromCallBack = trashInspection.SuccessMessageFromCallBack
+                SuccessMessageFromCallBack = trashInspection.SuccessMessageFromCallBack,
+                ErrorFromCallBack = trashInspection.ErrorFromCallBack
             };
 
             return trashInspectionVersion;
