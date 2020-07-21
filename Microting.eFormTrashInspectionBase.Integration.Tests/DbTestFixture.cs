@@ -69,8 +69,6 @@ namespace Microting.eFormTrashInspectionBase.Integration.Tests
             List<string> modelNames = new List<string>();
             modelNames.Add("TrashInspectionVersions");
             modelNames.Add("TrashInspections");
-            modelNames.Add("TrashInspectionSettings");
-            modelNames.Add("TrashInspectionSettingsVersions");
             modelNames.Add("Installations");
             modelNames.Add("InstallationVersions");
             modelNames.Add("InstallationSites");
