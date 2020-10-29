@@ -44,6 +44,6 @@ jobs:
     - name: Integration Tests
       run: dotnet test --no-restore -c Release -v n Microting.eFormTrashInspectionBase.Integration.Tests/Microting.eFormTrashInspectionBase.Integration.Tests.csproj
     - name: Pack
-      run: dotnet pack eFormSDK.sln -c Release -o ./artifacts -p:PackageVersion=${{ steps.get_version.outputs.VERSION }}
+      run: dotnet pack Microting.eFormTrashInspectionBase.sln -c Release -o ./artifacts -p:PackageVersion=${{ steps.get_version.outputs.VERSION }}
     - name: Push generated package to GitHub registry
       run: dotnet nuget push /home/runner/work/eform-trashinspectionBase/artifacts/Microting.eForm.${{ steps.get_version.outputs.VERSION }}.nupkg -k ${{secrets.NUGET_SECRET_KEY}} -s https://api.nuget.org/v3/index.json --skip-duplicate --no-symbols true
