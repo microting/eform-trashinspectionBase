@@ -16,8 +16,8 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories
             {
                 mysqlOptions.ServerVersion(new Version(10, 4, 0), ServerType.MariaDb);
             });
-            optionsBuilder.UseLazyLoadingProxies(true);
-        
+            //optionsBuilder.UseLazyLoadingProxies(true);
+
             return new TrashInspectionPnDbContext(optionsBuilder.Options);
             // dotnet ef migrations add InitialCreate --project Microting.eFormTrashInspectionBase --startup-project DBMigrator
         }
