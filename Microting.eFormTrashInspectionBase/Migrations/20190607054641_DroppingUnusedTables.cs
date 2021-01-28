@@ -22,7 +22,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     CreatedByUserId = table.Column<int>(nullable: false),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
@@ -42,7 +42,7 @@ namespace Microting.eFormTrashInspectionBase.Migrations
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                        .Annotation("SqlServer:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     CreatedAt = table.Column<DateTime>(nullable: false),
                     CreatedByUserId = table.Column<int>(nullable: false),
                     Name = table.Column<string>(maxLength: 50, nullable: false),
