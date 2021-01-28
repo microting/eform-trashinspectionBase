@@ -32,7 +32,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
         [ForeignKey("Fraction")]
         public int? FractionId { get; set; }
 
-        public string Eak_Code { get; set; }
+        public string EakCode { get; set; }
 
         public string Producer { get; set; }
 

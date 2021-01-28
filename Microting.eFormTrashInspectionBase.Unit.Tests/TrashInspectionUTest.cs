@@ -22,7 +22,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
                 {
                     CreatedAt = DateTime.Now,
                     Date = DateTime.Now,
-                    Eak_Code = rnd.Next(1, 255).ToString(),
+                    EakCode = rnd.Next(1, 255).ToString(),
                     InstallationId = rnd.Next(1, 255),
                     MustBeInspected = true,
                     Producer = Guid.NewGuid().ToString(),
@@ -45,7 +45,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             Assert.AreEqual(trashInspectionModel.CreatedAt.ToString(), trashInspection.CreatedAt.ToString());
             Assert.AreEqual(trashInspectionModel.CreatedByUserId, trashInspection.CreatedByUserId);
             Assert.AreEqual(trashInspectionModel.Date.ToString(), trashInspection.Date.ToString());
-            Assert.AreEqual(trashInspectionModel.Eak_Code, trashInspection.Eak_Code);
+            Assert.AreEqual(trashInspectionModel.EakCode, trashInspection.EakCode);
             Assert.AreEqual(trashInspectionModel.InstallationId, trashInspection.InstallationId);
             Assert.AreEqual(trashInspectionModel.MustBeInspected, trashInspection.MustBeInspected);
             Assert.AreEqual(trashInspectionModel.Producer, trashInspection.Producer);
@@ -66,7 +66,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
                 {
                     CreatedAt = DateTime.Now,
                     Date = DateTime.Now,
-                    Eak_Code = rnd.Next(1, 255).ToString(),
+                    EakCode = rnd.Next(1, 255).ToString(),
                     InstallationId = rnd.Next(1, 255),
                     MustBeInspected = false,
                     Producer = Guid.NewGuid().ToString(),
@@ -89,7 +89,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             Assert.AreEqual(trashInspectionModel.CreatedAt.ToString(), trashInspection.CreatedAt.ToString());
             Assert.AreEqual(trashInspectionModel.CreatedByUserId, trashInspection.CreatedByUserId);
             Assert.AreEqual(trashInspectionModel.Date.ToString(), trashInspection.Date.ToString());
-            Assert.AreEqual(trashInspectionModel.Eak_Code, trashInspection.Eak_Code);
+            Assert.AreEqual(trashInspectionModel.EakCode, trashInspection.EakCode);
             Assert.AreEqual(trashInspectionModel.InstallationId, trashInspection.InstallationId);
             Assert.AreEqual(trashInspectionModel.MustBeInspected, trashInspection.MustBeInspected);
             Assert.AreEqual(trashInspectionModel.Producer, trashInspection.Producer);
@@ -112,7 +112,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
                 {
                     CreatedAt = DateTime.Now,
                     Date = DateTime.Now,
-                    Eak_Code = rnd.Next(1, 255).ToString(),
+                    EakCode = rnd.Next(1, 255).ToString(),
                     InstallationId = rnd.Next(1, 255),
                     MustBeInspected = false,
                     Producer = Guid.NewGuid().ToString(),
@@ -125,7 +125,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             await trashInspection.Create(DbContext);
 
             // Act
-            trashInspection.Eak_Code = "new eak code";
+            trashInspection.EakCode = "new eak code";
 
             await trashInspection.Update(DbContext);
 
@@ -139,7 +139,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
 
             Assert.AreEqual(trashInspection.CreatedAt.ToString(), dbTrashInspection.CreatedAt.ToString());
             Assert.AreEqual(trashInspection.Date.ToString(), dbTrashInspection.Date.ToString());
-            Assert.AreEqual("new eak code", dbTrashInspection.Eak_Code);
+            Assert.AreEqual("new eak code", dbTrashInspection.EakCode);
             Assert.AreEqual(trashInspection.InstallationId, dbTrashInspection.InstallationId);
             Assert.AreEqual(trashInspection.MustBeInspected, dbTrashInspection.MustBeInspected);
             Assert.AreEqual(trashInspection.Producer, dbTrashInspection.Producer);
@@ -160,7 +160,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
                 {
                     CreatedAt = DateTime.Now,
                     Date = DateTime.Now,
-                    Eak_Code = rnd.Next(1, 255).ToString(),
+                    EakCode = rnd.Next(1, 255).ToString(),
                     InstallationId = rnd.Next(1, 255),
                     MustBeInspected = false,
                     Producer = Guid.NewGuid().ToString(),
@@ -175,7 +175,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             // Act
             trashInspection.CreatedAt = trashInspection.CreatedAt;
             trashInspection.Date = trashInspection.Date;
-            trashInspection.Eak_Code = trashInspection.Eak_Code;
+            trashInspection.EakCode = trashInspection.EakCode;
             trashInspection.Id = trashInspection.Id;
             trashInspection.InstallationId = trashInspection.InstallationId;
             trashInspection.MustBeInspected = trashInspection.MustBeInspected;
@@ -198,7 +198,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
 
             Assert.AreEqual(trashInspection.CreatedAt.ToString(), dbTrashInspection.CreatedAt.ToString());
             Assert.AreEqual(trashInspection.Date.ToString(), dbTrashInspection.Date.ToString());
-            Assert.AreEqual(trashInspection.Eak_Code, dbTrashInspection.Eak_Code);
+            Assert.AreEqual(trashInspection.EakCode, dbTrashInspection.EakCode);
             Assert.AreEqual(trashInspection.InstallationId, dbTrashInspection.InstallationId);
             Assert.AreEqual(trashInspection.MustBeInspected, dbTrashInspection.MustBeInspected);
             Assert.AreEqual(trashInspection.Producer, dbTrashInspection.Producer);
@@ -219,7 +219,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
                 {
                     CreatedAt = DateTime.Now,
                     Date = DateTime.Now,
-                    Eak_Code = rnd.Next(1, 255).ToString(),
+                    EakCode = rnd.Next(1, 255).ToString(),
                     InstallationId = rnd.Next(1, 255),
                     MustBeInspected = false,
                     Producer = Guid.NewGuid().ToString(),
@@ -244,7 +244,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
 
             Assert.AreEqual(trashInspection.CreatedAt.ToString(), dbTrashInspection.CreatedAt.ToString());
             Assert.AreEqual(trashInspection.Date.ToString(), dbTrashInspection.Date.ToString());
-            Assert.AreEqual(trashInspection.Eak_Code, dbTrashInspection.Eak_Code);
+            Assert.AreEqual(trashInspection.EakCode, dbTrashInspection.EakCode);
             Assert.AreEqual(trashInspection.InstallationId, dbTrashInspection.InstallationId);
             Assert.AreEqual(trashInspection.MustBeInspected, dbTrashInspection.MustBeInspected);
             Assert.AreEqual(trashInspection.Producer, dbTrashInspection.Producer);
@@ -266,7 +266,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
                 {
                     CreatedAt = DateTime.Now,
                     Date = DateTime.Now,
-                    Eak_Code = rnd.Next(1, 255).ToString(),
+                    EakCode = rnd.Next(1, 255).ToString(),
                     InstallationId = rnd.Next(1, 255),
                     MustBeInspected = false,
                     Producer = Guid.NewGuid().ToString(),
@@ -292,7 +292,7 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
 
             Assert.AreEqual(trashInspection.CreatedAt.ToString(), dbTrashInspection.CreatedAt.ToString());
             Assert.AreEqual(trashInspection.Date.ToString(), dbTrashInspection.Date.ToString());
-            Assert.AreEqual(trashInspection.Eak_Code, dbTrashInspection.Eak_Code);
+            Assert.AreEqual(trashInspection.EakCode, dbTrashInspection.EakCode);
             Assert.AreEqual(trashInspection.InstallationId, dbTrashInspection.InstallationId);
             Assert.AreEqual(trashInspection.MustBeInspected, dbTrashInspection.MustBeInspected);
             Assert.AreEqual(trashInspection.Producer, dbTrashInspection.Producer);

@@ -70,8 +70,12 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             {
                 "TrashInspectionVersions",
                 "TrashInspections",
-                "Installations",
+                "ProducerVersions",
+                "TransporterVersions",
+                "Transporters",
+                "Producers",
                 "InstallationVersions",
+                "Installations",
                 "InstallationSites",
                 "InstallationSiteVersions",
                 "FractionVersions",
