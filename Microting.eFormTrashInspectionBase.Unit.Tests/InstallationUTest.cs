@@ -17,10 +17,8 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
         {
             // Arrange
             Random rnd = new Random();
-            Installation installation = new Installation();
-            installation.CreatedAt = DateTime.Now;
-            installation.Name = Guid.NewGuid().ToString();
-            
+            Installation installation = new Installation {CreatedAt = DateTime.Now, Name = Guid.NewGuid().ToString()};
+
             // Act
             await installation.Create(DbContext);
 
@@ -33,19 +31,17 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
 
             Assert.AreEqual(installation.CreatedAt.ToString(), dbInstallation.CreatedAt.ToString());
             Assert.AreEqual(installation.Name, dbInstallation.Name);
-           
+
 
         }
-        
+
         [Test]
         public async Task  InstalationModel_Update_DoesUpdate()
         {
             // Arrange
             Random rnd = new Random();
-            Installation installation = new Installation();
-            installation.CreatedAt = DateTime.Now;
-            installation.Name = Guid.NewGuid().ToString();
-            
+            Installation installation = new Installation {CreatedAt = DateTime.Now, Name = Guid.NewGuid().ToString()};
+
             await installation.Create(DbContext);
 
             // Act
@@ -65,18 +61,16 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             Assert.AreEqual(installation.CreatedAt.ToString(), dbInstallation.CreatedAt.ToString());
             Assert.AreEqual(installation.Name, dbInstallation.Name);
             Assert.AreEqual(installation.Id, dbInstallation.Id);
-           
+
         }
-        
+
         [Test]
         public async Task  InstallationModel_Delete_DoesDelete()
         {
             // Arrange
             Random rnd = new Random();
-            Installation installation = new Installation();
-            installation.CreatedAt = DateTime.Now;
-            installation.Name = Guid.NewGuid().ToString();
-            
+            Installation installation = new Installation {CreatedAt = DateTime.Now, Name = Guid.NewGuid().ToString()};
+
             await installation.Create(DbContext);
 
             // Act

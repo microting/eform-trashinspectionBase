@@ -16,16 +16,18 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
         public async Task Producer_Save_DoesSave()
         {
             //Arrange
-            Producer producer = new Producer();
+            Producer producer = new Producer
+            {
+                Address = Guid.NewGuid().ToString(),
+                City = Guid.NewGuid().ToString(),
+                Description = Guid.NewGuid().ToString(),
+                Name = Guid.NewGuid().ToString(),
+                Phone = Guid.NewGuid().ToString(),
+                ContactPerson = Guid.NewGuid().ToString(),
+                ForeignId = Guid.NewGuid().ToString(),
+                ZipCode = Guid.NewGuid().ToString()
+            };
 
-            producer.Address = Guid.NewGuid().ToString();
-            producer.City = Guid.NewGuid().ToString();
-            producer.Description = Guid.NewGuid().ToString();
-            producer.Name = Guid.NewGuid().ToString();
-            producer.Phone = Guid.NewGuid().ToString();
-            producer.ContactPerson = Guid.NewGuid().ToString();
-            producer.ForeignId = Guid.NewGuid().ToString();
-            producer.ZipCode = Guid.NewGuid().ToString();
 
             //Act
             await producer.Create(DbContext);
@@ -35,10 +37,10 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             List<ProducerVersion> producerVersionList = DbContext.ProducerVersions.AsNoTracking().ToList();
             //Assert
             Assert.NotNull(dbProducer);
-            
+
             Assert.AreEqual(1, producerList.Count);
             Assert.AreEqual(1, producerVersionList.Count);
-            
+
             Assert.AreEqual(producer.Address, dbProducer.Address);
             Assert.AreEqual(producer.City, dbProducer.City);
             Assert.AreEqual(producer.Description, dbProducer.Description);
@@ -52,16 +54,18 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
         public async Task Producer_Update_DoesUpdate()
         {
             //Arrange
-            Producer producer = new Producer();
+            Producer producer = new Producer
+            {
+                Address = Guid.NewGuid().ToString(),
+                City = Guid.NewGuid().ToString(),
+                Description = Guid.NewGuid().ToString(),
+                Name = Guid.NewGuid().ToString(),
+                Phone = Guid.NewGuid().ToString(),
+                ContactPerson = Guid.NewGuid().ToString(),
+                ForeignId = Guid.NewGuid().ToString(),
+                ZipCode = Guid.NewGuid().ToString()
+            };
 
-            producer.Address = Guid.NewGuid().ToString();
-            producer.City = Guid.NewGuid().ToString();
-            producer.Description = Guid.NewGuid().ToString();
-            producer.Name = Guid.NewGuid().ToString();
-            producer.Phone = Guid.NewGuid().ToString();
-            producer.ContactPerson = Guid.NewGuid().ToString();
-            producer.ForeignId = Guid.NewGuid().ToString();
-            producer.ZipCode = Guid.NewGuid().ToString();
             await producer.Create(DbContext);
 
             string newAddress = Guid.NewGuid().ToString();
@@ -83,16 +87,16 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             producer.ZipCode = newZipCode;
             //Act
             await producer.Update(DbContext);
-            
+
             Producer dbProducer = DbContext.Producers.AsNoTracking().First();
             List<Producer> producerList = DbContext.Producers.AsNoTracking().ToList();
             List<ProducerVersion> producerVersionList = DbContext.ProducerVersions.AsNoTracking().ToList();
             //Assert
             Assert.NotNull(dbProducer);
-            
+
             Assert.AreEqual(1, producerList.Count);
             Assert.AreEqual(2, producerVersionList.Count);
-            
+
             Assert.AreEqual(newAddress, dbProducer.Address);
             Assert.AreEqual(newCity, dbProducer.City);
             Assert.AreEqual(newDescription, dbProducer.Description);
@@ -106,30 +110,32 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
         public async Task Producer_Delete_DoesDelete()
         {
             //Arrange
-            Producer producer = new Producer();
+            Producer producer = new Producer
+            {
+                Address = Guid.NewGuid().ToString(),
+                City = Guid.NewGuid().ToString(),
+                Description = Guid.NewGuid().ToString(),
+                Name = Guid.NewGuid().ToString(),
+                Phone = Guid.NewGuid().ToString(),
+                ContactPerson = Guid.NewGuid().ToString(),
+                ForeignId = Guid.NewGuid().ToString(),
+                ZipCode = Guid.NewGuid().ToString()
+            };
 
-            producer.Address = Guid.NewGuid().ToString();
-            producer.City = Guid.NewGuid().ToString();
-            producer.Description = Guid.NewGuid().ToString();
-            producer.Name = Guid.NewGuid().ToString();
-            producer.Phone = Guid.NewGuid().ToString();
-            producer.ContactPerson = Guid.NewGuid().ToString();
-            producer.ForeignId = Guid.NewGuid().ToString();
-            producer.ZipCode = Guid.NewGuid().ToString();
             await producer.Create(DbContext);
 
             //Act
             await producer.Delete(DbContext);
-            
+
             Producer dbProducer = DbContext.Producers.AsNoTracking().First();
             List<Producer> producerList = DbContext.Producers.AsNoTracking().ToList();
             List<ProducerVersion> producerVersionList = DbContext.ProducerVersions.AsNoTracking().ToList();
             //Assert
             Assert.NotNull(dbProducer);
-            
+
             Assert.AreEqual(1, producerList.Count);
             Assert.AreEqual(2, producerVersionList.Count);
-            
+
             Assert.AreEqual(producer.Address, dbProducer.Address);
             Assert.AreEqual(producer.City, dbProducer.City);
             Assert.AreEqual(producer.Description, dbProducer.Description);
@@ -141,6 +147,6 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             Assert.AreEqual(Constants.WorkflowStates.Removed, producer.WorkflowState);
         }
 
-        
+
     }
 }

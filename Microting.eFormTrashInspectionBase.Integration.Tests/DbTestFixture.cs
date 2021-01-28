@@ -16,7 +16,6 @@ namespace Microting.eFormTrashInspectionBase.Integration.Tests
         protected TrashInspectionPnDbContext DbContext;
         private string _connectionString;
 
-
         private void GetContext(string connectionStr)
         {
             TrashInspectionPnContextFactory contextFactory = new TrashInspectionPnContextFactory();
@@ -66,52 +65,55 @@ namespace Microting.eFormTrashInspectionBase.Integration.Tests
 
         private void ClearDb()
         {
-            List<string> modelNames = new List<string>();
-            modelNames.Add("TrashInspectionVersions");
-            modelNames.Add("TrashInspections");
-            modelNames.Add("Installations");
-            modelNames.Add("InstallationVersions");
-            modelNames.Add("InstallationSites");
-            modelNames.Add("InstallationSiteVersions");
-            modelNames.Add("FractionVersions");
-            modelNames.Add("Fractions");
-            modelNames.Add("SegmentVersions");
-            modelNames.Add("Segments");
-            modelNames.Add("PluginConfigurationValues");
-            modelNames.Add("PluginConfigurationValueVersions");
+            List<string> modelNames = new List<string>
+            {
+                "TrashInspectionVersions",
+                "TrashInspections",
+                "Installations",
+                "InstallationVersions",
+                "InstallationSites",
+                "InstallationSiteVersions",
+                "FractionVersions",
+                "Fractions",
+                "SegmentVersions",
+                "Segments",
+                "PluginConfigurationValues",
+                "PluginConfigurationValueVersions"
+            };
 
-
-
+            bool firstRunNotDone = true;
 
             foreach (var modelName in modelNames)
             {
                 try
                 {
-                    string sqlCmd;
-                    if (DbContext.Database.IsMySql())
+                    if (firstRunNotDone)
                     {
-                        sqlCmd = $"SET FOREIGN_KEY_CHECKS = 0;TRUNCATE `trash-inspection-pn-tests`.`{modelName}`";
+                        DbContext.Database.ExecuteSqlRaw(
+                            $"SET FOREIGN_KEY_CHECKS = 0;TRUNCATE `trash-inspection-pn-tests`.`{modelName}`");
                     }
-                    else
-                    {
-                        sqlCmd = $"DELETE FROM [{modelName}]";
-                    }
-                    DbContext.Database.ExecuteSqlCommand(sqlCmd);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    if (ex.Message == "Unknown database 'trash-inspection-pn-tests'")
+                    {
+                        firstRunNotDone = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }
             }
         }
-        private string path;
+        private string _path;
 
         private void ClearFile()
         {
-            path = System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
-            path = System.IO.Path.GetDirectoryName(path).Replace(@"file:\", "");
+            _path = System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
+            _path = System.IO.Path.GetDirectoryName(_path)?.Replace(@"file:\", "");
 
-            string picturePath = path + @"\output\dataFolder\picture\Deleted";
+            string picturePath = _path + @"\output\dataFolder\picture\Deleted";
 
             DirectoryInfo diPic = new DirectoryInfo(picturePath);
 

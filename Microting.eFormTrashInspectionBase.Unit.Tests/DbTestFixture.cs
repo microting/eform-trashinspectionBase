@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using Microsoft.EntityFrameworkCore;
 using Microting.eFormTrashInspectionBase.Infrastructure.Data;
@@ -16,7 +17,6 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
         protected TrashInspectionPnDbContext DbContext;
         private string _connectionString;
 
-
         private void GetContext(string connectionStr)
         {
             TrashInspectionPnContextFactory contextFactory = new TrashInspectionPnContextFactory();
@@ -31,11 +31,11 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                _connectionString = @"data source=(LocalDb)\SharedInstance;Initial catalog=trash-inspection-base-tests;Integrated Security=true";
+                _connectionString = @"data source=(LocalDb)\SharedInstance;Initial catalog=trash-inspection-pn-tests;Integrated Security=true";
             }
             else
             {
-                _connectionString = @"Server = localhost; port = 3306; Database = trash-inspection-base-tests; user = root; password = secretpassword; Convert Zero Datetime = true;";
+                _connectionString = @"Server = localhost; port = 3306; Database = trash-inspection-pn-tests; user = root; password = secretpassword; Convert Zero Datetime = true;";
             }
 
             GetContext(_connectionString);
@@ -66,56 +66,55 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
 
         private void ClearDb()
         {
-            List<string> modelNames = new List<string>();
-            modelNames.Add("TrashInspectionVersions");
-            modelNames.Add("TrashInspections");
-            modelNames.Add("Installations");
-            modelNames.Add("InstallationVersions");
-            modelNames.Add("InstallationSites");
-            modelNames.Add("InstallationSiteVersions");
-            modelNames.Add("FractionVersions");
-            modelNames.Add("Fractions");
-            modelNames.Add("SegmentVersions");
-            modelNames.Add("Segments");
-            modelNames.Add("ProducerVersions");
-            modelNames.Add("Producers");
-            modelNames.Add("TransporterVersions");
-            modelNames.Add("Transporters");
-            modelNames.Add("PluginConfigurationValues");
-            modelNames.Add("PluginConfigurationValueVersions");
+            List<string> modelNames = new List<string>
+            {
+                "TrashInspectionVersions",
+                "TrashInspections",
+                "Installations",
+                "InstallationVersions",
+                "InstallationSites",
+                "InstallationSiteVersions",
+                "FractionVersions",
+                "Fractions",
+                "SegmentVersions",
+                "Segments",
+                "PluginConfigurationValues",
+                "PluginConfigurationValueVersions"
+            };
 
-
-
+            bool firstRunNotDone = true;
 
             foreach (var modelName in modelNames)
             {
                 try
                 {
-                    string sqlCmd;
-                    if (DbContext.Database.IsMySql())
+                    if (firstRunNotDone)
                     {
-                        sqlCmd = $"SET FOREIGN_KEY_CHECKS = 0;TRUNCATE `trash-inspection-base-tests`.`{modelName}`";
+                        DbContext.Database.ExecuteSqlRaw(
+                            $"SET FOREIGN_KEY_CHECKS = 0;TRUNCATE `trash-inspection-pn-tests`.`{modelName}`");
                     }
-                    else
-                    {
-                        sqlCmd = $"DELETE FROM [{modelName}]";
-                    }
-                    DbContext.Database.ExecuteSqlCommand(sqlCmd);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.Message);
+                    if (ex.Message == "Unknown database 'trash-inspection-pn-tests'")
+                    {
+                        firstRunNotDone = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }
             }
         }
-        private string path;
+        private string _path;
 
         private void ClearFile()
         {
-            path = System.Reflection.Assembly.GetExecutingAssembly().CodeBase;
-            path = System.IO.Path.GetDirectoryName(path).Replace(@"file:\", "");
+            _path = Assembly.GetExecutingAssembly().CodeBase;
+            _path = Path.GetDirectoryName(_path)?.Replace(@"file:\", "");
 
-            string picturePath = path + @"\output\dataFolder\picture\Deleted";
+            string picturePath = _path + @"\output\dataFolder\picture\Deleted";
 
             DirectoryInfo diPic = new DirectoryInfo(picturePath);
 

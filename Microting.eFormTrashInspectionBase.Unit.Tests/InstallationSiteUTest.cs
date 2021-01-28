@@ -16,17 +16,16 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
         public async Task InstallationSiteModel_Save_DoesSave()
         {
             // Arrange
-            Installation installation = new Installation();
-            installation.CreatedAt = DateTime.Now;
-            installation.Name = Guid.NewGuid().ToString();
+            Installation installation = new Installation {CreatedAt = DateTime.Now, Name = Guid.NewGuid().ToString()};
 
             await installation.Create(DbContext);
 
             Random rnd = new Random();
 
-            InstallationSite installationSite = new InstallationSite();
-            installationSite.InstallationId = installation.Id;
-            installationSite.SDKSiteId = rnd.Next(1, 255);
+            InstallationSite installationSite = new InstallationSite
+            {
+                InstallationId = installation.Id, SDKSiteId = rnd.Next(1, 255)
+            };
 
             // Act
             await installationSite.Create(DbContext);
@@ -50,21 +49,19 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
         public async Task InstalationSiteModel_Update_DoesUpdate()
         {
             // Arrange
-            Installation installation = new Installation();
-            installation.CreatedAt = DateTime.Now;
-            installation.Name = Guid.NewGuid().ToString();
+            Installation installation = new Installation {CreatedAt = DateTime.Now, Name = Guid.NewGuid().ToString()};
 
             await installation.Create(DbContext);
 
             Random rnd = new Random();
-            InstallationSite installationSite = new InstallationSite();
-            installationSite.CreatedAt = DateTime.Now;
-            installationSite.InstallationId = installation.Id;
-            installationSite.SDKSiteId = rnd.Next(1, 255);
+            InstallationSite installationSite = new InstallationSite
+            {
+                CreatedAt = DateTime.Now, InstallationId = installation.Id, SDKSiteId = rnd.Next(1, 255)
+            };
 
             await installationSite.Create(DbContext);
             // Act
-            
+
             installationSite.SDKSiteId = rnd.Next(1, 355);
             installationSite.InstallationId = installation.Id;
             installationSite.Id = installationSite.Id;
@@ -91,20 +88,18 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
         public async Task InstallationSiteModel_Delete_DoesDelete()
         {
             // Arrange
-            Installation installation = new Installation();
-            installation.CreatedAt = DateTime.Now;
-            installation.Name = Guid.NewGuid().ToString();
+            Installation installation = new Installation {CreatedAt = DateTime.Now, Name = Guid.NewGuid().ToString()};
 
             await installation.Create(DbContext);
 
             Random rnd = new Random();
-            InstallationSite installationSite = new InstallationSite();
-            installationSite.CreatedAt = DateTime.Now;
-            installationSite.InstallationId = installation.Id;
-            installationSite.SDKSiteId = rnd.Next(1, 255);
+            InstallationSite installationSite = new InstallationSite
+            {
+                CreatedAt = DateTime.Now, InstallationId = installation.Id, SDKSiteId = rnd.Next(1, 255)
+            };
 
             await installationSite.Create(DbContext);
-            // Act            
+            // Act
 
             await installationSite.Delete(DbContext);
 

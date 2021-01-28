@@ -16,16 +16,18 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
         public async Task Transporter_Save_DoesSave()
         {
             //Arrange
-            Transporter transporter = new Transporter();
+            Transporter transporter = new Transporter
+            {
+                Address = Guid.NewGuid().ToString(),
+                City = Guid.NewGuid().ToString(),
+                Description = Guid.NewGuid().ToString(),
+                Name = Guid.NewGuid().ToString(),
+                Phone = Guid.NewGuid().ToString(),
+                ContactPerson = Guid.NewGuid().ToString(),
+                ForeignId = Guid.NewGuid().ToString(),
+                ZipCode = Guid.NewGuid().ToString()
+            };
 
-            transporter.Address = Guid.NewGuid().ToString();
-            transporter.City = Guid.NewGuid().ToString();
-            transporter.Description = Guid.NewGuid().ToString();
-            transporter.Name = Guid.NewGuid().ToString();
-            transporter.Phone = Guid.NewGuid().ToString();
-            transporter.ContactPerson = Guid.NewGuid().ToString();
-            transporter.ForeignId = Guid.NewGuid().ToString();
-            transporter.ZipCode = Guid.NewGuid().ToString();
 
             //Act
             await transporter.Create(DbContext);
@@ -35,10 +37,10 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             List<TransporterVersion> transporterVersionList = DbContext.TransporterVersions.AsNoTracking().ToList();
             //Assert
             Assert.NotNull(dbTransporter);
-            
+
             Assert.AreEqual(1, transporterList.Count);
             Assert.AreEqual(1, transporterVersionList.Count);
-            
+
             Assert.AreEqual(transporter.Address, dbTransporter.Address);
             Assert.AreEqual(transporter.City, dbTransporter.City);
             Assert.AreEqual(transporter.Description, dbTransporter.Description);
@@ -52,16 +54,18 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
         public async Task Transporter_Update_DoesUpdate()
         {
             //Arrange
-            Transporter transporter = new Transporter();
+            Transporter transporter = new Transporter
+            {
+                Address = Guid.NewGuid().ToString(),
+                City = Guid.NewGuid().ToString(),
+                Description = Guid.NewGuid().ToString(),
+                Name = Guid.NewGuid().ToString(),
+                Phone = Guid.NewGuid().ToString(),
+                ContactPerson = Guid.NewGuid().ToString(),
+                ForeignId = Guid.NewGuid().ToString(),
+                ZipCode = Guid.NewGuid().ToString()
+            };
 
-            transporter.Address = Guid.NewGuid().ToString();
-            transporter.City = Guid.NewGuid().ToString();
-            transporter.Description = Guid.NewGuid().ToString();
-            transporter.Name = Guid.NewGuid().ToString();
-            transporter.Phone = Guid.NewGuid().ToString();
-            transporter.ContactPerson = Guid.NewGuid().ToString();
-            transporter.ForeignId = Guid.NewGuid().ToString();
-            transporter.ZipCode = Guid.NewGuid().ToString();
             await transporter.Create(DbContext);
 
             string newAddress = Guid.NewGuid().ToString();
@@ -83,16 +87,16 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             transporter.ZipCode = newZipCode;
             //Act
             await transporter.Update(DbContext);
-            
+
             Transporter dbTransporter = DbContext.Transporters.AsNoTracking().First();
             List<Transporter> transporterList = DbContext.Transporters.AsNoTracking().ToList();
             List<TransporterVersion> transporterVersionList = DbContext.TransporterVersions.AsNoTracking().ToList();
             //Assert
             Assert.NotNull(dbTransporter);
-            
+
             Assert.AreEqual(1, transporterList.Count);
             Assert.AreEqual(2, transporterVersionList.Count);
-            
+
             Assert.AreEqual(newAddress, dbTransporter.Address);
             Assert.AreEqual(newCity, dbTransporter.City);
             Assert.AreEqual(newDescription, dbTransporter.Description);
@@ -106,30 +110,32 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
         public async Task Transporter_Delete_DoesDelete()
         {
             //Arrange
-            Transporter transporter = new Transporter();
+            Transporter transporter = new Transporter
+            {
+                Address = Guid.NewGuid().ToString(),
+                City = Guid.NewGuid().ToString(),
+                Description = Guid.NewGuid().ToString(),
+                Name = Guid.NewGuid().ToString(),
+                Phone = Guid.NewGuid().ToString(),
+                ContactPerson = Guid.NewGuid().ToString(),
+                ForeignId = Guid.NewGuid().ToString(),
+                ZipCode = Guid.NewGuid().ToString()
+            };
 
-            transporter.Address = Guid.NewGuid().ToString();
-            transporter.City = Guid.NewGuid().ToString();
-            transporter.Description = Guid.NewGuid().ToString();
-            transporter.Name = Guid.NewGuid().ToString();
-            transporter.Phone = Guid.NewGuid().ToString();
-            transporter.ContactPerson = Guid.NewGuid().ToString();
-            transporter.ForeignId = Guid.NewGuid().ToString();
-            transporter.ZipCode = Guid.NewGuid().ToString();
             await transporter.Create(DbContext);
 
             //Act
             await transporter.Delete(DbContext);
-            
+
             Transporter dbTransporter = DbContext.Transporters.AsNoTracking().First();
             List<Transporter> transporterList = DbContext.Transporters.AsNoTracking().ToList();
             List<TransporterVersion> transporterVersionList = DbContext.TransporterVersions.AsNoTracking().ToList();
             //Assert
             Assert.NotNull(dbTransporter);
-            
+
             Assert.AreEqual(1, transporterList.Count);
             Assert.AreEqual(2, transporterVersionList.Count);
-            
+
             Assert.AreEqual(transporter.Address, dbTransporter.Address);
             Assert.AreEqual(transporter.City, dbTransporter.City);
             Assert.AreEqual(transporter.Description, dbTransporter.Description);
