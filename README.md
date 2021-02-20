@@ -1,7 +1,8 @@
 # eform-trashinspectionBase
-
-![.NET Core](https://github.com/microting/eform-trashinspectionBase/workflows/.NET%20Core/badge.svg)
-
+[![.NET Core](https://github.com/microting/eform-trashinspectionBase/actions/workflows/dotnet-core.yml/badge.svg)](https://github.com/microting/eform-trashinspectionBase/actions/workflows/dotnet-core.yml)
+[![NuGet Badge](https://buildstats.info/nuget/Microting.eFormTrashInspectionBase)](https://www.nuget.org/packages/Microting.eFormTrashInspectionBase/)
+[![Maintainability](https://api.codeclimate.com/v1/badges/c3387af6e1de31ab2f01/maintainability)](https://codeclimate.com/github/microting/eform-trashinspectionBase/maintainability)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/da78bc00c51e4d86ae967523ac7b4db9)](https://www.codacy.com/gh/microting/eform-trashinspectionBase/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=microting/eform-trashinspectionBase&amp;utm_campaign=Badge_Grade)
 
 ## WARNINIG! NOT TO BE USED SEPERATLY
 
