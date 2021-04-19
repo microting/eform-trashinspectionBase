@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using System.Runtime.InteropServices;
 using Microsoft.EntityFrameworkCore;
 using Microting.eFormTrashInspectionBase.Infrastructure.Data;
 using Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories;
@@ -10,16 +9,19 @@ using NUnit.Framework;
 
 namespace Microting.eFormTrashInspectionBase.Unit.Tests
 {
+    using System.Runtime.InteropServices;
+
     [TestFixture]
     public abstract class DbTestFixture
     {
-
         protected TrashInspectionPnDbContext DbContext;
         private string _connectionString;
+        private string _path;
+        private const string NameDb = "trash-inspection-pn-tests";
 
         private void GetContext(string connectionStr)
         {
-            TrashInspectionPnContextFactory contextFactory = new TrashInspectionPnContextFactory();
+            var contextFactory = new TrashInspectionPnContextFactory();
             DbContext = contextFactory.CreateDbContext(new[] {connectionStr});
 
             DbContext.Database.Migrate();
@@ -31,11 +33,11 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
         {
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                _connectionString = @"data source=(LocalDb)\SharedInstance;Initial catalog=trash-inspection-pn-tests;Integrated Security=true";
+                _connectionString = $@"data source=(LocalDb)\SharedInstance;Initial catalog={NameDb};Integrated Security=true";
             }
             else
             {
-                _connectionString = @"Server = localhost; port = 3306; Database = trash-inspection-pn-tests; user = root; password = secretpassword; Convert Zero Datetime = true;";
+                _connectionString = $@"Server = localhost; port = 3306; Database = {NameDb}; user = root; password = secretpassword; Convert Zero Datetime = true;";
             }
 
             GetContext(_connectionString);
@@ -66,27 +68,27 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
 
         private void ClearDb()
         {
-            List<string> modelNames = new List<string>
+            var modelNames = new List<string>
             {
                 "TrashInspectionVersions",
                 "TrashInspections",
-                "ProducerVersions",
-                "TransporterVersions",
-                "Transporters",
-                "Producers",
-                "InstallationVersions",
                 "Installations",
+                "InstallationVersions",
                 "InstallationSites",
                 "InstallationSiteVersions",
                 "FractionVersions",
                 "Fractions",
                 "SegmentVersions",
                 "Segments",
+                "ProducerVersions",
+                "Producers",
+                "TransporterVersions",
+                "Transporters",
                 "PluginConfigurationValues",
                 "PluginConfigurationValueVersions"
             };
 
-            bool firstRunNotDone = true;
+            var firstRunNotDone = true;
 
             foreach (var modelName in modelNames)
             {
@@ -95,12 +97,13 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
                     if (firstRunNotDone)
                     {
                         DbContext.Database.ExecuteSqlRaw(
-                            $"SET FOREIGN_KEY_CHECKS = 0;TRUNCATE `trash-inspection-pn-tests`.`{modelName}`");
+                            $"SET FOREIGN_KEY_CHECKS = 0;TRUNCATE `{NameDb}`.`{modelName}`");
+                    
                     }
                 }
                 catch (Exception ex)
                 {
-                    if (ex.Message == "Unknown database 'trash-inspection-pn-tests'")
+                    if (ex.Message == $"Unknown database '{NameDb}'")
                     {
                         firstRunNotDone = false;
                     }
@@ -111,27 +114,27 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
                 }
             }
         }
-        private string _path;
 
         private void ClearFile()
         {
             _path = Assembly.GetExecutingAssembly().CodeBase;
             _path = Path.GetDirectoryName(_path)?.Replace(@"file:\", "");
 
-            string picturePath = _path + @"\output\dataFolder\picture\Deleted";
+            var picturePath = _path + @"\output\dataFolder\picture\Deleted";
 
-            DirectoryInfo diPic = new DirectoryInfo(picturePath);
+            var diPic = new DirectoryInfo(picturePath);
 
             try
             {
-                foreach (FileInfo file in diPic.GetFiles())
+                foreach (var file in diPic.GetFiles())
                 {
                     file.Delete();
                 }
             }
-            catch { }
-
-
+            catch
+            {
+                // ignored
+            }
         }
 
         protected virtual void DoSetup() { }

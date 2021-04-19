@@ -1,10 +1,3 @@
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Microting.eForm.Infrastructure.Constants;
-using Microting.eFormApi.BasePn.Infrastructure.Database.Base;
-
 namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
     public class Fraction : PnBase
