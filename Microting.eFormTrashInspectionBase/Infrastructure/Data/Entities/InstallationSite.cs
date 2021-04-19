@@ -11,8 +11,9 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
 {
     public class InstallationSite : PnBase
     {
-        [ForeignKey("Installation")]
         public int InstallationId { get; set; }
+
+        public virtual Installation Installation { get; set; }
 
         public int SDKSiteId { get; set; }
     }
