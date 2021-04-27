@@ -96,7 +96,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Entities
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"{ex.Message} - Property:{prop.Name} probably not found on Class {returnObj.GetType().Name}");
+                        //Console.WriteLine($"{ex.Message} - Property:{prop.Name} probably not found on Class {returnObj.GetType().Name}");
                     }
                 }
             }
