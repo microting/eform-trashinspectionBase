@@ -1,5 +1,13 @@
 # Changelog
 
+## [v2.1.5](https://github.com/microting/eform-trashinspectionBase/tree/v2.1.5) (2021-05-02)
+
+[Full Changelog](https://github.com/microting/eform-trashinspectionBase/compare/v2.1.4...v2.1.5)
+
+## [v2.1.4](https://github.com/microting/eform-trashinspectionBase/tree/v2.1.4) (2021-04-27)
+
+[Full Changelog](https://github.com/microting/eform-trashinspectionBase/compare/v2.1.3...v2.1.4)
+
 ## [v2.1.3](https://github.com/microting/eform-trashinspectionBase/tree/v2.1.3) (2021-04-27)
 
 [Full Changelog](https://github.com/microting/eform-trashinspectionBase/compare/v2.1.2...v2.1.3)
