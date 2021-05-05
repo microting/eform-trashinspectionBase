@@ -1,5 +1,13 @@
 # Changelog
 
+## [v3.0.2](https://github.com/microting/eform-trashinspectionBase/tree/v3.0.2) (2021-05-05)
+
+[Full Changelog](https://github.com/microting/eform-trashinspectionBase/compare/v3.0.1...v3.0.2)
+
+**Implemented enhancements:**
+
+- Bump Microting.eFormApi.BasePn from 3.0.5 to 3.0.6 [\#136](https://github.com/microting/eform-trashinspectionBase/issues/136)
+
 ## [v3.0.1](https://github.com/microting/eform-trashinspectionBase/tree/v3.0.1) (2021-05-05)
 
 [Full Changelog](https://github.com/microting/eform-trashinspectionBase/compare/v3.0.0...v3.0.1)
