@@ -1,5 +1,17 @@
 # Changelog
 
+## [v3.0.13](https://github.com/microting/eform-trashinspectionBase/tree/v3.0.13) (2021-06-09)
+
+[Full Changelog](https://github.com/microting/eform-trashinspectionBase/compare/v3.0.12...v3.0.13)
+
+**Implemented enhancements:**
+
+- Bump Microsoft.EntityFrameworkCore.Relational from 5.0.6 to 5.0.7 [\#175](https://github.com/microting/eform-trashinspectionBase/issues/175)
+- Bump Microsoft.EntityFrameworkCore.Design from 5.0.6 to 5.0.7 [\#174](https://github.com/microting/eform-trashinspectionBase/issues/174)
+- Bump Microsoft.EntityFrameworkCore from 5.0.6 to 5.0.7 [\#173](https://github.com/microting/eform-trashinspectionBase/issues/173)
+- Bump Microting.eFormApi.BasePn from 3.0.19 to 3.0.20 [\#172](https://github.com/microting/eform-trashinspectionBase/issues/172)
+- Bump Microting.eForm from 5.2.8 to 5.2.9 [\#171](https://github.com/microting/eform-trashinspectionBase/issues/171)
+
 ## [v3.0.12](https://github.com/microting/eform-trashinspectionBase/tree/v3.0.12) (2021-06-07)
 
 [Full Changelog](https://github.com/microting/eform-trashinspectionBase/compare/v3.0.11...v3.0.12)
