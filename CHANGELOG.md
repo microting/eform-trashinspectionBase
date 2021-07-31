@@ -1,5 +1,14 @@
 # Changelog
 
+## [v3.0.18](https://github.com/microting/eform-trashinspectionBase/tree/v3.0.18) (2021-07-31)
+
+[Full Changelog](https://github.com/microting/eform-trashinspectionBase/compare/v3.0.17...v3.0.18)
+
+**Implemented enhancements:**
+
+- Bump Microting.eFormApi.BasePn from 3.0.31 to 3.0.33 [\#202](https://github.com/microting/eform-trashinspectionBase/issues/202)
+- Bump Microting.eForm from 5.2.18 to 5.2.21 [\#201](https://github.com/microting/eform-trashinspectionBase/issues/201)
+
 ## [v3.0.17](https://github.com/microting/eform-trashinspectionBase/tree/v3.0.17) (2021-07-22)
 
 [Full Changelog](https://github.com/microting/eform-trashinspectionBase/compare/v3.0.16...v3.0.17)
@@ -194,6 +203,7 @@
 
 **Implemented enhancements:**
 
+- Bump Microting.eFormApi.BasePn from 2.1.0 to 2.1.1 [\#119](https://github.com/microting/eform-trashinspectionBase/issues/119)
 - Bump Microting.eForm from 4.5.0 to 4.5.1 [\#118](https://github.com/microting/eform-trashinspectionBase/issues/118)
 
 ## [v2.1.1](https://github.com/microting/eform-trashinspectionBase/tree/v2.1.1) (2021-04-26)
@@ -221,6 +231,7 @@
 
 - Bump Microting.eFormApi.BasePn from 2.0.97 to 2.0.128 [\#113](https://github.com/microting/eform-trashinspectionBase/issues/113)
 - Bump Microting.eForm from 4.4.1 to 4.4.37 [\#112](https://github.com/microting/eform-trashinspectionBase/issues/112)
+- Bump Microting.eForm from 4.3.15 to 4.4.1 [\#62](https://github.com/microting/eform-trashinspectionBase/issues/62)
 
 **Merged pull requests:**
 
@@ -233,9 +244,7 @@
 
 **Implemented enhancements:**
 
-- Bump Microting.eFormApi.BasePn from 2.1.0 to 2.1.1 [\#119](https://github.com/microting/eform-trashinspectionBase/issues/119)
 - Bump Microting.eFormApi.BasePn from 2.0.93 to 2.0.97 [\#63](https://github.com/microting/eform-trashinspectionBase/issues/63)
-- Bump Microting.eForm from 4.3.15 to 4.4.1 [\#62](https://github.com/microting/eform-trashinspectionBase/issues/62)
 
 ## [v2.0.46](https://github.com/microting/eform-trashinspectionBase/tree/v2.0.46) (2021-02-15)
 
