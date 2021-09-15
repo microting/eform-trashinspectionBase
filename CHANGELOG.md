@@ -1,5 +1,21 @@
 # Changelog
 
+## [v3.0.31](https://github.com/microting/eform-trashinspectionBase/tree/v3.0.31) (2021-09-15)
+
+[Full Changelog](https://github.com/microting/eform-trashinspectionBase/compare/v3.0.30...v3.0.31)
+
+**Implemented enhancements:**
+
+- Bump Microsoft.EntityFrameworkCore.Relational from 5.0.9 to 5.0.10 [\#239](https://github.com/microting/eform-trashinspectionBase/issues/239)
+- Bump Microsoft.EntityFrameworkCore.Design from 5.0.9 to 5.0.10 [\#238](https://github.com/microting/eform-trashinspectionBase/issues/238)
+- Bump Microsoft.EntityFrameworkCore from 5.0.9 to 5.0.10 [\#237](https://github.com/microting/eform-trashinspectionBase/issues/237)
+- Bump Microting.eFormApi.BasePn from 3.0.47 to 3.0.49 [\#236](https://github.com/microting/eform-trashinspectionBase/issues/236)
+- Bump Microting.eForm from 5.2.37 to 5.2.39 [\#235](https://github.com/microting/eform-trashinspectionBase/issues/235)
+
+**Merged pull requests:**
+
+- Bump Microsoft.NET.Test.Sdk from 16.10.0 to 16.11.0 [\#222](https://github.com/microting/eform-trashinspectionBase/pull/222) ([dependabot[bot]](https://github.com/apps/dependabot))
+
 ## [v3.0.30](https://github.com/microting/eform-trashinspectionBase/tree/v3.0.30) (2021-09-14)
 
 [Full Changelog](https://github.com/microting/eform-trashinspectionBase/compare/v3.0.29...v3.0.30)
@@ -34,7 +50,6 @@
 **Implemented enhancements:**
 
 - Bump Microting.eFormApi.BasePn from 3.0.43 to 3.0.44 [\#225](https://github.com/microting/eform-trashinspectionBase/issues/225)
-- Bump Microting.eFormApi.BasePn from 3.0.42 to 3.0.43 [\#224](https://github.com/microting/eform-trashinspectionBase/issues/224)
 
 ## [v3.0.26](https://github.com/microting/eform-trashinspectionBase/tree/v3.0.26) (2021-08-17)
 
@@ -42,6 +57,7 @@
 
 **Implemented enhancements:**
 
+- Bump Microting.eFormApi.BasePn from 3.0.42 to 3.0.43 [\#224](https://github.com/microting/eform-trashinspectionBase/issues/224)
 - Bump Microting.eForm from 5.2.32 to 5.2.33 [\#223](https://github.com/microting/eform-trashinspectionBase/issues/223)
 
 ## [v3.0.25](https://github.com/microting/eform-trashinspectionBase/tree/v3.0.25) (2021-08-12)
