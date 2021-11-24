@@ -1,5 +1,13 @@
 # Changelog
 
+## [v3.0.54](https://github.com/microting/eform-trashinspectionBase/tree/v3.0.54) (2021-11-24)
+
+[Full Changelog](https://github.com/microting/eform-trashinspectionBase/compare/v3.0.53...v3.0.54)
+
+**Implemented enhancements:**
+
+- Bump Microting.eForm from 5.3.8 to 5.3.10 [\#275](https://github.com/microting/eform-trashinspectionBase/issues/275)
+
 ## [v3.0.53](https://github.com/microting/eform-trashinspectionBase/tree/v3.0.53) (2021-11-23)
 
 [Full Changelog](https://github.com/microting/eform-trashinspectionBase/compare/v3.0.52...v3.0.53)
@@ -329,7 +337,6 @@
 
 - Bump NUnit3TestAdapter from 3.17.0 to 4.0.0 [\#167](https://github.com/microting/eform-trashinspectionBase/pull/167) ([dependabot[bot]](https://github.com/apps/dependabot))
 - Bump Microsoft.NET.Test.Sdk from 16.9.4 to 16.10.0 [\#154](https://github.com/microting/eform-trashinspectionBase/pull/154) ([dependabot[bot]](https://github.com/apps/dependabot))
-- Upgrade to GitHub-native Dependabot [\#125](https://github.com/microting/eform-trashinspectionBase/pull/125) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 
 ## [v3.0.13](https://github.com/microting/eform-trashinspectionBase/tree/v3.0.13) (2021-06-09)
 
@@ -396,6 +403,7 @@
 **Implemented enhancements:**
 
 - Bump Microting.eFormApi.BasePn from 3.0.12 to 3.0.13 [\#157](https://github.com/microting/eform-trashinspectionBase/issues/157)
+- Bump Microting.eForm from 5.2.2 to 5.2.3 [\#156](https://github.com/microting/eform-trashinspectionBase/issues/156)
 
 ## [v3.0.5](https://github.com/microting/eform-trashinspectionBase/tree/v3.0.5) (2021-05-19)
 
@@ -403,12 +411,12 @@
 
 **Implemented enhancements:**
 
-- Bump Microting.eForm from 5.2.2 to 5.2.3 [\#156](https://github.com/microting/eform-trashinspectionBase/issues/156)
 - Bump Microsoft.EntityFrameworkCore.Relational from 5.0.5 to 5.0.6 [\#153](https://github.com/microting/eform-trashinspectionBase/issues/153)
 - Bump Microsoft.EntityFrameworkCore.Design from 5.0.5 to 5.0.6 [\#152](https://github.com/microting/eform-trashinspectionBase/issues/152)
 - Bump Microsoft.EntityFrameworkCore from 5.0.5 to 5.0.6 [\#151](https://github.com/microting/eform-trashinspectionBase/issues/151)
 - Bump Microting.eFormApi.BasePn from 3.0.8 to 3.0.12 [\#150](https://github.com/microting/eform-trashinspectionBase/issues/150)
 - Bump Microting.eForm from 5.1.4 to 5.2.2 [\#149](https://github.com/microting/eform-trashinspectionBase/issues/149)
+- Bump Microting.eForm from 5.0.2 to 5.1.1 [\#134](https://github.com/microting/eform-trashinspectionBase/issues/134)
 
 ## [v3.0.4](https://github.com/microting/eform-trashinspectionBase/tree/v3.0.4) (2021-05-06)
 
@@ -431,18 +439,21 @@
 
 [Full Changelog](https://github.com/microting/eform-trashinspectionBase/compare/v3.0.1...v3.0.2)
 
+**Implemented enhancements:**
+
+- Bump Microting.eFormApi.BasePn from 3.0.5 to 3.0.6 [\#136](https://github.com/microting/eform-trashinspectionBase/issues/136)
+
 ## [v3.0.1](https://github.com/microting/eform-trashinspectionBase/tree/v3.0.1) (2021-05-05)
 
 [Full Changelog](https://github.com/microting/eform-trashinspectionBase/compare/v3.0.0...v3.0.1)
 
 **Implemented enhancements:**
 
-- Bump Microting.eFormApi.BasePn from 3.0.5 to 3.0.6 [\#136](https://github.com/microting/eform-trashinspectionBase/issues/136)
 - Bump Microting.eFormApi.BasePn from 3.0.1 to 3.0.5 [\#135](https://github.com/microting/eform-trashinspectionBase/issues/135)
-- Bump Microting.eForm from 5.0.2 to 5.1.1 [\#134](https://github.com/microting/eform-trashinspectionBase/issues/134)
 
 **Merged pull requests:**
 
+- Upgrade to GitHub-native Dependabot [\#125](https://github.com/microting/eform-trashinspectionBase/pull/125) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - Bump NUnit from 3.13.1 to 3.13.2 [\#122](https://github.com/microting/eform-trashinspectionBase/pull/122) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 
 ## [v3.0.0](https://github.com/microting/eform-trashinspectionBase/tree/v3.0.0) (2021-05-02)
@@ -505,6 +516,7 @@
 
 - Bump Microting.eFormApi.BasePn from 2.0.97 to 2.0.128 [\#113](https://github.com/microting/eform-trashinspectionBase/issues/113)
 - Bump Microting.eForm from 4.4.1 to 4.4.37 [\#112](https://github.com/microting/eform-trashinspectionBase/issues/112)
+- Bump Microting.eFormApi.BasePn from 2.0.93 to 2.0.97 [\#63](https://github.com/microting/eform-trashinspectionBase/issues/63)
 
 **Merged pull requests:**
 
@@ -517,7 +529,6 @@
 
 **Implemented enhancements:**
 
-- Bump Microting.eFormApi.BasePn from 2.0.93 to 2.0.97 [\#63](https://github.com/microting/eform-trashinspectionBase/issues/63)
 - Bump Microting.eForm from 4.3.15 to 4.4.1 [\#62](https://github.com/microting/eform-trashinspectionBase/issues/62)
 
 ## [v2.0.46](https://github.com/microting/eform-trashinspectionBase/tree/v2.0.46) (2021-02-15)
