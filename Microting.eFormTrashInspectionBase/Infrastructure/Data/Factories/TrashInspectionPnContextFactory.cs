@@ -13,7 +13,7 @@ namespace Microting.eFormTrashInspectionBase.Infrastructure.Data.Factories
             var defaultCs = "Server = localhost; port = 3306; Database = trashinspection-pn; user = root; Convert Zero Datetime = true;";
             var optionsBuilder = new DbContextOptionsBuilder<TrashInspectionPnDbContext>();
             optionsBuilder.UseMySql(args.Any() ? args[0] : defaultCs, new MariaDbServerVersion(
-                new Version(10, 4, 0)), mySqlOptionsAction: builder =>
+                ServerVersion.AutoDetect(args.Any() ? args[0] : defaultCs)), mySqlOptionsAction: builder =>
             {
                 builder.EnableRetryOnFailure();
             });
