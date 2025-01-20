@@ -37,22 +37,22 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             TrashInspection trashInspection = DbContext.TrashInspections.AsNoTracking().First();
             List<TrashInspection> trashInspectionList = DbContext.TrashInspections.AsNoTracking().ToList();
             // Assert
-            Assert.NotNull(trashInspection);
+            Assert.That(trashInspection, Is.Not.Null);
 
-            Assert.AreEqual(1, trashInspectionList.Count());
+            Assert.That(trashInspectionList.Count(), Is.EqualTo(1));
 
-            Assert.AreEqual(trashInspectionModel.CreatedAt.ToString(), trashInspection.CreatedAt.ToString());
-            Assert.AreEqual(trashInspectionModel.CreatedByUserId, trashInspection.CreatedByUserId);
-            Assert.AreEqual(trashInspectionModel.Date.ToString(), trashInspection.Date.ToString());
-            Assert.AreEqual(trashInspectionModel.EakCode, trashInspection.EakCode);
-            Assert.AreEqual(trashInspectionModel.InstallationId, trashInspection.InstallationId);
-            Assert.AreEqual(trashInspectionModel.MustBeInspected, trashInspection.MustBeInspected);
-            Assert.AreEqual(trashInspectionModel.Producer, trashInspection.Producer);
-            Assert.AreEqual(trashInspectionModel.RegistrationNumber, trashInspection.RegistrationNumber);
-            Assert.AreEqual(trashInspectionModel.Time.ToString(), trashInspection.Time.ToString());
-            Assert.AreEqual(trashInspectionModel.Transporter, trashInspection.Transporter);
-            Assert.AreEqual(trashInspectionModel.TrashFraction, trashInspection.TrashFraction);
-            Assert.AreEqual(trashInspectionModel.WeighingNumber, trashInspection.WeighingNumber);
+            Assert.That(trashInspection.CreatedAt.ToString(), Is.EqualTo(trashInspectionModel.CreatedAt.ToString()));
+            Assert.That(trashInspection.CreatedByUserId, Is.EqualTo(trashInspectionModel.CreatedByUserId));
+            Assert.That(trashInspection.Date.ToString(), Is.EqualTo(trashInspectionModel.Date.ToString()));
+            Assert.That(trashInspection.EakCode, Is.EqualTo(trashInspectionModel.EakCode));
+            Assert.That(trashInspection.InstallationId, Is.EqualTo(trashInspectionModel.InstallationId));
+            Assert.That(trashInspection.MustBeInspected, Is.EqualTo(trashInspectionModel.MustBeInspected));
+            Assert.That(trashInspection.Producer, Is.EqualTo(trashInspectionModel.Producer));
+            Assert.That(trashInspection.RegistrationNumber, Is.EqualTo(trashInspectionModel.RegistrationNumber));
+            Assert.That(trashInspection.Time.ToString(), Is.EqualTo(trashInspectionModel.Time.ToString()));
+            Assert.That(trashInspection.Transporter, Is.EqualTo(trashInspectionModel.Transporter));
+            Assert.That(trashInspection.TrashFraction, Is.EqualTo(trashInspectionModel.TrashFraction));
+            Assert.That(trashInspection.WeighingNumber, Is.EqualTo(trashInspectionModel.WeighingNumber));
 
         }
         [Test]
@@ -80,22 +80,22 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             TrashInspection trashInspection = DbContext.TrashInspections.AsNoTracking().First();
             List<TrashInspection> trashInspectionList = DbContext.TrashInspections.AsNoTracking().ToList();
             // Assert
-            Assert.NotNull(trashInspection);
+            Assert.That(trashInspection, Is.Not.Null);
 
-            Assert.AreEqual(1, trashInspectionList.Count());
+            Assert.That(trashInspectionList.Count(), Is.EqualTo(1));
 
-            Assert.AreEqual(trashInspectionModel.CreatedAt.ToString(), trashInspection.CreatedAt.ToString());
-            Assert.AreEqual(trashInspectionModel.CreatedByUserId, trashInspection.CreatedByUserId);
-            Assert.AreEqual(trashInspectionModel.Date.ToString(), trashInspection.Date.ToString());
-            Assert.AreEqual(trashInspectionModel.EakCode, trashInspection.EakCode);
-            Assert.AreEqual(trashInspectionModel.InstallationId, trashInspection.InstallationId);
-            Assert.AreEqual(trashInspectionModel.MustBeInspected, trashInspection.MustBeInspected);
-            Assert.AreEqual(trashInspectionModel.Producer, trashInspection.Producer);
-            Assert.AreEqual(trashInspectionModel.RegistrationNumber, trashInspection.RegistrationNumber);
-            Assert.AreEqual(trashInspectionModel.Time.ToString(), trashInspection.Time.ToString());
-            Assert.AreEqual(trashInspectionModel.Transporter, trashInspection.Transporter);
-            Assert.AreEqual(trashInspectionModel.TrashFraction, trashInspection.TrashFraction);
-            Assert.AreEqual(trashInspectionModel.WeighingNumber, trashInspection.WeighingNumber);
+            Assert.That(trashInspection.CreatedAt.ToString(), Is.EqualTo(trashInspectionModel.CreatedAt.ToString()));
+            Assert.That(trashInspection.CreatedByUserId, Is.EqualTo(trashInspectionModel.CreatedByUserId));
+            Assert.That(trashInspection.Date.ToString(), Is.EqualTo(trashInspectionModel.Date.ToString()));
+            Assert.That(trashInspection.EakCode, Is.EqualTo(trashInspectionModel.EakCode));
+            Assert.That(trashInspection.InstallationId, Is.EqualTo(trashInspectionModel.InstallationId));
+            Assert.That(trashInspection.MustBeInspected, Is.EqualTo(trashInspectionModel.MustBeInspected));
+            Assert.That(trashInspection.Producer, Is.EqualTo(trashInspectionModel.Producer));
+            Assert.That(trashInspection.RegistrationNumber, Is.EqualTo(trashInspectionModel.RegistrationNumber));
+            Assert.That(trashInspection.Time.ToString(), Is.EqualTo(trashInspectionModel.Time.ToString()));
+            Assert.That(trashInspection.Transporter, Is.EqualTo(trashInspectionModel.Transporter));
+            Assert.That(trashInspection.TrashFraction, Is.EqualTo(trashInspectionModel.TrashFraction));
+            Assert.That(trashInspection.WeighingNumber, Is.EqualTo(trashInspectionModel.WeighingNumber));
 
         }
 
@@ -130,21 +130,21 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             List<TrashInspection> trashInspectionList = DbContext.TrashInspections.AsNoTracking().ToList();
 
             // Assert
-            Assert.NotNull(dbTrashInspection);
+            Assert.That(dbTrashInspection, Is.Not.Null);
 
-            Assert.AreEqual(1, trashInspectionList.Count());
+            Assert.That(trashInspectionList.Count(), Is.EqualTo(1));
 
-            Assert.AreEqual(trashInspection.CreatedAt.ToString(), dbTrashInspection.CreatedAt.ToString());
-            Assert.AreEqual(trashInspection.Date.ToString(), dbTrashInspection.Date.ToString());
-            Assert.AreEqual("new eak code", dbTrashInspection.EakCode);
-            Assert.AreEqual(trashInspection.InstallationId, dbTrashInspection.InstallationId);
-            Assert.AreEqual(trashInspection.MustBeInspected, dbTrashInspection.MustBeInspected);
-            Assert.AreEqual(trashInspection.Producer, dbTrashInspection.Producer);
-            Assert.AreEqual(trashInspection.RegistrationNumber, dbTrashInspection.RegistrationNumber);
-            Assert.AreEqual(trashInspection.Time.ToString(), dbTrashInspection.Time.ToString());
-            Assert.AreEqual(trashInspection.Transporter, dbTrashInspection.Transporter);
-            Assert.AreEqual(trashInspection.TrashFraction, dbTrashInspection.TrashFraction);
-            Assert.AreEqual(trashInspection.WeighingNumber, dbTrashInspection.WeighingNumber);
+            Assert.That(dbTrashInspection.CreatedAt.ToString(), Is.EqualTo(trashInspection.CreatedAt.ToString()));
+            Assert.That(dbTrashInspection.Date.ToString(), Is.EqualTo(trashInspection.Date.ToString()));
+            Assert.That(dbTrashInspection.EakCode, Is.EqualTo("new eak code"));
+            Assert.That(dbTrashInspection.InstallationId, Is.EqualTo(trashInspection.InstallationId));
+            Assert.That(dbTrashInspection.MustBeInspected, Is.EqualTo(trashInspection.MustBeInspected));
+            Assert.That(dbTrashInspection.Producer, Is.EqualTo(trashInspection.Producer));
+            Assert.That(dbTrashInspection.RegistrationNumber, Is.EqualTo(trashInspection.RegistrationNumber));
+            Assert.That(dbTrashInspection.Time.ToString(), Is.EqualTo(trashInspection.Time.ToString()));
+            Assert.That(dbTrashInspection.Transporter, Is.EqualTo(trashInspection.Transporter));
+            Assert.That(dbTrashInspection.TrashFraction, Is.EqualTo(trashInspection.TrashFraction));
+            Assert.That(dbTrashInspection.WeighingNumber, Is.EqualTo(trashInspection.WeighingNumber));
         }
         [Test]
         public async Task TrashInspectionModel_UpdateWFalse_DoesUpdate()
@@ -188,21 +188,21 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             List<TrashInspection> trashInspectionList = DbContext.TrashInspections.AsNoTracking().ToList();
 
             // Assert
-            Assert.NotNull(dbTrashInspection);
+            Assert.That(dbTrashInspection, Is.Not.Null);
 
-            Assert.AreEqual(1, trashInspectionList.Count());
+            Assert.That(trashInspectionList.Count(), Is.EqualTo(1));
 
-            Assert.AreEqual(trashInspection.CreatedAt.ToString(), dbTrashInspection.CreatedAt.ToString());
-            Assert.AreEqual(trashInspection.Date.ToString(), dbTrashInspection.Date.ToString());
-            Assert.AreEqual(trashInspection.EakCode, dbTrashInspection.EakCode);
-            Assert.AreEqual(trashInspection.InstallationId, dbTrashInspection.InstallationId);
-            Assert.AreEqual(trashInspection.MustBeInspected, dbTrashInspection.MustBeInspected);
-            Assert.AreEqual(trashInspection.Producer, dbTrashInspection.Producer);
-            Assert.AreEqual(trashInspection.RegistrationNumber, dbTrashInspection.RegistrationNumber);
-            Assert.AreEqual(trashInspection.Time.ToString(), dbTrashInspection.Time.ToString());
-            Assert.AreEqual(trashInspection.Transporter, dbTrashInspection.Transporter);
-            Assert.AreEqual(trashInspection.TrashFraction, dbTrashInspection.TrashFraction);
-            Assert.AreEqual(trashInspection.WeighingNumber, dbTrashInspection.WeighingNumber);
+            Assert.That(dbTrashInspection.CreatedAt.ToString(), Is.EqualTo(trashInspection.CreatedAt.ToString()));
+            Assert.That(dbTrashInspection.Date.ToString(), Is.EqualTo(trashInspection.Date.ToString()));
+            Assert.That(dbTrashInspection.EakCode, Is.EqualTo(trashInspection.EakCode));
+            Assert.That(dbTrashInspection.InstallationId, Is.EqualTo(trashInspection.InstallationId));
+            Assert.That(dbTrashInspection.MustBeInspected, Is.EqualTo(trashInspection.MustBeInspected));
+            Assert.That(dbTrashInspection.Producer, Is.EqualTo(trashInspection.Producer));
+            Assert.That(dbTrashInspection.RegistrationNumber, Is.EqualTo(trashInspection.RegistrationNumber));
+            Assert.That(dbTrashInspection.Time.ToString(), Is.EqualTo(trashInspection.Time.ToString()));
+            Assert.That(dbTrashInspection.Transporter, Is.EqualTo(trashInspection.Transporter));
+            Assert.That(dbTrashInspection.TrashFraction, Is.EqualTo(trashInspection.TrashFraction));
+            Assert.That(dbTrashInspection.WeighingNumber, Is.EqualTo(trashInspection.WeighingNumber));
         }
         [Test]
         public async Task TrashInspectionModel_DeleteWTrue_DoesDelete()
@@ -233,22 +233,22 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             List<TrashInspection> trashInspectionList = DbContext.TrashInspections.AsNoTracking().ToList();
 
             // Assert
-            Assert.NotNull(dbTrashInspection);
+            Assert.That(dbTrashInspection, Is.Not.Null);
 
-            Assert.AreEqual(1, trashInspectionList.Count());
+            Assert.That(trashInspectionList.Count(), Is.EqualTo(1));
 
-            Assert.AreEqual(trashInspection.CreatedAt.ToString(), dbTrashInspection.CreatedAt.ToString());
-            Assert.AreEqual(trashInspection.Date.ToString(), dbTrashInspection.Date.ToString());
-            Assert.AreEqual(trashInspection.EakCode, dbTrashInspection.EakCode);
-            Assert.AreEqual(trashInspection.InstallationId, dbTrashInspection.InstallationId);
-            Assert.AreEqual(trashInspection.MustBeInspected, dbTrashInspection.MustBeInspected);
-            Assert.AreEqual(trashInspection.Producer, dbTrashInspection.Producer);
-            Assert.AreEqual(trashInspection.RegistrationNumber, dbTrashInspection.RegistrationNumber);
-            Assert.AreEqual(trashInspection.Time.ToString(), dbTrashInspection.Time.ToString());
-            Assert.AreEqual(trashInspection.Transporter, dbTrashInspection.Transporter);
-            Assert.AreEqual(trashInspection.TrashFraction, dbTrashInspection.TrashFraction);
-            Assert.AreEqual(trashInspection.WeighingNumber, dbTrashInspection.WeighingNumber);
-            Assert.AreEqual(trashInspection.WorkflowState, Constants.WorkflowStates.Removed);
+            Assert.That(dbTrashInspection.CreatedAt.ToString(), Is.EqualTo(trashInspection.CreatedAt.ToString()));
+            Assert.That(dbTrashInspection.Date.ToString(), Is.EqualTo(trashInspection.Date.ToString()));
+            Assert.That(dbTrashInspection.EakCode, Is.EqualTo(trashInspection.EakCode));
+            Assert.That(dbTrashInspection.InstallationId, Is.EqualTo(trashInspection.InstallationId));
+            Assert.That(dbTrashInspection.MustBeInspected, Is.EqualTo(trashInspection.MustBeInspected));
+            Assert.That(dbTrashInspection.Producer, Is.EqualTo(trashInspection.Producer));
+            Assert.That(dbTrashInspection.RegistrationNumber, Is.EqualTo(trashInspection.RegistrationNumber));
+            Assert.That(dbTrashInspection.Time.ToString(), Is.EqualTo(trashInspection.Time.ToString()));
+            Assert.That(dbTrashInspection.Transporter, Is.EqualTo(trashInspection.Transporter));
+            Assert.That(dbTrashInspection.TrashFraction, Is.EqualTo(trashInspection.TrashFraction));
+            Assert.That(dbTrashInspection.WeighingNumber, Is.EqualTo(trashInspection.WeighingNumber));
+            Assert.That(Constants.WorkflowStates.Removed, Is.EqualTo(trashInspection.WorkflowState));
         }
         [Test]
         public async Task TrashInspectionModel_DeleteWFalse_DoesDelete()
@@ -280,22 +280,22 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             List<TrashInspection> trashInspectionList = DbContext.TrashInspections.AsNoTracking().ToList();
 
             // Assert
-            Assert.NotNull(dbTrashInspection);
+            Assert.That(dbTrashInspection, Is.Not.Null);
 
-            Assert.AreEqual(1, trashInspectionList.Count());
+            Assert.That(trashInspectionList.Count(), Is.EqualTo(1));
 
-            Assert.AreEqual(trashInspection.CreatedAt.ToString(), dbTrashInspection.CreatedAt.ToString());
-            Assert.AreEqual(trashInspection.Date.ToString(), dbTrashInspection.Date.ToString());
-            Assert.AreEqual(trashInspection.EakCode, dbTrashInspection.EakCode);
-            Assert.AreEqual(trashInspection.InstallationId, dbTrashInspection.InstallationId);
-            Assert.AreEqual(trashInspection.MustBeInspected, dbTrashInspection.MustBeInspected);
-            Assert.AreEqual(trashInspection.Producer, dbTrashInspection.Producer);
-            Assert.AreEqual(trashInspection.RegistrationNumber, dbTrashInspection.RegistrationNumber);
-            Assert.AreEqual(trashInspection.Time.ToString(), dbTrashInspection.Time.ToString());
-            Assert.AreEqual(trashInspection.Transporter, dbTrashInspection.Transporter);
-            Assert.AreEqual(trashInspection.TrashFraction, dbTrashInspection.TrashFraction);
-            Assert.AreEqual(trashInspection.WeighingNumber, dbTrashInspection.WeighingNumber);
-            Assert.AreEqual(trashInspection.WorkflowState, Constants.WorkflowStates.Removed);
+            Assert.That(dbTrashInspection.CreatedAt.ToString(), Is.EqualTo(trashInspection.CreatedAt.ToString()));
+            Assert.That(dbTrashInspection.Date.ToString(), Is.EqualTo(trashInspection.Date.ToString()));
+            Assert.That(dbTrashInspection.EakCode, Is.EqualTo(trashInspection.EakCode));
+            Assert.That(dbTrashInspection.InstallationId, Is.EqualTo(trashInspection.InstallationId));
+            Assert.That(dbTrashInspection.MustBeInspected, Is.EqualTo(trashInspection.MustBeInspected));
+            Assert.That(dbTrashInspection.Producer, Is.EqualTo(trashInspection.Producer));
+            Assert.That(dbTrashInspection.RegistrationNumber, Is.EqualTo(trashInspection.RegistrationNumber));
+            Assert.That(dbTrashInspection.Time.ToString(), Is.EqualTo(trashInspection.Time.ToString()));
+            Assert.That(dbTrashInspection.Transporter, Is.EqualTo(trashInspection.Transporter));
+            Assert.That(dbTrashInspection.TrashFraction, Is.EqualTo(trashInspection.TrashFraction));
+            Assert.That(dbTrashInspection.WeighingNumber, Is.EqualTo(trashInspection.WeighingNumber));
+            Assert.That(Constants.WorkflowStates.Removed, Is.EqualTo(trashInspection.WorkflowState));
 
         }
     }

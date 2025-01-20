@@ -36,19 +36,19 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             List<Producer> producerList = DbContext.Producers.AsNoTracking().ToList();
             List<ProducerVersion> producerVersionList = DbContext.ProducerVersions.AsNoTracking().ToList();
             //Assert
-            Assert.NotNull(dbProducer);
+            Assert.That(dbProducer, Is.Not.Null);
 
-            Assert.AreEqual(1, producerList.Count);
-            Assert.AreEqual(1, producerVersionList.Count);
+            Assert.That(producerList.Count, Is.EqualTo(1));
+            Assert.That(producerVersionList.Count, Is.EqualTo(1));
 
-            Assert.AreEqual(producer.Address, dbProducer.Address);
-            Assert.AreEqual(producer.City, dbProducer.City);
-            Assert.AreEqual(producer.Description, dbProducer.Description);
-            Assert.AreEqual(producer.Name, dbProducer.Name);
-            Assert.AreEqual(producer.Phone, dbProducer.Phone);
-            Assert.AreEqual(producer.ContactPerson, dbProducer.ContactPerson);
-            Assert.AreEqual(producer.ForeignId, dbProducer.ForeignId);
-            Assert.AreEqual(producer.ZipCode, dbProducer.ZipCode);
+            Assert.That(dbProducer.Address, Is.EqualTo(producer.Address));
+            Assert.That(dbProducer.City, Is.EqualTo(producer.City));
+            Assert.That(dbProducer.Description, Is.EqualTo(producer.Description));
+            Assert.That(dbProducer.Name, Is.EqualTo(producer.Name));
+            Assert.That(dbProducer.Phone, Is.EqualTo(producer.Phone));
+            Assert.That(dbProducer.ContactPerson, Is.EqualTo(producer.ContactPerson));
+            Assert.That(dbProducer.ForeignId, Is.EqualTo(producer.ForeignId));
+            Assert.That(dbProducer.ZipCode, Is.EqualTo(producer.ZipCode));
         }
         [Test]
         public async Task Producer_Update_DoesUpdate()
@@ -92,19 +92,19 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             List<Producer> producerList = DbContext.Producers.AsNoTracking().ToList();
             List<ProducerVersion> producerVersionList = DbContext.ProducerVersions.AsNoTracking().ToList();
             //Assert
-            Assert.NotNull(dbProducer);
+            Assert.That(dbProducer, Is.Not.Null);
 
-            Assert.AreEqual(1, producerList.Count);
-            Assert.AreEqual(2, producerVersionList.Count);
+            Assert.That(producerList.Count, Is.EqualTo(1));
+            Assert.That(producerVersionList.Count, Is.EqualTo(2));
 
-            Assert.AreEqual(newAddress, dbProducer.Address);
-            Assert.AreEqual(newCity, dbProducer.City);
-            Assert.AreEqual(newDescription, dbProducer.Description);
-            Assert.AreEqual(newName, dbProducer.Name);
-            Assert.AreEqual(newPhone, dbProducer.Phone);
-            Assert.AreEqual(newContactPerson, dbProducer.ContactPerson);
-            Assert.AreEqual(newForeignId, dbProducer.ForeignId);
-            Assert.AreEqual(newZipCode, dbProducer.ZipCode);
+            Assert.That(dbProducer.Address, Is.EqualTo(newAddress));
+            Assert.That(dbProducer.City, Is.EqualTo(newCity));
+            Assert.That(dbProducer.Description, Is.EqualTo(newDescription));
+            Assert.That(dbProducer.Name, Is.EqualTo(newName));
+            Assert.That(dbProducer.Phone, Is.EqualTo(newPhone));
+            Assert.That(dbProducer.ContactPerson, Is.EqualTo(newContactPerson));
+            Assert.That(dbProducer.ForeignId, Is.EqualTo(newForeignId));
+            Assert.That(dbProducer.ZipCode, Is.EqualTo(newZipCode));
         }
         [Test]
         public async Task Producer_Delete_DoesDelete()
@@ -131,20 +131,20 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             List<Producer> producerList = DbContext.Producers.AsNoTracking().ToList();
             List<ProducerVersion> producerVersionList = DbContext.ProducerVersions.AsNoTracking().ToList();
             //Assert
-            Assert.NotNull(dbProducer);
+            Assert.That(dbProducer, Is.Not.Null);
 
-            Assert.AreEqual(1, producerList.Count);
-            Assert.AreEqual(2, producerVersionList.Count);
+            Assert.That(producerList.Count, Is.EqualTo(1));
+            Assert.That(producerVersionList.Count, Is.EqualTo(2));
 
-            Assert.AreEqual(producer.Address, dbProducer.Address);
-            Assert.AreEqual(producer.City, dbProducer.City);
-            Assert.AreEqual(producer.Description, dbProducer.Description);
-            Assert.AreEqual(producer.Name, dbProducer.Name);
-            Assert.AreEqual(producer.Phone, dbProducer.Phone);
-            Assert.AreEqual(producer.ContactPerson, dbProducer.ContactPerson);
-            Assert.AreEqual(producer.ForeignId, dbProducer.ForeignId);
-            Assert.AreEqual(producer.ZipCode, dbProducer.ZipCode);
-            Assert.AreEqual(Constants.WorkflowStates.Removed, producer.WorkflowState);
+            Assert.That(dbProducer.Address, Is.EqualTo(producer.Address));
+            Assert.That(dbProducer.City, Is.EqualTo(producer.City));
+            Assert.That(dbProducer.Description, Is.EqualTo(producer.Description));
+            Assert.That(dbProducer.Name, Is.EqualTo(producer.Name));
+            Assert.That(dbProducer.Phone, Is.EqualTo(producer.Phone));
+            Assert.That(dbProducer.ContactPerson, Is.EqualTo(producer.ContactPerson));
+            Assert.That(dbProducer.ForeignId, Is.EqualTo(producer.ForeignId));
+            Assert.That(dbProducer.ZipCode, Is.EqualTo(producer.ZipCode));
+            Assert.That(producer.WorkflowState, Is.EqualTo(Constants.WorkflowStates.Removed));
         }
 
 

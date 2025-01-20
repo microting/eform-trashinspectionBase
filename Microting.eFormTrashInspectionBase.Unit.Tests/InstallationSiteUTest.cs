@@ -34,13 +34,13 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             List<InstallationSite> installationSiteList = DbContext.InstallationSites.AsNoTracking().ToList();
             List<InstallationSiteVersion> installationSiteVersions = DbContext.InstallationSiteVersions.AsNoTracking().ToList();
             // Assert
-            Assert.NotNull(dbInstallationSite);
+            Assert.That(dbInstallationSite, Is.Not.Null);
 
-            Assert.AreEqual(1, installationSiteList.Count());
-            Assert.AreEqual(1, installationSiteVersions.Count());
+            Assert.That(installationSiteList.Count(), Is.EqualTo(1));
+            Assert.That(installationSiteVersions.Count(), Is.EqualTo(1));
 
-            Assert.AreEqual(installationSite.CreatedAt.ToString(), dbInstallationSite.CreatedAt.ToString());
-            Assert.AreEqual(installationSite.InstallationId, dbInstallationSite.InstallationId);
+            Assert.That(dbInstallationSite.CreatedAt.ToString(), Is.EqualTo(installationSite.CreatedAt.ToString()));
+            Assert.That(dbInstallationSite.InstallationId, Is.EqualTo(installationSite.InstallationId));
 
 
         }
@@ -73,14 +73,14 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             List<InstallationSiteVersion> installationSiteVersions = DbContext.InstallationSiteVersions.AsNoTracking().ToList();
 
             // Assert
-            Assert.NotNull(dbInstallationSite);
+            Assert.That(dbInstallationSite, Is.Not.Null);
 
-            Assert.AreEqual(1, installationSiteList.Count());
-            Assert.AreEqual(2, installationSiteVersions.Count());
+            Assert.That(installationSiteList.Count(), Is.EqualTo(1));
+            Assert.That(installationSiteVersions.Count(), Is.EqualTo(2));
 
-            Assert.AreEqual(installationSite.CreatedAt.ToString(), dbInstallationSite.CreatedAt.ToString());
-            Assert.AreEqual(installationSite.SDKSiteId, dbInstallationSite.SDKSiteId);
-            Assert.AreEqual(installationSite.InstallationId, dbInstallationSite.InstallationId);
+            Assert.That(dbInstallationSite.CreatedAt.ToString(), Is.EqualTo(installationSite.CreatedAt.ToString()));
+            Assert.That(dbInstallationSite.SDKSiteId, Is.EqualTo(installationSite.SDKSiteId));
+            Assert.That(dbInstallationSite.InstallationId, Is.EqualTo(installationSite.InstallationId));
 
         }
 
@@ -108,15 +108,15 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             List<InstallationSiteVersion> installationSiteVersions = DbContext.InstallationSiteVersions.AsNoTracking().ToList();
 
             // Assert
-            Assert.NotNull(dbInstallationSite);
+            Assert.That(dbInstallationSite, Is.Not.Null);
 
-            Assert.AreEqual(1, installationSiteList.Count());
-            Assert.AreEqual(2, installationSiteVersions.Count());
+            Assert.That(installationSiteList.Count(), Is.EqualTo(1));
+            Assert.That(installationSiteVersions.Count(), Is.EqualTo(2));
 
-            Assert.AreEqual(installationSite.CreatedAt.ToString(), dbInstallationSite.CreatedAt.ToString());
-            Assert.AreEqual(installationSite.SDKSiteId, dbInstallationSite.SDKSiteId);
-            Assert.AreEqual(installationSite.InstallationId, dbInstallationSite.InstallationId);
-            Assert.AreEqual(installationSite.WorkflowState, Constants.WorkflowStates.Removed);
+            Assert.That(dbInstallationSite.CreatedAt.ToString(), Is.EqualTo(installationSite.CreatedAt.ToString()));
+            Assert.That(dbInstallationSite.SDKSiteId, Is.EqualTo(installationSite.SDKSiteId));
+            Assert.That(dbInstallationSite.InstallationId, Is.EqualTo(installationSite.InstallationId));
+            Assert.That(Constants.WorkflowStates.Removed, Is.EqualTo(installationSite.WorkflowState));
 
         }
 

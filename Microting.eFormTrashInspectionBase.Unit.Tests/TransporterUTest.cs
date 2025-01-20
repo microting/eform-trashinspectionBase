@@ -36,19 +36,19 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             List<Transporter> transporterList = DbContext.Transporters.AsNoTracking().ToList();
             List<TransporterVersion> transporterVersionList = DbContext.TransporterVersions.AsNoTracking().ToList();
             //Assert
-            Assert.NotNull(dbTransporter);
+            Assert.That(dbTransporter, Is.Not.Null);
 
-            Assert.AreEqual(1, transporterList.Count);
-            Assert.AreEqual(1, transporterVersionList.Count);
+            Assert.That(transporterList.Count, Is.EqualTo(1));
+            Assert.That(transporterVersionList.Count, Is.EqualTo(1));
 
-            Assert.AreEqual(transporter.Address, dbTransporter.Address);
-            Assert.AreEqual(transporter.City, dbTransporter.City);
-            Assert.AreEqual(transporter.Description, dbTransporter.Description);
-            Assert.AreEqual(transporter.Name, dbTransporter.Name);
-            Assert.AreEqual(transporter.Phone, dbTransporter.Phone);
-            Assert.AreEqual(transporter.ContactPerson, dbTransporter.ContactPerson);
-            Assert.AreEqual(transporter.ForeignId, dbTransporter.ForeignId);
-            Assert.AreEqual(transporter.ZipCode, dbTransporter.ZipCode);
+            Assert.That(dbTransporter.Address, Is.EqualTo(transporter.Address));
+            Assert.That(dbTransporter.City, Is.EqualTo(transporter.City));
+            Assert.That(dbTransporter.Description, Is.EqualTo(transporter.Description));
+            Assert.That(dbTransporter.Name, Is.EqualTo(transporter.Name));
+            Assert.That(dbTransporter.Phone, Is.EqualTo(transporter.Phone));
+            Assert.That(dbTransporter.ContactPerson, Is.EqualTo(transporter.ContactPerson));
+            Assert.That(dbTransporter.ForeignId, Is.EqualTo(transporter.ForeignId));
+            Assert.That(dbTransporter.ZipCode, Is.EqualTo(transporter.ZipCode));
         }
         [Test]
         public async Task Transporter_Update_DoesUpdate()
@@ -92,19 +92,19 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             List<Transporter> transporterList = DbContext.Transporters.AsNoTracking().ToList();
             List<TransporterVersion> transporterVersionList = DbContext.TransporterVersions.AsNoTracking().ToList();
             //Assert
-            Assert.NotNull(dbTransporter);
+            Assert.That(dbTransporter, Is.Not.Null);
 
-            Assert.AreEqual(1, transporterList.Count);
-            Assert.AreEqual(2, transporterVersionList.Count);
+            Assert.That(transporterList.Count, Is.EqualTo(1));
+            Assert.That(transporterVersionList.Count, Is.EqualTo(2));
 
-            Assert.AreEqual(newAddress, dbTransporter.Address);
-            Assert.AreEqual(newCity, dbTransporter.City);
-            Assert.AreEqual(newDescription, dbTransporter.Description);
-            Assert.AreEqual(newName, dbTransporter.Name);
-            Assert.AreEqual(newPhone, dbTransporter.Phone);
-            Assert.AreEqual(newContactPerson, dbTransporter.ContactPerson);
-            Assert.AreEqual(newForeignId, dbTransporter.ForeignId);
-            Assert.AreEqual(newZipCode, dbTransporter.ZipCode);
+            Assert.That(dbTransporter.Address, Is.EqualTo(newAddress));
+            Assert.That(dbTransporter.City, Is.EqualTo(newCity));
+            Assert.That(dbTransporter.Description, Is.EqualTo(newDescription));
+            Assert.That(dbTransporter.Name, Is.EqualTo(newName));
+            Assert.That(dbTransporter.Phone, Is.EqualTo(newPhone));
+            Assert.That(dbTransporter.ContactPerson, Is.EqualTo(newContactPerson));
+            Assert.That(dbTransporter.ForeignId, Is.EqualTo(newForeignId));
+            Assert.That(dbTransporter.ZipCode, Is.EqualTo(newZipCode));
         }
         [Test]
         public async Task Transporter_Delete_DoesDelete()
@@ -131,20 +131,20 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             List<Transporter> transporterList = DbContext.Transporters.AsNoTracking().ToList();
             List<TransporterVersion> transporterVersionList = DbContext.TransporterVersions.AsNoTracking().ToList();
             //Assert
-            Assert.NotNull(dbTransporter);
+            Assert.That(dbTransporter, Is.Not.Null);
 
-            Assert.AreEqual(1, transporterList.Count);
-            Assert.AreEqual(2, transporterVersionList.Count);
+            Assert.That(transporterList.Count, Is.EqualTo(1));
+            Assert.That(transporterVersionList.Count, Is.EqualTo(2));
 
-            Assert.AreEqual(transporter.Address, dbTransporter.Address);
-            Assert.AreEqual(transporter.City, dbTransporter.City);
-            Assert.AreEqual(transporter.Description, dbTransporter.Description);
-            Assert.AreEqual(transporter.Name, dbTransporter.Name);
-            Assert.AreEqual(transporter.Phone, dbTransporter.Phone);
-            Assert.AreEqual(transporter.ContactPerson, dbTransporter.ContactPerson);
-            Assert.AreEqual(transporter.ForeignId, dbTransporter.ForeignId);
-            Assert.AreEqual(transporter.ZipCode, dbTransporter.ZipCode);
-            Assert.AreEqual(Constants.WorkflowStates.Removed, transporter.WorkflowState);
+            Assert.That(dbTransporter.Address, Is.EqualTo(transporter.Address));
+            Assert.That(dbTransporter.City, Is.EqualTo(transporter.City));
+            Assert.That(dbTransporter.Description, Is.EqualTo(transporter.Description));
+            Assert.That(dbTransporter.Name, Is.EqualTo(transporter.Name));
+            Assert.That(dbTransporter.Phone, Is.EqualTo(transporter.Phone));
+            Assert.That(dbTransporter.ContactPerson, Is.EqualTo(transporter.ContactPerson));
+            Assert.That(dbTransporter.ForeignId, Is.EqualTo(transporter.ForeignId));
+            Assert.That(dbTransporter.ZipCode, Is.EqualTo(transporter.ZipCode));
+            Assert.That(transporter.WorkflowState, Is.EqualTo(Constants.WorkflowStates.Removed));
         }
     }
 }

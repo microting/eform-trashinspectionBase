@@ -9,7 +9,7 @@ namespace Microting.eFormTrashInspectionBase.Integration.Tests
         [Test]
         public void IntegrationCanPeep()
         {
-            Assert.True(true);
+            Assert.That(true);
         }
     }
 }

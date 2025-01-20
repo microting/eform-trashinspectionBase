@@ -32,13 +32,13 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             List<Segment> segmentList = DbContext.Segments.AsNoTracking().ToList();
 
             //Assert
-            Assert.NotNull(dbSegment);
+            Assert.That(dbSegment, Is.Not.Null);
 
-            Assert.AreEqual(1, segmentList.Count());
+            Assert.That(segmentList.Count(), Is.EqualTo(1));
 
-            Assert.AreEqual(segmentModel.Name, dbSegment.Name);
-            Assert.AreEqual(segmentModel.Description, dbSegment.Description);
-            Assert.AreEqual(segmentModel.SdkFolderId, dbSegment.SdkFolderId);
+            Assert.That(dbSegment.Name, Is.EqualTo(segmentModel.Name));
+            Assert.That(dbSegment.Description, Is.EqualTo(segmentModel.Description));
+            Assert.That(dbSegment.SdkFolderId, Is.EqualTo(segmentModel.SdkFolderId));
         }
 
         [Test]
@@ -68,14 +68,14 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             List<SegmentVersion> segmentVersions = DbContext.SegmentVersions.AsNoTracking().ToList();
 
             //Assert
-            Assert.NotNull(dbSegment);
+            Assert.That(dbSegment, Is.Not.Null);
 
-            Assert.AreEqual(1, segmentList.Count());
-            Assert.AreEqual(2, segmentVersions.Count());
+            Assert.That(segmentList.Count(), Is.EqualTo(1));
+            Assert.That(segmentVersions.Count(), Is.EqualTo(2));
 
-            Assert.AreEqual(segment.Name, dbSegment.Name);
-            Assert.AreEqual(segment.Description, dbSegment.Description);
-            Assert.AreEqual(segment.SdkFolderId, dbSegment.SdkFolderId);
+            Assert.That(dbSegment.Name, Is.EqualTo(segment.Name));
+            Assert.That(dbSegment.Description, Is.EqualTo(segment.Description));
+            Assert.That(dbSegment.SdkFolderId, Is.EqualTo(segment.SdkFolderId));
         }
         [Test]
         public async Task SegmentModel_Delete_DoesDelete()
@@ -102,15 +102,15 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             List<SegmentVersion> segmentVersions = DbContext.SegmentVersions.AsNoTracking().ToList();
 
             //Assert
-            Assert.NotNull(dbSegment);
+            Assert.That(dbSegment, Is.Not.Null);
 
-            Assert.AreEqual(1, segmentList.Count());
-            Assert.AreEqual(2, segmentVersions.Count());
+            Assert.That(segmentList.Count(), Is.EqualTo(1));
+            Assert.That(segmentVersions.Count(), Is.EqualTo(2));
 
-            Assert.AreEqual(segment.Name, dbSegment.Name);
-            Assert.AreEqual(segment.Description, dbSegment.Description);
-            Assert.AreEqual(segment.SdkFolderId, dbSegment.SdkFolderId);
-            Assert.AreEqual(dbSegment.WorkflowState, Constants.WorkflowStates.Removed);
+            Assert.That(dbSegment.Name, Is.EqualTo(segment.Name));
+            Assert.That(dbSegment.Description, Is.EqualTo(segment.Description));
+            Assert.That(dbSegment.SdkFolderId, Is.EqualTo(segment.SdkFolderId));
+            Assert.That(Constants.WorkflowStates.Removed, Is.EqualTo(dbSegment.WorkflowState));
         }
     }
 }

@@ -32,13 +32,13 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             Fraction dbFraction = DbContext.Fractions.AsNoTracking().First();
             List<Fraction> fractionList = DbContext.Fractions.AsNoTracking().ToList();
             //Assert
-            Assert.NotNull(dbFraction);
+            Assert.That(dbFraction, Is.Not.Null);
 
-            Assert.AreEqual(1, fractionList.Count());
+            Assert.That(fractionList.Count(), Is.EqualTo(1));
 
-            Assert.AreEqual(fraction.Name, dbFraction.Name);
-            Assert.AreEqual(fraction.Description, dbFraction.Description);
-            Assert.AreEqual(fraction.eFormId, dbFraction.eFormId);
+            Assert.That(dbFraction.Name, Is.EqualTo(fraction.Name));
+            Assert.That(dbFraction.Description, Is.EqualTo(fraction.Description));
+            Assert.That(dbFraction.eFormId, Is.EqualTo(fraction.eFormId));
         }
 
         [Test]
@@ -66,15 +66,15 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             List<FractionVersion> fractionVersions = DbContext.FractionVersions.AsNoTracking().ToList();
 
             //Assert
-            Assert.NotNull(dbFraction);
+            Assert.That(dbFraction, Is.Not.Null);
 
-            Assert.AreEqual(1, fractionList.Count());
-            Assert.AreEqual(1, fractionVersions.Count());
+            Assert.That(fractionList.Count(), Is.EqualTo(1));
+            Assert.That(fractionVersions.Count(), Is.EqualTo(1));
 
-            Assert.AreEqual(fraction.Name, dbFraction.Name);
-            Assert.AreEqual(fraction.Description, dbFraction.Description);
-            Assert.AreEqual(fraction.eFormId, dbFraction.eFormId);
-            Assert.AreEqual(fraction.CreatedAt, dbFraction.CreatedAt);
+            Assert.That(dbFraction.Name, Is.EqualTo(fraction.Name));
+            Assert.That(dbFraction.Description, Is.EqualTo(fraction.Description));
+            Assert.That(dbFraction.eFormId, Is.EqualTo(fraction.eFormId));
+            Assert.That(dbFraction.CreatedAt, Is.EqualTo(fraction.CreatedAt));
         }
         [Test]
         public async Task FractionModel_Delete_DoesSetWorkflowStateToRemoved()
@@ -99,16 +99,16 @@ namespace Microting.eFormTrashInspectionBase.Unit.Tests
             List<FractionVersion> fractionVersions = DbContext.FractionVersions.AsNoTracking().ToList();
 
             //Assert
-            Assert.NotNull(dbFraction);
+            Assert.That(dbFraction, Is.Not.Null);
 
-            Assert.AreEqual(1, fractionList.Count());
-            Assert.AreEqual(1, fractionVersions.Count());
+            Assert.That(fractionList.Count(), Is.EqualTo(1));
+            Assert.That(fractionVersions.Count(), Is.EqualTo(1));
 
-            Assert.AreEqual(fraction.Name, dbFraction.Name);
-            Assert.AreEqual(fraction.Description, dbFraction.Description);
-            Assert.AreEqual(fraction.eFormId, dbFraction.eFormId);
-            Assert.AreEqual(fraction.CreatedAt, dbFraction.CreatedAt);
-            Assert.AreEqual(dbFraction.WorkflowState, Constants.WorkflowStates.Removed);
+            Assert.That(dbFraction.Name, Is.EqualTo(fraction.Name));
+            Assert.That(dbFraction.Description, Is.EqualTo(fraction.Description));
+            Assert.That(dbFraction.eFormId, Is.EqualTo(fraction.eFormId));
+            Assert.That(dbFraction.CreatedAt, Is.EqualTo(fraction.CreatedAt));
+            Assert.That(Constants.WorkflowStates.Removed, Is.EqualTo(dbFraction.WorkflowState));
         }
 
     }
